@@ -1,0 +1,23 @@
+package xTreme;
+
+public class AcceptNoOfAudience extends State {
+
+	public AcceptNoOfAudience(StateData data) {
+		super(data);
+	}
+
+	@Override
+	public State input(String input) throws InvalidInput {
+		if(input.trim().matches("\\d+\\s+\\d+")){
+			String[] tokens = input.trim().split("\\s+");
+			data.noOfSupporters = Integer.parseInt(tokens[0]);
+			if(data.noOfSupporters>0){
+				return new AcceptSupporter(data);
+			}else{
+				return new AcceptReporter(data);
+			}
+		}
+		throw new InvalidInput("NoOfSupporters NoOfReporters");
+	}
+
+}

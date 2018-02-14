@@ -1,0 +1,15 @@
+package example;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class TestMoneyCalculator {
+
+	@Test
+	public void test() {
+		Money money = new Money(5).plus(new Money(5));
+		assertTrue(10, money.getValue());
+	}
+
+}

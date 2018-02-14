@@ -1,0 +1,4 @@
+eclipse.preferences.version=1
+externalMigrateFromAuthorizationDatabase/isMigrated=true
+migrateFromAuthorizationDatabase/isMigrated=true
+repositories/101ce34ba6cc0014123fecfbe70b85e2=101ce34ba6cc0014123fecfbe70b85e2;http\://hydscm/svn/PEGA_engineering/trunk/dev;http\://hydscm/svn/PEGA_engineering/trunk/dev;branches;tags;trunk;true;ca2543e2-2f51-45c5-86db-7108d72ffd2b;http\://hydscm/svn/PEGA_engineering;;false;;;0

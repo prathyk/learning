@@ -1,0 +1,26 @@
+1427020252918	Extract local variable 'dollar'
+1427021079243	Inline local variable 'five2'
+1427021096200	Inline local variable 'five1'
+1427021648661	Inline local variable 'ten'
+1427021655603	Inline local variable 'ten'
+1427022444818	Extract superclass 'Money'
+1427022875737	Pull up 'equals(Object)' to 'Money'
+1427023819252	Introduce factory for 'Dollar'
+1427023832886	Introduce factory for 'Franc'
+1427023919982	Change method 'createDollar'
+1427024020512	Change method 'createFranc'
+1427024973414	Pull up members to 'Money'
+1427025585902	Delete element
+1427025619382	Delete element
+1427025658211	Inline method 'createFranc'
+1427025662516	Inline method 'createDollar'
+1427026582529	Extract local variable 'value'
+1427026963514	Rename local variable 'currency2'
+1427027184925	Extract local variable 'currencyConverter'
+1427027190744	Convert local variable 'currencyConverter' to field
+1427029159248	Extract local variable 'plus'
+1427029478506	Rename type 'Ëxpression'
+1427030992383	Delete element
+1427030996783	Delete element
+1427287300313	Pull up 'currencyConverter' to 'Expression'
+1427287604576	Extract local variable 'plus'

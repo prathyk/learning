@@ -1,0 +1,17 @@
+package xTreme;
+
+public class FootBall {
+	
+	private static final StateData DATA = new StateData();
+	State currentState = new AcceptTeams(DATA);
+
+	public String input(String input) {
+		try {
+			currentState = currentState.input(input);
+		} catch (InvalidInput e) {
+			return e.toString();
+		}
+		return currentState.getOutput();
+	}
+
+}

@@ -1,0 +1,20 @@
+task hello << {
+   print 'hello,'
+}
+
+
+task (dependsOn:hello , world)<< {
+  print ' world'
+}
+
+apply plugin: 'java'
+
+
+task myBuild (dependsOn:build){
+   doLast {
+       def worl = new org.gradle.example.HelloWorld()
+       worl.name = "Pratik"
+       println worl.name
+       println worl.name2
+   }
+}

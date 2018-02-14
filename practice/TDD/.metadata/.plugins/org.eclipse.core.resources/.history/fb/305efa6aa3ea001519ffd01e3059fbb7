@@ -1,0 +1,16 @@
+package xTreme;
+
+public class GameOver extends State {
+
+	public GameOver(StateData data) {
+		super(data);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	State input(String input) throws InvalidInput {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

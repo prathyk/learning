@@ -1,0 +1,8 @@
+1428032262433	Rename type 'CalculatorTest'
+1428032323594	Rename method 'test'
+1428032798629	Convert local variable 'calculator' to field
+1428032881383	Extract method 'assertThatAnswerIs'
+1428033101278	Rename method 'enter'
+1428042212451	Extract method 'operate'
+1428047496583	Extract superclass 'BinaryOperation'
+1428055681379	Extract method 'performOperation'

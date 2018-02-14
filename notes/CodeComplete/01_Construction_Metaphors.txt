@@ -1,0 +1,2 @@
+==> Construction is the most important phase in software because that is the only thing that is guaranteed to be done. That is the living description of the system.
+==> Metaphors help us understand the process of designing software 

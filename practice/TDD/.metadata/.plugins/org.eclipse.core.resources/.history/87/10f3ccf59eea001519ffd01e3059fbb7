@@ -1,0 +1,11 @@
+package xTreme;
+
+public class AcceptReporter extends State {
+
+	@Override
+	State input(String input) throws InvalidInput {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

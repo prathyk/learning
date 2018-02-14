@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContextState>
+<org.eclipse.mylyn.context.ui.editors>
+<MonitoredWindowOpenEditors class="org.eclipse.ui.internal.WorkbenchWindow" isActive="true" isLaunching="true" number="0">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestBowlingGame.java" partName="TestBowlingGame.java" title="TestBowlingGame.java" tooltip="Bowling/src/example/bowling/TestBowlingGame.java">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Bowling/src/example/bowling/TestBowlingGame.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1972" selectionTopPixel="754"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BowlingGame.java" partName="BowlingGame.java" title="BowlingGame.java" tooltip="Bowling/src/example/bowling/BowlingGame.java">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Bowling/src/example/bowling/BowlingGame.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="324" selectionTopPixel="30"/>
+</editor>
+</MonitoredWindowOpenEditors>
+</org.eclipse.mylyn.context.ui.editors>
+</ContextState>

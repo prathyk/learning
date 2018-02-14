@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.mylyn.tasks.ui.workingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1427458795776_1" label="Bowling Game" name="Bowling Game">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/MoneyCalculator" type="4"/>
+<item factoryID="org.eclipse.mylyn.tasks.ui.workingSets.elementFactory" handle.task="handle-1"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Bowling" type="4"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1426568359334_0" label="Window Working Set" name="Aggregate for window 1426568359334"/>
+</workingSetManager>

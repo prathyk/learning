@@ -1,0 +1,17 @@
+package xTreme;
+
+public class AcceptSupporter extends State {
+
+	public AcceptSupporter(StateData data) {
+		super(data);
+	}
+
+	@Override
+	public State input(String input) throws InvalidInput {
+		if(input.trim().matches("\\w+,\\s+\\w+")){
+			return new AcceptSupporter(data);
+		}
+		throw new InvalidInput("ReporterName, ChannelName");
+	}
+
+}

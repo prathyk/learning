@@ -1,0 +1,23 @@
+package xTreme;
+
+public class AcceptGoals extends State {
+
+	public AcceptGoals(StateData data) {
+		super(data);
+	}
+
+	@Override
+	State input(String input) throws InvalidInput {
+		if(input.trim().matches("Goal:\\s+\\w+")){
+			String[] tokens = input.trim().split(":\\s+");
+			if(tokens[1].equals(data.team1) || tokens[1].equals(data.team2)){
+				int score = (tokens[1].equals(data.team1))?data.team1Score++:data.team2Score++;
+				return new AcceptGoals(data);
+			}
+		}else if(input.trim().equals("game over")){
+			return new GameOver(data);
+		}
+		throw new InvalidInput("game over | Goal: TeamName");
+	}
+
+}

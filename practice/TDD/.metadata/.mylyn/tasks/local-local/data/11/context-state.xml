@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContextState>
+<org.eclipse.mylyn.context.ui.editors>
+<MonitoredWindowOpenEditors class="org.eclipse.ui.internal.WorkbenchWindow" isActive="true" isLaunching="true" number="0">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestBowlingGame.java" partName="TestBowlingGame.java" title="TestBowlingGame.java" tooltip="Bowling/src/example/bowling/TestBowlingGame.java">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Bowling/src/example/bowling/TestBowlingGame.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3052" selectionTopPixel="1834"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ASimpleCalculator.java" partName="ASimpleCalculator.java" title="ASimpleCalculator.java" tooltip="SimpleCalculator/src/org/pega/tdd/calculator/ASimpleCalculator.java">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SimpleCalculator/src/org/pega/tdd/calculator/ASimpleCalculator.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="27" selectionOffset="2010" selectionTopPixel="1015"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Calculator.java" partName="Calculator.java" title="Calculator.java" tooltip="SimpleCalculator/src/org/pega/tdd/calculator/Calculator.java">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SimpleCalculator/src/org/pega/tdd/calculator/Calculator.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="729" selectionTopPixel="211"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Add.java" partName="Add.java" title="Add.java" tooltip="SimpleCalculator/src/org/pega/tdd/calculator/Add.java">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SimpleCalculator/src/org/pega/tdd/calculator/Add.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="217" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Subtract.java" partName="Subtract.java" title="Subtract.java" tooltip="SimpleCalculator/src/org/pega/tdd/calculator/Subtract.java">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SimpleCalculator/src/org/pega/tdd/calculator/Subtract.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="200" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BinaryOperation.java" partName="BinaryOperation.java" title="BinaryOperation.java" tooltip="SimpleCalculator/src/org/pega/tdd/calculator/BinaryOperation.java">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SimpleCalculator/src/org/pega/tdd/calculator/BinaryOperation.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="539" selectionTopPixel="61"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.ClassFileEditorNoSource" name="Comparable.class" partName="Comparable.class" title="Comparable.class" tooltip="java.lang.Comparable">
+<input factoryID="org.eclipse.jdt.ui.ClassFileEditorInputFactory" org.eclipse.jdt.ui.ClassFileIdentifier="=SimpleCalculator/C:\/Program Files\/Java\/jre7\/lib\/rt.jar&lt;java.lang(Comparable.class"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Multiply.java" partName="Multiply.java" title="Multiply.java" tooltip="SimpleCalculator/src/org/pega/tdd/calculator/Multiply.java">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SimpleCalculator/src/org/pega/tdd/calculator/Multiply.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="209" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="EmptyOperation.java" partName="EmptyOperation.java" title="EmptyOperation.java" tooltip="SimpleCalculator/src/org/pega/tdd/calculator/EmptyOperation.java">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SimpleCalculator/src/org/pega/tdd/calculator/EmptyOperation.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="212" selectionTopPixel="0"/>
+</editor>
+</MonitoredWindowOpenEditors>
+</org.eclipse.mylyn.context.ui.editors>
+</ContextState>

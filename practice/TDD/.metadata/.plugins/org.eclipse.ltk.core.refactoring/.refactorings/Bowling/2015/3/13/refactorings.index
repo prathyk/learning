@@ -1,0 +1,9 @@
+1427473321182	Convert local variable 'game' to field
+1427473378605	Inline local variable 'score'
+1427473420522	Inline local variable 'score'
+1427473597862	Rename local variable 'i'
+1427473607258	Rename method 'doThrow'
+1427473724283	Extract method 'rollMany'
+1427474508390	Rename field 'currentRollPins'
+1427474576483	Rename field 'addNext'
+1427474751010	Extract method 'rollSpare'

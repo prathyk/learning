@@ -1,0 +1,12 @@
+package xTreme;
+
+import java.util.List;
+
+public class StateData {
+
+	String team1, team2;
+	List<String> team1Supporters, team2Supporters;
+	List<String> reporters;
+	
+	
+}

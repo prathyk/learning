@@ -1,0 +1,14 @@
+package xTreme;
+
+public class AcceptGoals extends State {
+
+	public AcceptGoals(StateData data) {
+		super(data);
+	}
+
+	@Override
+	State input(String input) throws InvalidInput {
+		return "";
+	}
+
+}
