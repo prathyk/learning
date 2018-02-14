@@ -1,0 +1,27 @@
+ant.importBuild 'build.xml'
+
+task beforeTheAntTask << {
+   println "Before the ant"
+}
+
+
+task afterTheAntTask(dependsOn:"antHello") << {
+  println "after ant"
+}
+
+
+task echoDirListViaAntBuilder(){
+   description = "User the ant builder"
+
+
+   ant.echo(message:project.name)
+   ant.echo(path)
+   ant.echo("${projectDir}/samples")
+
+
+   ant.fileScanner{
+      fileset(dir:"build")
+   }.each{
+      println it.toString() - "${projectDir}"
+   }
+}

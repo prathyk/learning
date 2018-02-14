@@ -1,0 +1,18 @@
+package example;
+
+public class Dollar {
+
+	int amount;
+	public Dollar(int i) {
+		amount = i;
+	}
+
+	public Dollar times(int i) {
+		return new Dollar(10);
+	}
+
+	public int getValue() {
+		return amount;
+	}
+
+}

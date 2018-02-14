@@ -1,0 +1,27 @@
+package xTreme;
+
+public class AcceptSupporter extends State {
+
+	public AcceptSupporter(StateData data) {
+		super(data);
+	}
+
+	@Override
+	public State input(String input) throws InvalidInput {
+		if(input.trim().matches("\\w+,\\s+\\w+")){
+			String[] tokens = input.trim().split(",\\s+");
+			if(tokens[1].equals(data.team1) || tokens[1].equals(data.team2)){
+				boolean added = (tokens[1].equals(data.team1))?data.team1Supporters.add(tokens[0]):data.team2Supporters.add(tokens[0]);
+				if(data.noOfSupporters>=data.team1Supporters.size()+data.team2Supporters.size()){
+					return new AcceptSupporter(data);
+				}else if(data.noOfReporters>=data.reporters.size()){
+					return new AcceptReporter(data);
+				}else{
+					return new AcceptGoals(data);
+				}
+			}
+		}
+		throw new InvalidInput("SupporterName, TeamName");
+	}
+
+}

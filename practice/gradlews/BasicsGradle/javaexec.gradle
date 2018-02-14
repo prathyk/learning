@@ -1,0 +1,19 @@
+apply plugin: 'java'
+
+repositories {
+   mavenCentral()
+}
+
+
+dependencies{
+   runtime 'commons-codec:commons-codec:1.5'
+}
+
+
+task encode(type:JavaExec, dependsOn: build) {
+   main = 'org.gradle.example.HelloWorld'
+   args = "Simple args".split().toList()
+   classpath  = sourceSets.main.runtimeClasspath
+   classpath configurations.runtime
+   println configurations
+}

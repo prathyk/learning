@@ -1,0 +1,11 @@
+1458033495482	Convert local variable 'footBall' to field
+1458033508270	Extract method 'extracted'
+1458038044307	Extract method 'extracted'
+1458038152608	Rename method 'assertInput'
+1458038211004	Extract method 'rejectsInput'
+1458038629007	Rename type 'RequireNoOfAudience'
+1458038642042	Rename type 'RequireTeams'
+1458132764670	Extract constant 'DATA'
+1458132788242	Rename field 'DATA'
+1458306421086	Extract local variable 'team1Supporters'
+1458306432135	Extract local variable 'team2Supporters'

@@ -1,0 +1,141 @@
+package xTreme;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+public class TestFootBall {
+
+	private FootBall footBall;
+	@Before
+	public void before() {
+		footBall = new FootBall();
+	}
+
+	@Test
+	public void gameTakesInput() {
+		footBall.input("");
+	}
+	
+	@Test
+	public void gameTakesTeamsInput() {
+		assertThat(footBall.input("India Brazil"), is(equalTo("")));
+	}
+	
+	@Test
+	public void gameRejectAnyOtherInputFirst() {
+		rejectsInput("India Br azil", "Team1 Team2");
+	}
+
+	private void rejectsInput(String input, String error) {
+		assertThat(footBall.input(input), is(equalTo("Error Input. Valid Format:"+error)));
+	}
+
+	
+	@Test
+	public void gameTakesTeamsInputOnlyOnce(){
+		acceptsInput("India Brazil");
+		rejectsInput("India Brazil","NoOfSupporters NoOfReporters");
+	}
+	
+	@Test
+	public void gameTakesNextInputTwoNumbers(){
+		acceptsInput("India Brazil");
+		acceptsInput("2 1");
+	}
+	
+	@Test
+	public void testGameInputForZeroSupporters(){
+		acceptsInput("India Brazil");
+		acceptsInput("0 1");
+		rejectsInput("Ravi, India", "ReporterName, ChannelName");
+	}
+	
+	@Test
+	public void testGameInputForOneSupporter(){
+		acceptsInput("India Brazil");
+		acceptsInput("1 1");
+		acceptsInput("Ravi, India");
+		rejectsInput("Rahul, Brazil", "ReporterName, ChannelName");
+	}
+	
+	@Test
+	public void testGameInputForTwoSupporters(){
+		acceptsInput("India Brazil");
+		acceptsInput("2 1");
+		acceptsInput("Ravi, India");
+		acceptsInput("Rahul, Brazil");
+		rejectsInput("Ramu, Brazil", "ReporterName, ChannelName");
+	}
+
+	@Test
+	public void testGameInputForThreeSupporters(){
+		acceptsInput("India Brazil");
+		acceptsInput("3 1");
+		acceptsInput("Ravi, India");
+		acceptsInput("Rahul, Brazil");
+		acceptsInput("Ramu, Brazil");
+		rejectsInput("Ramesh, Brazil", "ReporterName, ChannelName");
+	}
+	
+	private void acceptsInput(String input) {
+		assertThat(footBall.input(input), is(equalTo("")));
+	}
+	
+	@Test
+	public void testGameInputForZeroReporters(){
+		acceptsInput("India Brazil");
+		acceptsInput("1 0");
+		acceptsInput("Ravi, India");
+		rejectsInput("Ajay, CNN", "game over | Goal: TeamName");
+	}
+	
+	@Test
+	public void testGameInputForOneReporter(){
+		acceptsInput("India Brazil");
+		acceptsInput("1 1");
+		acceptsInput("Ravi, India");
+		acceptsInput("Ravi, ETV");
+		rejectsInput("Ajay, CNN", "game over | Goal: TeamName");
+	}
+	
+	@Test
+	public void testGameInputForTwoReporter(){
+		acceptsInput("India Brazil");
+		acceptsInput("1 2");
+		acceptsInput("Ravi, India");
+		acceptsInput("Ravi, ETV");
+		acceptsInput("Ajay, CNN");
+		rejectsInput("Rakesh, BNN", "game over | Goal: TeamName");
+	}
+	
+	@Test
+	public void testGameInputForThreeReporters(){
+		acceptsInput("India Brazil");
+		acceptsInput("1 3");
+		acceptsInput("Ravi, India");
+		acceptsInput("Ravi, ETV");
+		acceptsInput("Ajay, CNN");
+		acceptsInput("Girish, 9TV");
+		rejectsInput("Rakesh, BNN", "game over | Goal: TeamName");
+	}
+	
+	@Test
+	public void testGameInputForThreeSupportersAndThreeReporters(){
+		acceptsInput("India Brazil");
+		acceptsInput("3 3");
+		acceptsInput("Ravi, India");
+		acceptsInput("Rahul, Brazil");
+		acceptsInput("Ramu, Brazil");
+		rejectsInput("Ramesh, Brazil", "ReporterName, ChannelName");
+		acceptsInput("Ravi, ETV");
+		acceptsInput("Ajay, CNN");
+		acceptsInput("Girish, 9TV");
+		rejectsInput("Rakesh, BNN", "game over | Goal: TeamName");
+	}
+
+}

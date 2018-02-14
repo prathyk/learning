@@ -1,0 +1,1 @@
+You can use '=' for autoindent. gg=G indents the whole file

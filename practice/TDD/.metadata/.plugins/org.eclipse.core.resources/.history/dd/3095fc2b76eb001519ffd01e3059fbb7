@@ -1,0 +1,17 @@
+package xTreme;
+
+public abstract class State {
+	
+	StateData data;
+	
+	public State(StateData data) {
+		this.data = data;
+	}
+
+	abstract State input(String input) throws InvalidInput;
+
+	String getOutput(){
+		return "";
+	}
+
+}

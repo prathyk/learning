@@ -1,0 +1,2206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0060)http://www.objectmentor.com/resources/articles/xpepisode.htm -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<title>XP Epsiode</title>
+<script type="text/javascript" src="chrome-extension://bfbmjmiodbnnpllbbbfblcplfjjepjdn/js/injected.js"></script><style type="text/css"></style><style>img[src="blocker"],img[src="blocker"]{display:none!important}</style><style>img[src="blocker"],img[src="blocker"]{display:none!important}</style></head>
+
+<body>
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="600">
+  <tbody><tr>
+    <td bgcolor="#800000">
+      <p align="center"><b><font face="Arial" size="3" color="#FFFFFF">Engineer
+      Notebook: An Extreme Programming Episode</font></b></p></td>
+  </tr>
+</tbody></table>
+<table border="0" cellpadding="0" cellspacing="0" width="600">
+  <tbody><tr>
+    <td bgcolor="#FFFFFF">
+      <p align="center"><font face="Arial"><i><b>by Robert C. Martin and Robert
+      S. Koss</b></i></font></p>
+      <p align="center"><br>
+      </p>
+    </td>
+  </tr>
+</tbody></table>
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="602">
+  <tbody><tr>
+    <td width="1"></td>
+    <td width="158" valign="top" align="left"><b><font color="#800000"><a href="http://www.objectmentor.com/resources/articles/xpepisode.htm#Figure 1"><span style="font-size: 10.0pt; font-family: Arial">Figure
+      1</span></a></font></b>
+      <p><b><a href="http://www.objectmentor.com/resources/articles/xpepisode.htm#Figure 2"><span style="font-size: 10.0pt; font-family: Arial">Figure
+      2 </span></a></b></p>
+      <p><b><font color="#990033"><a href="http://www.objectmentor.com/resources/articles/xpepisode.htm#Note"><span style="font-size: 10.0pt; font-family: Arial">Note</span></a></font></b></p>
+      <p><b><font color="#990033"><a href="http://www.objectmentor.com/resources/articles/xpepisode.htm#About the Authors"><span style="font-size: 10.0pt; font-family: Arial">About
+      the Authors</span></a></font></b></p>
+      <p><b><font color="#990033"><span style="font-size: 10.0pt; font-family: Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </span></font></b></p>
+      <p>
+    </p></td><td width="9"></td>
+    <td width="427">
+      <font face="Arial" size="1">This article is derived from a chapter of the
+      forthcoming book <i>Advanced Principles, Patterns and Process of Software
+      Development</i>, Robert C. Martin, Prentice Hall, 2001. Copyright © 2000
+      by Robert C. Martin, all rights reserved.</font>
+      <p align="left"><i><font face="Arial" size="2">Design and programming are
+      human activities; forget that and all is lost.</font></i></p>
+      <p align="right"><font face="Arial" size="2"><b><i>Bjarne Stroustrup, 1991</i></b></font></p>
+      <p align="right">&nbsp;</p>
+      <p><font face="Arial" size="2"><i>In order to demonstrate XP (eXtreme
+      Programming) practices, Bob Koss (RSK) and Bob Martin (RCM) will pair
+      program a simple application while you watch like a fly on the wall. We
+      will use test first design and a lot of refactoring to create our
+      application. What follows is a faithful re-enactment of a programming
+      episode that the two Bob's actually did.</i></font></p>
+      <p><font face="Arial" size="2"><b>RCM:</b> "Will you help me write a
+      little application that calculates bowling scores?"</font></p>
+      <p><font face="Arial" size="2"><b>RSK:</b> (Reflects to himself: The XP
+      practice of pair programming says that I can't say no, when asked to help.
+      I suppose that's especially true when it is your boss who is asking.)
+      "Sure Bob, I'd be glad to help."</font></p>
+      <p><font face="Arial" size="2"><b>RCM:</b> "OK, Great. What I'd like
+      to do is write an application that keeps track of a bowling league. It
+      needs to record all the games, determine the ranks of the teams, determine
+      the winners and losers of each weekly match, and accurately score each
+      game."</font></p>
+      <p><font face="Arial" size="2"><b>RSK:</b> "Cool. I used to be a
+      pretty good bowler. This will be fun. You rattled off several user
+      stories, which one would you like to start with."</font></p>
+      <p><font face="Arial" size="2"><b>RCM:</b> "Let's begin with scoring
+      a single game."</font></p>
+      <p><font face="Arial" size="2"><b>RSK:</b> "Okay. What does that
+      mean? What are the inputs and outputs for this story?"</font></p>
+      <p><font face="Arial" size="2"><b>RCM:</b> "It seems to me that the
+      inputs are simply a sequence of throws. A throw is just an integer that
+      tells how many pins were knocked down by the ball. The output is the data
+      on a standard bowling score card, a set of frames populated with the pins
+      knocked down by each throw, and marks denoting spares and strikes. The
+      most important number in each frame is the current game score."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Let me sketch out a
+      little picture of this score card to give us a visual reminder of the
+      requirements." (See Figure 1.)</font></p>
+      <p align="center"><img border="0" src="./Bowling_files/bowling1.jpg" width="592" height="60" alt="bowling1"><br>
+      <b><i><a name="Figure 1">Figure 1</a></i></b></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"That guy is pretty
+      erratic."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Or drunk, but it will
+      serve as a decent acceptance test."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"We'll need others, but
+      let's deal with that later. How should we start? Shall we come up with a
+      design for the system?"</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Well, don't hate me, but
+      I wouldn't mind a UML diagram showing the problem domain concepts that we
+      might see from the score card. That will give us some candidate objects
+      that we can explore further in code."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>(Putting on his powerful object
+      designer hat) "OK, clearly a game object consists of a sequence of
+      ten frames. Each frame object contains one, two, or three throws."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Great minds. That was
+      exactly what I was thinking. Let me quickly draw that, but if you tell
+      Kent, I'll deny it." (See Figure 2.)</font></p>
+      <p align="center"><img border="0" src="./Bowling_files/bowling2.jpg" width="384" height="50" alt="bowling2"><br>
+      <b><i><a name="Figure 2">Figure 2</a></i></b></p>
+      <b>
+      </b><p><b><font face="Arial" size="2">Kent:</font></b><font face="Arial" size="2">
+      <i>"I'm always watching."</i></font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Well, pick a class ...
+      any class. Shall we start at the end of the dependency chain and work
+      backwards? That will make testing easier."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Sure, why not. Let's
+      create a test case for the <b>Throw</b> class."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>(Starts typing)</font></p>
+      <pre><b>//TestThrow.java---------------------------------
+import junit.framework.*; 
+
+public class TestThrow extends TestCase
+{
+  public TestThrow(String name)
+  {
+    super(name);
+  }
+// public void test????
+}</b>
+</pre>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Do you have a clue what
+      the behavior of a <b>Throw</b> object should be?"</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"It holds the number of
+      pins knocked down by the player."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Okay, you just said in
+      not so many words that it doesn't really do anything. Maybe we should come
+      back to it and focus on an object that actually has behavior, instead of
+      one that's just a data store."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Hmm. You mean the <b>Throw</b>
+      class might not really exist?"</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>(Starts to sweat. This is my
+      boss I'm working with.) "Well, if it doesn't have any behavior, how
+      important can it be? I don't know if it exists or not yet. I'd just feel
+      more productive if we were working on an object that had more than setters
+      and getters for methods. But if you want to drive..." (slides the
+      keyboard to RCM).</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Well, let's move up the
+      dependency chain to <b>Frame</b> and see if there are any test cases we
+      can write that will force us to finish <b>Throw</b>." (Pushes the
+      keyboard back to RSK.)</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>(Wondering if RCM is leading me
+      down a blind alley to educate me or if he is really agreeing with me)
+      "Okay, new file, new test case."</font></p>
+      <pre><b>//TestFrame.java------------------------------------
+import junit.framework.*;
+
+public class TestFrame extends TestCase
+{
+  public TestFrame( String name )
+  {
+    super( name );
+  }
+
+  //public void test???
+}</b> 
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"OK, that's the second
+      time we've typed that. Now, can you think of any interesting test cases
+      for <b>Frame</b>?"</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"A frame might provide its
+      score, the number of pins on each throw, whether there was a strike or a
+      spare..."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Too much talk, not enough
+      code. Type!"</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>(types)</font></p>
+      <pre>//TestFrame.java---------------------------------
+import junit.framework.*;
+
+public class TestFrame extends TestCase
+{
+  public TestFrame( String name )
+  {
+    super( name );
+  }
+
+<b>  public void testScoreNoThrows()
+  {
+    Frame f = new Frame();
+    assertEquals( 0, f.getScore() );
+  }</b>
+} 
+
+<b>//Frame.java---------------------------------------
+public class Frame
+{
+  public int getScore() 
+  {
+    return 0;
+  }
+}</b>
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"OK, the test case passes.
+      But <b>Score</b> is a really stupid function. It will fail if we add a
+      throw to the frame. So let's write the test case that adds some throws and
+      then checks the score."</font></p>
+      <pre>//TestFrame.java---------------------------------
+
+<b>public void testAddOneThrow()
+{
+  Frame f = new Frame();
+  f.add(5);
+  assertEquals(5, f.getScore());
+}</b>
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"That doesn't compile.
+      There's no <b>add</b> method in <b>Frame</b>."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"I'll bet if you define
+      the method it will compile."</font></p>
+      <p><b><font face="Arial" size="2">RCM:</font></b></p>
+      <pre>//Frame.java---------------------------------------
+public class Frame
+{
+  public int getScore()
+  {
+    return 0;
+  }
+
+<b>  public void add(Throw t)
+  {
+  }</b>
+}
+</pre>
+      <p><font face="Arial" size="2"><b>RCM:</b> (Thinking out loud) "This
+      doesn't compile because we haven't written the <b>Throw</b> class."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Talk to me, Bob. The test
+      is passing an integer, and the method expects a <b>Throw</b> object. You
+      can't have it both ways. Before we go down the <b>Throw</b> path again,
+      can you describe its behavior?"</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Wow! I didn't even notice
+      that I had written <b>f.add(5)</b>. I should have written <b>f.add(new
+      Throw(5))</b>, but that's ugly as hell. What I <i>really</i> want to write
+      is <b>f.add(5)</b>."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Ugly or not, let's leave
+      aesthetics out of it for the time being. Can you describe any behavior of
+      a <b>Throw</b> object — binary response, Bob?"</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"101101011010100101. I
+      don't know if there is any behavior in <b>Throw</b>; I'm beginning to
+      think a <b>Throw</b> is just an <b>int</b>. However, we don't need to
+      consider that yet, since we can write <b>Frame.add</b> to take an <b>int</b>."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Then I think we should do
+      that for no other reason than it's simple. When we feel pain, we can do
+      something more sophisticated."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Agreed."</font></p>
+      <pre>//Frame.java---------------------------------------
+public class Frame
+{
+  public int getScore()
+  {
+    return 0;
+  }
+
+  public void add(<b>int pins</b>)
+  {
+  }
+}
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"OK, this compiles and
+      fails the test. Now, let's make the test pass."</font></p>
+      <pre>//Frame.java---------------------------------------
+public class Frame
+{
+  public int getScore()
+  {
+    <b>return itsScore;</b>
+  }
+
+  public void add(int pins)
+  {
+    <b>itsScore += pins;</b>
+  }
+  <b>private int itsScore = 0;</b>
+}
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"This compiles and passes
+      the tests. But it's clearly simplistic. What's the next test case?"</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Can we take a break
+      first?"</font></p>
+      <hr>
+      <p><font face="Arial" size="2"><b>RCM: </b>"That's better. <b>Frame.add</b>
+      is a fragile function. What if you call it with an 11?"</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"It can throw an exception
+      if that happens. But who is calling it? Is this going to be an application
+      framework that thousands of people will use and we have to protect against
+      such things, or is this going to be used by you and only you? If the
+      latter, just don't call it with an 11" (chuckle).</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Good point, the tests in
+      the rest of the system will catch an invalid argument. If we run into
+      trouble, we can put the check in later. So, the add function doesn't
+      currently handle strikes or spares. Let's write a test case that expresses
+      that."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Hmmmm... if we call <b>add(10)</b>
+      to represent a strike, what should <b>getScore</b> return? I don't know
+      how to write the assertion, so maybe we're asking the wrong question. Or
+      we're asking the right question to the wrong object."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"When you call <b>add(10)</b>,
+      or <b>add(3)</b> followed by <b>add(7)</b>, then calling <b>getScore</b>
+      on the <b>Fram</b>e is meaningless. The frame would have to look ahead at
+      later frames to calculate its score. If those later frames don't exist,
+      then it would have to return something ugly like -1. I don't want to
+      return -1."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Yeah, I hate the -1 idea
+      too. You've introduced the idea of frames knowing about other frames. Who
+      is holding these different frame objects?"</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"The <b>Game</b>
+      object."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"So <b>Game</b> depends on
+      <b>Frame</b>, and <b>Frame</b> in turn depends on <b>Game</b>. I hate
+      that."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"<b>Frame</b>s don't have
+      to depend upon <b>Game</b>; they could be arranged in a linked list. Each
+      frame could hold pointers to its next and previous frames. To get the
+      score from a frame, the frame would look backwards to get the score of the
+      previous frame and look forwards for any spare or strike balls it
+      needs."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Okay, I'm feeling kind of
+      dumb because I can't visualize this. Show me some code, boss."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Right. So, we need a test
+      case first."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"For <b>Game</b> or
+      another test for <b>Frame</b>?"</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"I think we need one for <b>Game</b>,
+      since it's <b>Game</b> that will build the frames and hook them up to each
+      other."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Do you want to stop what
+      we're doing on <b>Frame</b> and do a mental long jump to <b>Game</b>, or
+      do you just want to have a <b>MockGame</b> object that does just what we
+      need to get <b>Frame</b> working?"</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"No, let's stop working on
+      <b>Frame</b> and start working on <b>Game</b>. The test cases in <b>Game</b>
+      should prove that we need the linked list of <b>Frame</b>s."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"I'm not sure how they'll
+      show the need for the list. I need code."</font></p>
+      <p><b><font face="Arial" size="2">RCM:</font></b></p>
+      <pre><b>//TestGame.java------------------------------------------
+import junit.framework.*;
+
+public class TestGame extends TestCase
+{
+  public TestGame(String name)
+  {
+    super(name);
+  }
+
+  public void testOneThrow()
+  {
+    Game g = new Game();
+    g.add(5);
+    assertEquals(5, g.score());
+  }
+}</b>
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Does that look
+      reasonable?"</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Sure, but I'm still
+      looking for proof for this list of <b>Frame</b>s."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Me too. Let's keep
+      following these test cases and see where they lead."</font></p>
+      <pre><b>//Game.java----------------------------------
+public class Game
+{
+  public int score()
+  {
+    return 0;
+  }
+  
+  public void add(int pins)
+  {
+  }
+}</b>
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"OK, this compiles and
+      fails the test. Now let's make it pass."</font></p>
+      <pre>//Game.java----------------------------------
+public class Game
+{
+  public int score()
+  {
+    <b>return itsScore;</b>
+  }
+
+  public void add(int pins)
+  {
+    <b>itsScore += pins;</b>
+  }
+  <b>private int itsScore = 0;</b>
+}
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"This passes. Good."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"I can't disagree with it.
+      But I'm still looking for this great proof of the need for a linked list
+      of frame objects. That's what led us to <b>Game</b> in the first
+      place."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Yeah, that's what I'm
+      looking for too. I fully expect that once we start injecting spare and
+      strike test cases, we'll have to build frames and tie them together in a
+      linked list. But I don't want to build that until the code forces us
+      to."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Good point. Let's keep
+      going in small steps on <b>Game</b>. What about another test that tests
+      two throws but with no spare?"</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"OK, that should pass
+      right now. Let's try it."</font></p>
+      <pre>//TestGame.java------------------------------------------
+
+<b>public void testTwoThrowsNoMark()
+  {
+    Game g = new Game();
+    g.add(5);
+    g.add(4);
+    assertEquals(9, g.score());
+}</b>
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Yep, that one passes. Now
+      let's try four balls, with no marks."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Well, that will pass too.
+      I didn't expect this. We can keep adding throws, and we don't ever even
+      need a <b>Frame</b>. But we haven't done a spare or a strike yet. Maybe
+      that's when we'll have to make one."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"That's what I'm counting
+      on. However, consider this test case:"</font></p>
+      <pre>//TestGame.java------------------------------------------
+<b>public void testFourThrowsNoMark()
+  {
+    Game g = new Game();
+    g.add(5);
+    g.add(4);
+    g.add(7);
+    g.add(2);
+    assertEquals(18, g.score());
+    assertEquals(9, g.scoreForFrame(1));
+    assertEquals(18, g.scoreForFrame(2));
+  }</b>
+  </pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Does this look
+      reasonable?"</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"It sure does. I forgot
+      that we have to be able to show the score in each frame. Ah, our sketch of
+      the score card was serving as a coaster for my Diet Coke. Yeah, that's why
+      I forgot."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>(Sigh) "OK, first let's
+      make this test case fail by adding the <b>scoreForFrame</b> method to <b>Game</b>."</font></p>
+      <pre>//Game.java----------------------------------
+
+<b>public int scoreForFrame(int frame)
+{
+  return 0;
+}</b>
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Great, this compiles and
+      fails. Now, how do we make it pass?"</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"We can start making frame
+      objects. But is that the simplest thing that will get the test to
+      pass?"</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"No, actually, we could
+      just create an array of integers in <b>Game</b>. Each call to <b>add</b>
+      would append a new integer onto the array. Each call to <b>scoreForFrame</b>
+      will just work forward through the array and calculate the score."</font></p>
+      <pre>//Game.java----------------------------------
+public class Game
+{
+  public int score()
+  {
+    return itsScore;
+  }
+
+  public void add(int pins)
+    {
+      <b>itsThrows[itsCurrentThrow++]=pins;</b>
+      itsScore += pins;
+    }
+
+  public int scoreForFrame(int frame)
+    {
+    <b>int score = 0;
+    for ( int ball = 0; 
+      frame &gt; 0 &amp;&amp; (ball &lt; itsCurrentThrow); 
+      ball+=2, frame--)
+    {
+      score += itsThrows[ball] + itsThrows[ball+1];
+    }
+    return score;</b>
+  }
+  private int itsScore = 0;
+  <b>private int[] itsThrows = new int[21];
+  private int itsCurrentThrow = 0;</b>
+}
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>(Very satisfied with himself)
+      "There, that works."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Why the magic number
+      21?"</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"That's the maximum
+      possible number of throws in a game."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Yuck. Let me guess, in
+      your youth you were a Unix hacker and prided yourself on writing an entire
+      application in one statement that nobody else could decipher.</font></p>
+      <p><font face="Arial" size="2">"<b>scoreForFrame</b> needs to be
+      refactored to be more communicative. But before we consider refactoring,
+      let me ask another question: Is <b>Game</b> the best place for this
+      method? In my mind, <b>Game</b> is violating Bertrand Meyer's SRP (Single
+      Responsibility Principle) <a href="http://www.cuj.com/experts/1902/martin.html#1">[1]</a>.
+      It is accepting throws <i>and</i> it knows how to score for each frame.
+      What would you think about a <b>Scorer</b> object?"</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>(Makes a rude oscillating
+      gesture with his hand) "I don't know where the functions live now;
+      right now I'm interested in getting the scoring stuff to work. Once we've
+      got that all in place, <i>then</i> we can debate the values of the SRP.</font></p>
+      <p><font face="Arial" size="2">"However, I see your point about the
+      Unix hacker stuff; let's try to simplify that loop."</font></p>
+      <pre>public int scoreForFrame(int theFrame)
+{
+  int ball = 0;
+  int score=0;
+  <b>for (int currentFrame = 0; 
+       currentFrame &lt; theFrame; 
+       currentFrame++)</b>
+  {
+    <b>score += itsThrows[ball++] + itsThrows[ball++];</b>
+  }
+
+  return score;
+}
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"That's a little better,
+      but there are side-effects in the <b>score+=</b> expression. They don't
+      matter here because it doesn't matter which order the two <b>addend</b>
+      expressions are evaluated in." (Or does it? It's possible that the
+      two increments could be done before either array operations.)</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"I suppose we could do an
+      experiment to verify that there aren't any side-effects, but that function
+      isn't going to work with spares and strikes. Should we keep trying to make
+      it more readable or should we push further on its functionality?"</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"The experiment would only
+      have meaning on certain compilers. Other compilers might use different
+      evaluation orders. Let's get rid of the order dependency and then push on
+      with more test cases."</font></p>
+      <pre>public int scoreForFrame(int theFrame)
+{
+  int ball = 0;
+  int score=0;
+  for (int currentFrame = 0; 
+       currentFrame &lt; theFrame; 
+       currentFrame++)
+  {
+    <b>int firstThrow = itsThrows[ball++];
+    int secondThrow = itsThrows[ball++];
+    score += firstThrow + secondThrow;</b>
+  }
+  
+  return score;
+}
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"OK, next test case. Let's
+      try a spare."</font></p>
+      <pre><b>public void testSimpleSpare()
+{
+  Game g = new Game();
+}</b>
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"I'm tired of writing
+      this. Let's refactor the test and put the creation of the game in a <b>setUp</b>
+      function."</font></p>
+      <pre>//TestGame.java------------------------------------------
+import junit.framework.*;
+
+public class TestGame extends TestCase
+{
+  public TestGame(String name)
+  {
+    super(name);
+  }
+
+  <b>private Game g;
+
+  public void setUp()
+  {
+    g = new Game();
+  }</b>
+
+  public void testOneThrow()
+  {
+    g.add(5);
+    assertEquals(5, g.score());
+  }
+
+  public void testTwoThrowsNoMark()
+  {
+    g.add(5);
+    g.add(4);
+    assertEquals(9, g.score());
+  }
+
+  public void testFourThrowsNoMark()
+  {
+    g.add(5);
+    g.add(4);
+    g.add(7);
+    g.add(2);
+    assertEquals(18, g.score());
+    assertEquals(9, g.scoreForFrame(1));
+    assertEquals(18, g.scoreForFrame(2));
+  }
+
+  public void testSimpleSpare()
+  {
+  }
+}
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"That's better, now let's
+      write the spare test case."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"I'll drive."</font></p>
+      <pre>public int scoreForFrame(int theFrame)
+{
+  int ball = 0;
+  int score=0;
+  for (int currentFrame = 0; 
+       currentFrame &lt; theFrame; 
+       currentFrame++)
+  {
+    int firstThrow = itsThrows[ball++];
+    int secondThrow = itsThrows[ball++];
+
+    int frameScore = firstThrow + secondThrow;
+    <b>// spare needs next frames first throw
+    if ( frameScore == 10 ) 
+      score += frameScore + itsThrows[ball++];
+    else
+      score += frameScore;</b>
+  }
+
+  return score;
+}
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>(Grabbing the keyboard)
+      "OK, but I think the increment of ball in the <b>frameScore==10</b>
+      case shouldn't be there. Here's a test case that proves my point."</font></p>
+      <pre><b>public void testSimpleFrameAfterSpare()
+{
+  g.add(3);
+  g.add(7);
+  g.add(3);
+  g.add(2);
+  assertEquals(13, g.scoreForFrame(1));
+  assertEquals(18, g.score());
+}</b>
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Ha! See, that fails. Now
+      if we just take out that pesky extra increment..."</font></p>
+      <pre>  if ( frameScore == 10 ) 
+    score += frameScore + itsThrows[<b>ball</b>];
+	</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Uh, it still fails....
+      Could it be that the <b>score</b> method is wrong? I'll test that by
+      changing the test case to use <b>scoreForFrame(2)</b>."</font></p>
+      <pre>public void testSimpleFrameAfterSpare()
+{
+  g.add(3);
+  g.add(7);
+  g.add(3);
+  g.add(2);
+  assertEquals(13, g.scoreForFrame(1));
+  <b>assertEquals(18, g.scoreForFrame(2));</b>
+}
+</pre>
+      <p><b>RCM: </b>"Hmmmm.... That passes. The <b>score</b> method must
+      be messed up. Let's look at it."</p>
+      <pre>public int score()
+{
+  return itsScore;
+}
+
+public void add(int pins)
+{
+  itsThrows[itsCurrentThrow++]=pins;
+  itsScore += pins;
+}
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Yeah, that's wrong. The <b>score</b>
+      method is just returning the sum of the pins, not the proper score. What
+      we need <b>score</b> to do is call <b>scoreForFrame</b> with the current
+      frame."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"We don't know what the
+      current frame is. Let's add that message to each of our current tests, one
+      at a time, of course."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Right."</font></p>
+      <pre>//TestGame.java------------------------------------------
+  public void testOneThrow()
+  {
+    g.add(5);
+    assertEquals(5, g.score());
+    <b>assertEquals(1, g.getCurrentFrame());</b>
+    }
+
+//Game.java----------------------------------
+  <b>public int getCurrentFrame()
+  {
+    return 1;
+  }</b>
+  </pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"OK, that works. But it's
+      stupid. Let's do the next test case."</font></p>
+      <pre>public void testTwoThrowsNoMark()
+{
+  g.add(5);
+  g.add(4);
+  assertEquals(9, g.score());
+  <b>assertEquals(1, g.getCurrentFrame());</b>
+}
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"That one's uninteresting;
+      let's try the next."</font></p>
+      <pre>public void testFourThrowsNoMark()
+{
+  g.add(5);
+  g.add(4);
+  g.add(7);
+  g.add(2);
+  assertEquals(18, g.score());
+  assertEquals(9, g.scoreForFrame(1));
+  assertEquals(18, g.scoreForFrame(2));
+  <b>assertEquals(2, g.getCurrentFrame());</b>
+}
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"This one fails. Now let's
+      make it pass."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"I think the algorithm is
+      trivial. Just divide the number of throws by two, since there are two
+      throws per frame. Unless we have a strike ... but we don't have strikes
+      yet, so let's ignore them here too."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>(Flails around adding and
+      subtracting one until it works)</font></p>
+      <pre>public int getCurrentFrame()
+{
+  <b>return 1 + (itsCurrentThrow-1)/2;</b>
+}
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"That isn't very
+      satisfying."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"What if we don't
+      calculate it each time? What if we adjust a <b>currentFrame</b> member
+      variable after each throw?"</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"OK, let's try that."</font></p>
+      <pre>//Game.java----------------------------------
+  public int getCurrentFrame()
+  {
+    <b>return itsCurrentFrame;</b>
+  }
+
+  public void add(int pins)
+  {
+    itsThrows[itsCurrentThrow++]=pins;
+    itsScore += pins;
+    <b>if (firstThrow == true)
+    {
+      firstThrow = false;
+      itsCurrentFrame++;
+    }
+    else
+    {
+      firstThrow=true;;
+    }</b>
+  }
+
+  <b>private int itsCurrentFrame = 0;
+  private boolean firstThrow = true;</b>
+}
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"OK, this works. But it
+      also implies that the current frame is the frame of the last ball thrown,
+      not the frame that the next ball will be thrown into. As long as we
+      remember that, we'll be fine."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"I don't have that good of
+      a memory, so let's make it more readable. But before we go screwing around
+      with it some more, let's pull that code out of <b>add</b> and put it in a
+      private member function called <b>adjustCurrentFrame</b> or
+      something."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"OK, that sounds
+      good"</font></p>
+      <pre>  public void add(int pins)
+  {
+    itsThrows[itsCurrentThrow++]=pins;
+    itsScore += pins;
+    <b>adjustCurrentFrame();</b>
+  }
+
+  <b>private void adjustCurrentFrame()
+  {</b>
+    if (firstThrow == true)
+    {
+      firstThrow = false;
+      itsCurrentFrame++;
+    }
+    else
+    {
+      firstThrow=true;;
+    }
+  <b>}</b>
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Now let's change the
+      variable and function names to be more clear. What should we call <b>itsCurrentFrame</b>?"</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"I kind of like that name.
+      I don't think we're incrementing it in the right place though. The current
+      frame, to me, is the frame number that I'm throwing in. So it should get
+      incremented right after the last throw in a frame."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"I agree. Let's change the
+      test cases to reflect that; then we'll fix <b>adjustCurrentFrame</b>."</font></p>
+      <pre>//TestGame.java------------------------------------------
+  public void testTwoThrowsNoMark()
+  {
+    g.add(5);
+    g.add(4);
+    assertEquals(9, g.score());
+    <b>assertEquals(2, g.getCurrentFrame());</b>
+  }
+
+  public void testFourThrowsNoMark()
+  {
+    g.add(5);
+    g.add(4);
+    g.add(7);
+    g.add(2);
+    assertEquals(18, g.score());
+    assertEquals(9, g.scoreForFrame(1));
+    assertEquals(18, g.scoreForFrame(2));
+    <b>assertEquals(3, g.getCurrentFrame());</b>
+  }
+//TestGame.java------------------------------------------
+  private void adjustCurrentFrame()
+  {
+    if (firstThrow == true)
+    {
+      firstThrow = false;
+    }
+    else
+    {
+      firstThrow=true;
+      <b>itsCurrentFrame++;</b>
+    }
+  }
+
+  <b>private int itsCurrentFrame = 1;</b>
+}
+</pre>
+      <p><b>RCM: </b>"OK, that's working. Now let's test <b>getCurrentFrame</b>
+      in the two spare cases."</p>
+      <pre>  public void testSimpleSpare()
+  {
+    g.add(3);
+    g.add(7);
+    g.add(3);
+    assertEquals(13, g.scoreForFrame(1));
+    <b>assertEquals(2, g.getCurrentFrame());</b>
+  }
+
+  public void testSimpleFrameAfterSpare()
+  {
+    g.add(3);
+    g.add(7);
+    g.add(3);
+    g.add(2);
+    assertEquals(13, g.scoreForFrame(1));
+    assertEquals(18, g.scoreForFrame(2));
+    <b>assertEquals(3, g.getCurrentFrame());</b>
+  }
+  </pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"This works. Now, back to
+      the original problem. We need <b>score</b> to work. We can now write <b>score</b>
+      to call <b>scoreForFrame(getCurrentFrame()-1)</b>.</font></p>
+      <pre>  public void testSimpleFrameAfterSpare()
+  {
+    g.add(3);
+    g.add(7);
+    g.add(3);
+    g.add(2);
+    assertEquals(13, g.scoreForFrame(1));
+    assertEquals(18, g.scoreForFrame(2));
+    <b>assertEquals(18, g.score());</b>
+    assertEquals(3, g.getCurrentFrame());
+  }
+
+//Game.java----------------------------------
+  public int score()
+  <b>{
+    return scoreForFrame(getCurrentFrame()-1);</b>
+  }
+  </pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"This fails the <b>TestOneThrow</b>
+      test case. Let's look at it."</font></p>
+      <pre>  public void testOneThrow()
+  {
+    g.add(5);
+    assertEquals(5, g.score());
+    assertEquals(1, g.getCurrentFrame());
+  }
+  </pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"With only one throw, the
+      first frame is incomplete. The <b>score</b> method is calling <b>scoreForFrame(0)</b>.
+      This is yucky."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Maybe, maybe not. Who are
+      we writing this program for, and who is going to be calling <b>score</b>?
+      Is it reasonable to assume that it won't get called on an incomplete
+      frame?"</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Yeah. But it bothers me.
+      To get around this, we have take the <b>score</b> out of the <b>testOneThrow</b>
+      test case. Is that what we want to do?"</font></p>
+      <p><font face="Arial" size="2"><b>RSK:</b> "We could. We could even
+      eliminate the entire <b>testOneThrow</b> test case. It was used to ramp us
+      up to the test cases of interest. Does it really serve a useful purpose
+      now? We still have coverage in all of the other test cases."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Yeah, I see your point.
+      OK, out it goes." (Edits code, runs test, and gets green bar.) "Ahhh,
+      that's better.</font></p>
+      <p><font face="Arial" size="2">"Now, we'd better work on the strike
+      test case. After all, we want to see all those <b>Frame</b> objects built
+      into a linked list, don't we?" (snicker).</font></p>
+      <pre>  public void testSimpleStrike()
+  {
+    g.add(10);
+    g.add(3);
+    g.add(6);
+    assertEquals(19, g.scoreForFrame(1));
+    assertEquals(28, g.score());
+    assertEquals(3, g.getCurrentFrame());
+  }
+  </pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"OK, this compiles and
+      fails as predicted. Now we need to make it pass."</font></p>
+      <pre>//Game.java----------------------------------
+public class Game
+{
+  public void add(int pins)
+  {
+    itsThrows[itsCurrentThrow++]=pins;
+    itsScore += pins;
+    adjustCurrentFrame(<b>pins</b>);
+  }
+
+  private void adjustCurrentFrame(<b>int pins</b>)
+  {
+    if (firstThrow == true)
+    {
+      <b>if( pins == 10 ) // strike
+        itsCurrentFrame++;
+      else</b>
+        firstThrow = false;
+    }
+    else
+    {
+      firstThrow=true;
+      itsCurrentFrame++;
+    }
+  }
+
+  public int scoreForFrame(int theFrame)
+  {
+    int ball = 0;
+    int score=0;
+    for (int currentFrame = 0; 
+         currentFrame &lt; theFrame; 
+         currentFrame++)
+    {
+      int firstThrow = itsThrows[ball++];
+      <b>if (firstThrow == 10)
+      {
+        score += 10 + itsThrows[ball] + itsThrows[ball+1];
+      }
+      else
+      {</b>
+        int secondThrow = itsThrows[ball++];
+
+        int frameScore = firstThrow + secondThrow;
+        // spare needs next frames first throw
+        if ( frameScore == 10 )
+          score += frameScore + itsThrows[ball];
+        else
+        score += frameScore;
+      <b>}</b> 
+    
+    }
+
+    return score;
+  }
+  private int itsScore = 0;
+  private int[] itsThrows = new int[21];
+  private int itsCurrentThrow = 0;
+  private int itsCurrentFrame = 1;
+  private boolean firstThrow = true;
+}
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"OK, that wasn't too hard.
+      Let's see if it can score a perfect game."</font></p>
+      <pre>  <b>public void testPerfectGame()
+  {
+    for (int i=0; i&lt;12; i++)
+    {
+      g.add(10);
+    }
+    assertEquals(300, g.score());
+    assertEquals(10, g.getCurrentFrame());
+  }</b>
+  </pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Urg, it's saying the
+      score is 330. Why would that be?"</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Because the current frame
+      is getting incremented all the way to 12."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Oh! We need to limit it
+      to 10."</font></p>
+      <pre>  private void adjustCurrentFrame(int pins)
+  {
+    if (firstThrow == true)
+    {
+      if( pins == 10 ) // strike
+        itsCurrentFrame++;
+      else
+        firstThrow = false;
+    }
+    else
+    {
+      firstThrow=true;
+      itsCurrentFrame++;
+    }
+    <b>itsCurrentFrame = Math.min(10, itsCurrentFrame);</b>
+  }
+</pre>
+      <font face="Arial" size="2"><b>RCM: </b>"Damn, now it's saying that
+      the score is 270. What's going on?"</font>
+      <p>&nbsp;</p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Bob, the <b>score</b>
+      function is subtracting one from <b>getCurrentFrame</b>, so it's giving
+      you the score for frame 9, not 10."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>What? You mean I should limit
+      the current frame to 11 not 10? I'll try it.</font></p>
+      <pre><font face="Arial" size="2">itsCurrentFrame = Math.min(<b>11</b>, itsCurrentFrame);
+</font></pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"OK, so now it gets the
+      score correct, but fails because the current frame is 11 and not 10. Ick!
+      this current frame thing is a pain in the butt. We want the current frame
+      to be the frame the player is throwing into, but what does that mean at
+      the end of the game?"</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Maybe we should go back
+      to the idea that the current frame is the frame of the last ball
+      thrown."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Or maybe we need to come
+      up with the concept of the last <i>completed</i> frame? After all, the
+      score of the game at any point in time is the score in the last completed
+      frame."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"A completed frame is a
+      frame that you can write the score into, right?"</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Yes, a frame with a spare
+      in it completes after the next ball. A frame with a strike in it completes
+      after the next two balls. A frame with no mark completes after the second
+      ball in the frame.</font></p>
+      <p><font face="Arial" size="2">"Wait a minute.... We are trying to
+      get the <b>score</b> method to work, right? All we need to do is force <b>score</b>
+      to call <b>scoreForFrame(10)</b> if the game is complete."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"How do we know if the
+      game is complete?"</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"If <b>adjustCurrentFrame</b>
+      ever tries to increment <b>itsCurrentFrame</b> past the 10th frame, then
+      the game is complete."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Wait. All you are saying
+      is that if <b>getCurrentFrame</b> returns 11, the game is complete; that's
+      the way the code works now!"</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Hmm. You mean we should
+      change the test case to match the code?"</font></p>
+      <pre>  public void testPerfectGame()
+  {
+    for (int i=0; i&lt;12; i++)
+    {
+      g.add(10);
+    }
+    assertEquals(300, g.score());
+    assertEquals(<b>11</b>, g.getCurrentFrame());
+  }
+  </pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Well, that works. I
+      suppose it's no worse than <b>getMonth</b> returning zero for January, but
+      I still feel uneasy about it."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Maybe something will
+      occurr to us later. Right now, I think I see a bug. May I?" (Grabs
+      keyboard.)</font></p>
+      <pre>  <b>public void testEndOfArray()
+  {
+    for (int i=0; i&lt;9; i++)
+    {
+      g.add(0);
+      g.add(0);
+    }
+    g.add(2);
+    g.add(8); // 10th frame spare
+    g.add(10); // Strike in last position of array.
+    assertEquals(20, g.score());
+  }</b>
+  </pre>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Hmm. That doesn't fail. I
+      thought since the 21st position of the array was a strike, the scorer
+      would try to add the 22nd and 23rd positions to the score. But I guess
+      not."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Hmm, you are still
+      thinking about that <b>scorer</b> object, aren't you? Anyway, I see what
+      you were getting at, but since <b>score</b> never calls <b>scoreForFrame</b>
+      with a number larger than 10, the last strike is not actually counted as a
+      strike. It's just counted at a 10 to complete the last spare. We never
+      walk beyond the end of the array."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"OK, let's pump our
+      original score card into the program."</font></p>
+      <pre>  public void testSampleGame()
+  {
+    g.add(1);
+    g.add(4);
+    g.add(4);
+    g.add(5);
+    g.add(6);
+    g.add(4);
+    g.add(5);
+    g.add(5);
+    g.add(10);
+    g.add(0);
+    g.add(1);
+    g.add(7);
+    g.add(3);
+    g.add(6);
+    g.add(4);
+    g.add(10);
+    g.add(2);
+    g.add(8);
+    g.add(6);
+    assertEquals(133, g.score());
+  }
+  </pre>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Well, that works. Are
+      there any other test cases that you can think of?"</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Yeah, let's test a few
+      more boundary conditions. How about the poor schmuck who throws 11 strikes
+      and then a final 9."</font></p>
+      <pre>  public void testHeartBreak()
+  {
+    for (int i=0; i&lt;11; i++)
+      g.add(10);
+    g.add(9); 
+    assertEquals(299, g.score());
+  }
+  </pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"That works. OK, how about
+      a 10th frame spare?"</font></p>
+      <pre>  public void testTenthFrameSpare()
+  {
+    for (int i=0; i&lt;9; i++)
+      g.add(10);
+    g.add(9);
+    g.add(1);
+    g.add(1); 
+    assertEquals(270, g.score());
+  }
+}
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>(Staring happily at the green
+      bar) "That works too. I can't think of any more, can you."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"No, I think we've covered
+      them all. Besides I really want to refactor this mess. I still see the <b>scorer</b>
+      object in there somewhere."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"OK, well, the <b>scoreForFrame</b>
+      function is pretty messy. Let's consider it."</font></p>
+      <pre>  public int scoreForFrame(int theFrame)
+  {
+    int ball = 0;
+    int score=0;
+    for (int currentFrame = 0; 
+         currentFrame &lt; theFrame; 
+         currentFrame++)
+    {
+      int firstThrow = itsThrows[ball++];
+      if (firstThrow == 10)
+      {
+        score += 10 + itsThrows[ball] + itsThrows[ball+1];
+      }
+      else
+      {
+        int secondThrow = itsThrows[ball++];
+  
+        int frameScore = firstThrow + secondThrow;
+        // spare needs next frames first throw
+        if ( frameScore == 10 )
+          score += frameScore + itsThrows[ball];
+        else
+          score += frameScore;
+      } 
+
+    }
+
+    return score;
+  }
+  </pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"I'd really like to
+      extract the body of that else clause into a seperate function named <b>handleSecondThrow</b>,
+      but I can't because it uses <b>ball</b>, <b>firstThrow</b>, and <b>secondThrow</b>
+      local variables."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"We could turn those
+      locals into member variables."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Yeah, that kind of
+      reinforces your notion that we'll be able to pull the scoring out into its
+      own <b>scorer</b> object. OK, let's give that a try."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>(Grabs keyboard.)</font></p>
+      <pre>  private void adjustCurrentFrame(int pins)
+  {
+    if (<b>firstThrowInFrame</b> == true)
+    {
+      if( pins == 10 ) // strike
+        <b>itsCurrentFrame</b>++;
+      else
+        firstThrowInFrame = false;
+    }
+    else
+    {
+      <b>firstThrowInFrame</b>=true;
+      itsCurrentFrame++;
+    }
+    itsCurrentFrame = Math.min(11, itsCurrentFrame);
+  }
+
+  public int scoreForFrame(int theFrame)
+  {
+    <b>ball = 0;</b>
+    int score=0;
+    for (int currentFrame = 0; 
+         currentFrame &lt; theFrame; 
+         currentFrame++)
+    {
+      <b>firstThrow = itsThrows[ball++];</b>
+      if (firstThrow == 10)
+      {
+        score += 10 + itsThrows[ball] + itsThrows[ball+1];
+      }
+      else
+      {
+        <b>secondThrow = itsThrows[ball++];</b>
+
+        int frameScore = firstThrow + secondThrow;
+        // spare needs next frames first throw
+        if ( frameScore == 10 )
+          score += frameScore + itsThrows[ball];
+        else
+          score += frameScore;
+      } 
+    }
+
+    return score;
+  }
+  <b>private int ball;
+  private int firstThrow;
+  private int secondThrow;</b>
+
+  private int itsScore = 0;
+  private int[] itsThrows = new int[21];
+  private int itsCurrentThrow = 0;
+  private int itsCurrentFrame = 1;
+  <b>private boolean firstThrowInFrame = true;</b>
+  </pre>
+      <p><font face="Arial" size="2"><b>RSK: </b>"I hadn't expected the
+      name collision. We already had an instance variable named <b>firstThrow</b>.
+      But it is better named <b>firstThrowInFrame</b>. Anyway, this works now.
+      So we can pull the else clause out into its own function."</font></p>
+      <pre>  public int scoreForFrame(int theFrame)
+  {
+    ball = 0;
+    int score=0;
+    for (int currentFrame = 0; 
+         currentFrame &lt; theFrame; 
+         currentFrame++)
+    {
+      firstThrow = itsThrows[ball++];
+      if (firstThrow == 10)
+      {
+        score += 10 + itsThrows[ball] + itsThrows[ball+1];
+      }
+      else
+      {
+        <b>score += handleSecondThrow();</b>
+      } 
+    }
+
+    return score;
+  }
+
+  private int handleSecondThrow()
+  {
+    <b>int score = 0;</b>
+    secondThrow = itsThrows[ball++];
+
+    int frameScore = firstThrow + secondThrow;
+    // spare needs next frames first throw
+    if ( frameScore == 10 )
+      score += frameScore + itsThrows[ball];
+    else
+      score += frameScore;
+    <b>return score;</b>
+  }
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Look at the structure of <b>scoreForFrame</b>!
+      In pseudocode, it looks something like this:"</font></p>
+      <pre>if strike
+  score += 10 + nextTwoBalls();
+else
+  handleSecondThrow.
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"What if we changed it
+      to:"</font></p>
+      <pre>if strike
+  score += 10 + nextTwoBalls();
+else if spare
+  score += 10 + nextBall();
+else
+  score += twoBallsInFrame()
+</pre>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Geez! That's pretty much
+      the rules for scoring bowling isn't it? OK, let's see if we can get that
+      structure in the real function. First let's change the way the <b>ball</b>
+      variable is being incremented so that the three cases manipulate it
+      independently."</font></p>
+      <pre>  public int scoreForFrame(int theFrame)
+  {
+    ball = 0;
+    int score=0;
+    for (int currentFrame = 0; 
+         currentFrame &lt; theFrame; 
+         currentFrame++)
+    {
+      firstThrow = itsThrows[<b>ball</b>];
+      if (firstThrow == 10)
+      {
+        <b>ball++;</b>
+        score += 10 + itsThrows[ball] + itsThrows[ball+1];
+      }
+      else
+      {
+        score += handleSecondThrow();
+      } 
+    }
+
+    return score;
+  }
+
+  private int handleSecondThrow()
+  {
+    int score = 0;
+    secondThrow = itsThrows[<b>ball+1</b>];
+
+    int frameScore = firstThrow + secondThrow;
+    // spare needs next frames first throw
+    if ( frameScore == 10 )
+    {
+      <b>ball+=2;</b>
+      score += frameScore + itsThrows[ball];
+    }
+    else
+    {
+      <b>ball+=2;</b>
+      score += frameScore;
+    }
+    return score; 
+  }
+  </pre>
+      <p><font face="Arial" size="2"><b>RCM:</b> (Grabs keyboard.) "OK, now
+      let's get rid of the <b>firstThrow</b> and <b>secondThrow</b> variables
+      and replace them with appropriate functions."</font></p>
+      <pre>  public int scoreForFrame(int theFrame)
+  {
+    ball = 0;
+    int score=0;
+    for (int currentFrame = 0; 
+         currentFrame &lt; theFrame; 
+         currentFrame++)
+    {
+      firstThrow = itsThrows[ball];
+      <b>if (strike())</b>
+      {
+        ball++;
+        score += 10 + <b>nextTwoBalls();</b>
+      }
+      else
+      {
+        score += handleSecondThrow();
+      } 
+    }
+
+    return score;
+  }
+  
+  <b>private boolean strike()
+  {
+    return itsThrows[ball] == 10;
+  }
+
+  private int nextTwoBalls()
+  {
+    return itsThrows[ball] + itsThrows[ball+1];
+  }</b>
+  </pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"That step works; let's
+      keep going."</font></p>
+      <pre>  private int handleSecondThrow()
+  {
+    int score = 0;
+    secondThrow = itsThrows[ball+1];
+
+    int frameScore = firstThrow + secondThrow;
+    // spare needs next frames first throw
+    <b>if ( spare() )</b>
+    {
+      ball+=2;
+      <b>score += 10 + nextBall();</b>
+    }
+    else
+    {
+      ball+=2;
+      score += frameScore;
+    }
+    return score; 
+  }
+
+  <b>private boolean spare()
+  {
+    return (itsThrows[ball] + itsThrows[ball+1]) == 10;
+  }
+
+  private int nextBall()
+  {
+    return itsThrows[ball];
+  }</b>
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"OK, that works too. Now
+      let's deal with <b>frameScore</b>."</font></p>
+      <pre>  private int handleSecondThrow()
+  {
+    int score = 0;
+    secondThrow = itsThrows[ball+1];
+
+    int frameScore = firstThrow + secondThrow;
+    // spare needs next frames first throw
+    if ( spare() )
+    {
+      ball+=2;
+      score += 10 + nextBall();
+    }
+    else
+    {
+      <b>score += twoBallsInFrame();
+      ball+=2;</b>
+    }
+    return score; 
+  }
+
+  <b>private int twoBallsInFrame()
+  {
+    return itsThrows[ball] + itsThrows[ball+1];
+  }</b>
+  </pre>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Bob, you aren't
+      incrementing <b>ball</b> in a consistent manner. In the spare and strike
+      case, you increment before you calculate the score. In the <b>twoBallsInFrame</b>
+      case, you increment <i>after</i> you calculate the score. And the code <i>depends</i>
+      upon this order! What's up?"</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Sorry, I should have
+      explained. I'm planning on moving the increments into <b>strike</b>, <b>spare</b>,
+      and <b>twoBallsInFrame</b>. That way they'll disappear from the <b>scoreForFrame</b>
+      function, and the function will look just like our pseudocode."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"OK, I'll trust you for a
+      few more steps, but remember, I'm watching."</font></p>
+      <p><font face="Arial" size="2"><b>Kent:</b> <i>"So am I."</i></font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"OK, now since nobody uses
+      <b>firstThrow</b>, <b>secondThrow</b>, and <b>frameScore</b> anymore, we
+      can get rid of them."</font></p>
+      <pre>  public int scoreForFrame(int theFrame)
+  {
+    ball = 0;
+    int score=0;
+    for (int currentFrame = 0; 
+         currentFrame &lt; theFrame; 
+         currentFrame++)
+    {
+      if (strike())
+      {
+        ball++;
+        score += 10 + nextTwoBalls();
+      }
+      else
+      {
+        score += handleSecondThrow();
+      } 
+    }
+
+    return score;
+  }
+
+  private int handleSecondThrow()
+  {
+    int score = 0;
+    // spare needs next frames first throw
+    if ( spare() )
+    {
+      ball+=2;
+      score += 10 + nextBall();
+    }
+    else
+    {
+      score += twoBallsInFrame();
+      ball+=2;
+    }
+    return score; 
+  }
+  </pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>(The sparkle in his eyes is a
+      reflection of the green bar.) "Now, since the only variable that
+      couples the three cases is <b>ball</b>, and since <b>ball</b> is dealt
+      with independently in each case, we can merge the three cases
+      together."</font></p>
+      <pre>  public int scoreForFrame(int theFrame)
+  {
+    ball = 0;
+    int score=0;
+    for (int currentFrame = 0; 
+         currentFrame &lt; theFrame; 
+         currentFrame++)
+    {
+      if (strike())
+      {
+        ball++;
+        score += 10 + nextTwoBalls();
+      }
+      <b>else</b> if ( spare() )
+      {
+        ball+=2;
+        score += 10 + nextBall();
+      }
+      else
+      {
+        score += twoBallsInFrame();
+        ball+=2;
+      }
+    }
+
+    return score;
+  }
+  </pre>
+      <p><font face="Arial" size="2"><b>RSK: </b>(Peter Lorrie Gasp)
+      "Master... Master... Let me do it. <i>Please</i>, let me do it."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Ah, Igor, you would like
+      to move the increments?"</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Yes, master. Oh <i>yes</i>
+      master." (Grabs keyboard.)</font></p>
+      <pre>  public int scoreForFrame(int theFrame)
+  {
+    ball = 0;
+    int score=0;
+    for (int currentFrame = 0; 
+         currentFrame &lt; theFrame; 
+         currentFrame++)
+    {
+      <b>if (strike())
+        score += 10 + nextTwoBalls();
+      else if (spare())
+        score += 10 + nextBall();
+      else
+        score += twoBallsInFrame();</b>
+    }
+
+    return score;
+  }
+
+  private boolean strike()
+  {
+    <b>if (itsThrows[ball] == 10)
+    {
+      ball++;
+      return true;
+    }
+    return false;</b>
+  }
+
+  private boolean spare()
+  {
+    <b>if ((itsThrows[ball] + itsThrows[ball+1]) == 10)
+    {
+      ball += 2;
+      return true;
+    }
+    return false;</b>
+  }
+
+  private int nextTwoBalls()
+  {
+    return itsThrows[ball] + itsThrows[ball+1];
+  }
+
+  private int nextBall()
+  {
+    return itsThrows[ball];
+  }
+
+  private int twoBallsInFrame()
+  {
+    <b>return itsThrows[ball++] + itsThrows[ball++];</b>
+  }
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Well <i>done</i>
+      Igor!"</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Thank you master."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Look at that <b>scoreForFrame</b>
+      function. That's the rules of bowling stated about as succinctly as
+      possible."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"But, Bob, what happened
+      to the linked list of <b>Frame</b> objects?" (snicker, snicker)</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>(Sigh) "We were bedevilled
+      by the daemons of diagramatic overdesign. My God, three little boxes drawn
+      on the back of a napkin, <b>Game</b>, <b>Frame</b>, and <b>Throw</b>, and
+      it was still too complicated and just plain wrong."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"We made a mistake
+      starting with the <b>Throw</b> class. We should have started with the <b>Game</b>
+      class first!"</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Indeed! So, next time
+      let's try starting at the highest level and work down."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>(Gasp) "Top Down
+      Design!??!?! Could DeMarco have been right all along?"</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Correction: Top Down <i>Test
+      First </i>Design. Frankly, I don't know if this is a good rule or not.
+      It's just what would have helped us in this case. So next time, I'm going
+      to try it and see what happens."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Yeah, OK. Anyway we still
+      have some refactoring to do. The <b>ball</b> variable is just a private
+      iterator for <b>scoreForFrame</b> and its minions. They should all be
+      moved into a different object."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Oh, yes, your <b>Scorer</b>
+      object. You were right after all. Let's do it."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>(Grabs keyboard and takes
+      several small steps punctuated by tests to create the following.)</font></p>
+      <pre>//Game.java----------------------------------
+public class Game
+{
+  public int score()
+  {
+    return scoreForFrame(getCurrentFrame()-1);
+  }
+
+  public int getCurrentFrame()
+  {
+    return itsCurrentFrame;
+  }
+
+  public void add(int pins)
+  {
+    itsScorer.addThrow(pins);
+    itsScore += pins;
+    adjustCurrentFrame(pins);
+  }
+
+  private void adjustCurrentFrame(int pins)
+  {
+    if (firstThrowInFrame == true)
+    {
+      if( pins == 10 ) // strike
+        itsCurrentFrame++;
+      else
+        firstThrowInFrame = false;
+    }
+    else
+    {
+      firstThrowInFrame=true;
+      itsCurrentFrame++;
+    }
+    itsCurrentFrame = Math.min(11, itsCurrentFrame);
+  }
+  
+  public int scoreForFrame(int theFrame)
+  {
+    return itsScorer.scoreForFrame(theFrame);
+  }
+
+  private int itsScore = 0;
+  private int itsCurrentFrame = 1;
+  private boolean firstThrowInFrame = true;
+  private Scorer itsScorer = new Scorer();
+}
+
+//Scorer.java-----------------------------------
+public class Scorer
+{
+  public void addThrow(int pins)
+  {
+    itsThrows[itsCurrentThrow++] = pins;
+  }
+
+  public int scoreForFrame(int theFrame)
+  {
+    ball = 0;
+    int score=0;
+    for (int currentFrame = 0; 
+         currentFrame &lt; theFrame; 
+         currentFrame++)
+    {
+      if (strike())
+        score += 10 + nextTwoBalls();
+      else if (spare())
+        score += 10 + nextBall();
+      else
+        score += twoBallsInFrame();
+    }
+
+    return score;
+  }
+
+  private boolean strike()
+  {
+    if (itsThrows[ball] == 10)
+    {
+      ball++;
+      return true;
+    }
+    return false;
+  }
+
+  private boolean spare()
+  {
+    if ((itsThrows[ball] + itsThrows[ball+1]) == 10)
+    {
+      ball += 2;
+      return true;
+    }
+    return false;
+  }
+
+  private int nextTwoBalls()
+  {
+    return itsThrows[ball] + itsThrows[ball+1];
+  }
+
+  private int nextBall()
+  {
+    return itsThrows[ball];
+  }
+
+  private int twoBallsInFrame()
+  {
+    return itsThrows[ball++] + itsThrows[ball++];
+  }
+
+  private int ball;
+  private int[] itsThrows = new int[21];
+  private int itsCurrentThrow = 0;
+
+}
+</pre>
+      <p><font face="Arial" size="2"><b>RSK: </b>"That's much better. Now <b>Game</b>
+      just keeps track of frames, and <b>Scorer</b> just calculates the score.
+      The SRP rocks!"</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Whatever. But it is
+      better. Did you notice that the <b>itsScore</b> variable is not being used
+      anymore?"</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Ha! You're right. Let's
+      kill it." (Gleefully starts erasing things.)</font></p>
+      <pre>  public void add(int pins)
+  {
+    itsScorer.addThrow(pins);
+    adjustCurrentFrame(pins);
+  }
+  </pre>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Not bad. Now should we
+      clean up the <b>adjustCurrentFrame</b> stuff?"</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"OK, let's look at
+      it."</font></p>
+      <pre>  private void adjustCurrentFrame(int pins)
+  {
+    if (firstThrowInFrame == true)
+    {
+      if( pins == 10 ) // strike
+        itsCurrentFrame++;
+      else
+        firstThrowInFrame = false;
+    }
+    else
+    {
+      firstThrowInFrame=true;
+      itsCurrentFrame++;
+    }
+    itsCurrentFrame = Math.min(11, itsCurrentFrame);
+  }
+  </pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"OK, first let's extract
+      the increments into a single function that also restricts the frame to 11.
+      (Brrrr. I still don't like that 11.)"</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Bob, 11 means end of
+      game."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Yeah. Brrrr." (Grabs
+      keyboard, makes a couple of changes punctuated by tests.)</font></p>
+      <pre>  private void adjustCurrentFrame(int pins)
+  {
+    if (firstThrowInFrame == true)
+    {
+      if( pins == 10 ) // strike
+        <b>advanceFrame</b>();
+      else
+        firstThrowInFrame = false;
+    }
+    else
+    {
+      firstThrowInFrame=true;
+      <b>advanceFrame</b>();
+    }
+  }
+
+  <b>private void advanceFrame()
+  {
+    itsCurrentFrame = Math.min(11, itsCurrentFrame + 1);
+  }</b>
+  </pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"OK, that's a little
+      better. Now let's break out the strike case into its own function."
+      (Takes a few small steps and runs tests between each.)</font></p>
+      <pre>  private void adjustCurrentFrame(int pins)
+  {
+    if (firstThrowInFrame == true)
+    {
+      <b>if (adjustFrameForStrike(pins) == false)</b>
+        firstThrowInFrame = false;
+    }  
+    else
+    {
+      firstThrowInFrame=true;
+      advanceFrame();
+    }
+  }
+
+  <b>private boolean adjustFrameForStrike(int pins)
+  {</b>
+    if (pins == 10)
+    {
+      advanceFrame();
+      <b>return true;</b>
+    }
+    <b>return false;
+  }</b>
+  </pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"That's pretty good. Now,
+      about that 11."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"You really hate that
+      don't you."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Yeah, look at the <b>score</b>
+      function:"</font></p>
+      <pre>  public int score()
+  {
+    return scoreForFrame(getCurrentFrame()-1);
+  }
+  </pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"That -1 is odd. It's the
+      only place we truly use <b>getCurrentFrame</b>, and yet we need to adjust
+      what it returns."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Damn, you're right. How
+      many times have we reversed ourselves on this?"</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Too many. But there it
+      is. The code wants <b>itsCurrentFrame</b> to represent the frame of the
+      last thrown ball, not the frame we are about to throw into."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"Sheesh, that's going to
+      break lots of tests cases."</font></p>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Actually, I think we
+      should remove <b>getCurrentFrame</b> from all the test cases and remove
+      the <b>getCurrentFrame</b> function itself. Nobody really uses it."</font></p>
+      <p><font face="Arial" size="2"><b>RSK: </b>"OK, I get your point.
+      I'll do it. It'll be like putting a lame horse out of its misery."
+      (Grabs keyboard.)</font></p>
+      <pre>//Game.java----------------------------------
+  public int score()
+  {
+    <b>return scoreForFrame(itsCurrentFrame);</b>
+  }
+
+  private void advanceFrame()
+  {
+    itsCurrentFrame = Math.min(<b>10</b>, itsCurrentFrame + 1);
+  }
+  </pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"Oh for crying out loud.
+      You mean to tell me that we were fretting over <i>that</i>. All we did was
+      change the limit from 11 to 10 and remove the -1. Cripe."</font>
+      </p><p>
+      </p><p><font face="Arial" size="2"><b>RSK: </b>"Yeah, Uncle Bob, it
+      really wasn't worth all the angst we gave it."</font>
+      </p><p>
+      </p><p><font face="Arial" size="2"><b>RCM: </b>"OK, looks like we are
+      done. Let's just read through the whole program and see if it's as simple
+      and communicative as it can be."</font>
+      </p><p>
+      </p><pre>//Game.java----------------------------------
+public class Game
+{
+  public int score()
+  {
+    return scoreForFrame(itsCurrentFrame);
+  }
+
+  public void add(int pins)
+  {
+    itsScorer.addThrow(pins);
+    adjustCurrentFrame(pins);
+  }
+
+  private void adjustCurrentFrame(int pins)
+  {
+    if (firstThrowInFrame == true)
+    {
+      if (adjustFrameForStrike(pins) == false)
+        firstThrowInFrame = false;
+    }
+    else
+    {
+      firstThrowInFrame=true;
+      advanceFrame();
+    }
+  }
+
+  private boolean adjustFrameForStrike(int pins)
+  {
+    if (pins == 10)
+    {
+      advanceFrame();
+      return true;
+    }
+    return false;
+  }  
+
+  private void advanceFrame()
+  {
+    itsCurrentFrame = Math.min(10, itsCurrentFrame + 1);
+  }
+
+  public int scoreForFrame(int theFrame)
+  {
+    return itsScorer.scoreForFrame(theFrame);
+  }
+
+  private int itsCurrentFrame = 0;
+  private boolean firstThrowInFrame = true;
+  private Scorer itsScorer = new Scorer();
+}
+
+//Scorer.java-----------------------------------
+public class Scorer
+{
+  public void addThrow(int pins)
+  {
+    itsThrows[itsCurrentThrow++] = pins;
+  }
+
+  public int scoreForFrame(int theFrame)
+  {
+    ball = 0;
+    int score=0;
+    for (int currentFrame = 0; 
+         currentFrame &lt; theFrame; 
+         currentFrame++)
+    {
+      if (strike())
+        score += 10 + nextTwoBalls();
+      else if (spare())
+        score += 10 + nextBall();
+      else
+        score += twoBallsInFrame();
+    }
+
+    return score;
+  }
+
+  private boolean strike()
+  {
+    if (itsThrows[ball] == 10)
+    {
+      ball++;
+      return true;
+    }
+    return false;
+  }
+
+  private boolean spare()
+  {
+    if ((itsThrows[ball] + itsThrows[ball+1]) == 10)
+    {
+      ball += 2;
+      return true;
+    }
+    return false;
+  }
+
+  private int nextTwoBalls()
+  {
+    return itsThrows[ball] + itsThrows[ball+1];
+  }
+
+  private int nextBall()
+  {
+    return itsThrows[ball];
+  }
+
+  private int twoBallsInFrame()
+  {
+    return itsThrows[ball++] + itsThrows[ball++];
+  }
+
+  private int ball;
+  private int[] itsThrows = new int[21];
+  private int itsCurrentThrow = 0;
+}
+</pre>
+      <p><font face="Arial" size="2"><b>RCM: </b>"OK, that looks pretty
+      good. I can't think of anything else to do."</font>
+      </p><p>
+      </p><p><font face="Arial" size="2"><b>RSK: </b>"Yeah, it's pretty. Let's
+      look over the tests for good measure."</font>
+      </p><p>
+      </p><pre>//TestGame.java------------------------------------------
+import junit.framework.*;
+
+public class TestGame extends TestCase
+{
+  public TestGame(String name)
+  {
+    super(name);
+  }
+
+  private Game g;
+
+  public void setUp()
+  {
+    g = new Game();
+  }
+
+  public void testTwoThrowsNoMark()
+  {
+    g.add(5);
+    g.add(4);
+    assertEquals(9, g.score());
+  }
+
+  public void testFourThrowsNoMark()
+  {
+    g.add(5);
+    g.add(4);
+    g.add(7);
+    g.add(2);
+    assertEquals(18, g.score());
+    assertEquals(9, g.scoreForFrame(1));
+    assertEquals(18, g.scoreForFrame(2));
+  }
+
+  public void testSimpleSpare()
+  {
+    g.add(3);
+    g.add(7);
+    g.add(3);
+    assertEquals(13, g.scoreForFrame(1));
+  }
+
+  public void testSimpleFrameAfterSpare()
+  {
+    g.add(3);
+    g.add(7);
+    g.add(3);
+    g.add(2);
+    assertEquals(13, g.scoreForFrame(1));
+    assertEquals(18, g.scoreForFrame(2));
+    assertEquals(18, g.score());
+  }
+
+  public void testSimpleStrike()
+  {
+    g.add(10);
+    g.add(3);
+    g.add(6);
+    assertEquals(19, g.scoreForFrame(1));
+    assertEquals(28, g.score());
+  }
+
+  public void testPerfectGame()
+  {
+    for (int i=0; i&lt;12; i++)
+    {
+      g.add(10);
+    }
+    assertEquals(300, g.score());
+  }
+
+  public void testEndOfArray()
+  {
+    for (int i=0; i&lt;9; i++)
+    {
+      g.add(0);
+      g.add(0);
+    }
+    g.add(2);
+    g.add(8); // 10th frame spare
+    g.add(10); // Strike in last position of array.
+    assertEquals(20, g.score());
+   }
+
+  public void testSampleGame()
+  {
+    g.add(1);
+    g.add(4);
+    g.add(4);
+    g.add(5);
+    g.add(6);
+    g.add(4);
+    g.add(5);
+    g.add(5);
+    g.add(10);
+    g.add(0);
+    g.add(1);
+    g.add(7);
+    g.add(3);
+    g.add(6);
+    g.add(4);
+    g.add(10);
+    g.add(2);
+    g.add(8);
+    g.add(6);
+    assertEquals(133, g.score());
+  }
+
+  public void testHeartBreak()
+  {
+    for (int i=0; i&lt;11; i++)
+      g.add(10);
+    g.add(9); 
+    assertEquals(299, g.score());
+  }
+
+  public void testTenthFrameSpare()
+  {
+    for (int i=0; i&lt;9; i++)
+      g.add(10);
+    g.add(9);
+    g.add(1);
+    g.add(1); 
+    assertEquals(270, g.score());
+  }
+}
+</pre>
+      <p><font face="Arial" size="2"><b>RSK: </b>"That pretty much covers
+      it. Can you think of any more meaningful test cases?"</font>
+      </p><p>
+      </p><p><font face="Arial" size="2"><b>RCM: </b>"No, I think that's the
+      set. There aren't any there that I'd be comfortable removing at this
+      point."</font>
+      </p><p>
+      </p><p><font face="Arial" size="2"><b>RSK: </b>"Then we're done."</font>
+      </p><p>
+      </p><p><font face="Arial" size="2"><b>RCM: </b>"I'd say so. Thanks a lot
+      for you help."</font>
+      </p><p>
+      </p><p><font face="Arial" size="2"><b>RSK: </b>"No problem, it was
+      fun."</font>
+      </p><p>
+      </p><h3><font face="Arial" size="2"><a name="Note">Note</a></font></h3>
+      <p><font face="Arial" size="2"><a name="1"></a>[1] Bertrand Meyer. <i>Object-Oriented
+      Software Construction</i> (Prentice Hall, 1999).</font>
+      </p><p>
+      </p><hr>
+      <h3><font face="Arial" size="2"><a name="About the Authors">About the
+      Authors</a></font></h3>
+      <p><font face="Arial" size="2"><b>Robert C. Martin</b> has been a software
+      professional since 1970. He is president of Object Mentor Inc., a firm of
+      highly experienced experts that offers high level object-oriented software
+      design consulting, training, and development services to major
+      corporations around the world. In 1995, he authored the best-selling book:
+      Designing Object Oriented C++ Applications using the Booch Method,
+      published by Prentice Hall. In 1997, he was chief editor of the book:
+      Pattern Languages of Program Design 3, published by Addison Wesley. In
+      2000, he was editor of the book More C++ Gems, published by Cambridge
+      Press. From 1996 to 1998, he was the editor-in-chief of the C++ Report. He
+      has published dozens of articles in various trade journals and is a
+      regular speaker at international conferences and trade shows. He is
+      currently working in the area of lightweight productive processes and is a
+      strong advocate and supporter of Extreme Programming.</font>
+      </p><p><font face="Arial" size="2"><b>Dr. Robert S Koss</b> has been
+      programming since 1973, starting in Fortran, migrating to C, then to C++,
+      and lately to Java, Smalltalk, and Python. He has been a senior consultant
+      at Object Mentor Inc. for the last two years, where his duties include
+      writing and teaching courses, mentoring clients, and participating in the
+      development of projects that are outsourced to the company. He has
+      developed many systems in a variety of areas, from real-time embedded
+      controllers to large database systems. He is also a strong proponent of
+      lightweight processes and a very vocal advocate of Extreme Programming.</font></p>
+      <p><font face="Arial" size="2"><br>
+      </font></p></td>
+  </tr>
+</tbody></table>
+
+
+
+
+
+</body><style type="text/css">embed[type*="application/x-shockwave-flash"],embed[src*=".swf"],object[type*="application/x-shockwave-flash"],object[codetype*="application/x-shockwave-flash"],object[src*=".swf"],object[codebase*="swflash.cab"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid*="d27cdb6e-ae6d-11cf-96b8-444553540000"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"]{	display: none !important;}</style></html>

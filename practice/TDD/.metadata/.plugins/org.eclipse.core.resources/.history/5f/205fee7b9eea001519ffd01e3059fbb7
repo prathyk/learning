@@ -1,0 +1,17 @@
+package xTreme;
+
+public class AcceptTeams extends State {
+
+	public AcceptTeams(StateData data) {
+		super(data);
+	}
+
+	@Override
+	public State input(String input) throws InvalidInput {
+		if(input.trim().matches("\\w+\\s+\\w+")){
+			return new AcceptNoOfAudience(data);
+		}
+		throw new InvalidInput("Team1 Team2");
+	}
+
+}

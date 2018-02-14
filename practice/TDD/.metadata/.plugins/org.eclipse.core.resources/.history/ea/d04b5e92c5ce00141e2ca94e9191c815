@@ -1,0 +1,17 @@
+package example;
+
+public class WasRun {
+	private boolean wasRun;
+	
+	public void testWasRun(){
+		wasRun = true;
+	}
+	
+	public static void main(String[] args) {
+		WasRun test = new WasRun();
+		System.out.println("Before "+test.wasRun);
+		test.testWasRun();
+		System.out.println("After "+test.wasRun);
+	}
+	
+}

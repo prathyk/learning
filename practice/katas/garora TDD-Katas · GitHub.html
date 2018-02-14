@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)https://github.com/garora/TDD-Katas -->
+<html lang="en" class=""><head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    
+    
+    <title>garora/TDD-Katas · GitHub</title>
+    <link rel="search" type="application/opensearchdescription+xml" href="https://github.com/opensearch.xml" title="GitHub">
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://github.com/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://github.com/apple-touch-icon-114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://github.com/apple-touch-icon-144.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://github.com/apple-touch-icon-144.png">
+    <meta property="fb:app_id" content="1401488693436528">
+
+      <meta content="@github" name="twitter:site"><meta content="summary" name="twitter:card"><meta content="garora/TDD-Katas" name="twitter:title"><meta content="TDD-Katas - This repository contains Hands on Test Driven Development Katas" name="twitter:description"><meta content="https://avatars1.githubusercontent.com/u/966457?v=3&amp;s=400" name="twitter:image:src">
+      <meta content="GitHub" property="og:site_name"><meta content="object" property="og:type"><meta content="https://avatars1.githubusercontent.com/u/966457?v=3&amp;s=400" property="og:image"><meta content="garora/TDD-Katas" property="og:title"><meta content="https://github.com/garora/TDD-Katas" property="og:url"><meta content="TDD-Katas - This repository contains Hands on Test Driven Development Katas" property="og:description">
+      <meta name="browser-stats-url" content="/_stats">
+    <link rel="assets" href="https://assets-cdn.github.com/">
+    
+    <meta name="pjax-timeout" content="1000">
+    
+
+    <meta name="msapplication-TileImage" content="/windows-tile.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="selected-link" value="repo_source" data-pjax-transient="">
+      <meta name="google-analytics" content="UA-3769691-2">
+
+    <meta content="collector.githubapp.com" name="octolytics-host"><meta content="collector-cdn.github.com" name="octolytics-script-host"><meta content="github" name="octolytics-app-id"><meta content="31CF9D47:656D:B485D3:55160CB3" name="octolytics-dimension-request_id">
+    
+    <meta content="Rails, view, files#disambiguate" name="analytics-event">
+
+    
+    <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
+
+
+    <meta content="authenticity_token" name="csrf-param">
+<meta content="1Q83bdNN2pPkDQhR+5fBqHOPTg7Z1w8rmqiQQFLJ29iTa4shNI2YBSjMIhqIjL3bQQq6b7vvCt5BI+qapMw36w==" name="csrf-token">
+
+    <link href="https://assets-cdn.github.com/assets/github-6337179a282bad7457c5b97336a91ca3743e26d9564ce4c54d4baef4163fc364.css" media="all" rel="stylesheet">
+    <style type="text/css"></style><link href="https://assets-cdn.github.com/assets/github2-1b541813bef149ffc2f5118b0bfa467e9fe56083241b6a9f140d30ea692aefdc.css" media="all" rel="stylesheet">
+    
+    
+
+
+    <meta http-equiv="x-pjax-version" content="f82dd05eac900f987444c3b4e32e7dab">
+
+      
+  <meta name="description" content="TDD-Katas - This repository contains Hands on Test Driven Development Katas">
+  <meta name="go-import" content="github.com/garora/TDD-Katas git https://github.com/garora/TDD-Katas.git">
+
+  <meta content="966457" name="octolytics-dimension-user_id"><meta content="garora" name="octolytics-dimension-user_login"><meta content="2671424" name="octolytics-dimension-repository_id"><meta content="garora/TDD-Katas" name="octolytics-dimension-repository_nwo"><meta content="true" name="octolytics-dimension-repository_public"><meta content="false" name="octolytics-dimension-repository_is_fork"><meta content="2671424" name="octolytics-dimension-repository_network_root_id"><meta content="garora/TDD-Katas" name="octolytics-dimension-repository_network_root_nwo">
+  <link href="https://github.com/garora/TDD-Katas/commits/master.atom" rel="alternate" title="Recent Commits to TDD-Katas:master" type="application/atom+xml">
+
+  <style>img[src="blocker"],img[src="blocker"]{display:none!important}</style><script type="text/javascript" src="chrome-extension://bfbmjmiodbnnpllbbbfblcplfjjepjdn/js/injected.js"></script><script type="text/javascript" async="" src="./garora TDD-Katas · GitHub_files/api.js"></script></head><style type="text/css">embed[type*="application/x-shockwave-flash"],embed[src*=".swf"],object[type*="application/x-shockwave-flash"],object[codetype*="application/x-shockwave-flash"],object[src*=".swf"],object[codebase*="swflash.cab"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid*="d27cdb6e-ae6d-11cf-96b8-444553540000"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"]{	display: none !important;}</style>
+
+
+  <body class="logged_out  env-production windows vis-public">
+    <a href="https://github.com/garora/TDD-Katas#start-of-content" tabindex="1" class="accessibility-aid js-skip-to-content">Skip to content</a>
+    <div class="wrapper">
+      
+      
+      
+
+
+        
+        <div class="header header-logged-out" role="banner">
+  <div class="container clearfix">
+
+    <a class="header-logo-wordmark" href="https://github.com/" data-ga-click="(Logged out) Header, go to homepage, icon:logo-wordmark">
+      <span class="mega-octicon octicon-logo-github"></span>
+    </a>
+
+    <div class="header-actions" role="navigation">
+        <a class="btn btn-primary" href="https://github.com/join" data-ga-click="(Logged out) Header, clicked Sign up, text:sign-up">Sign up</a>
+      <a class="btn" href="https://github.com/login?return_to=%2Fgarora%2FTDD-Katas" data-ga-click="(Logged out) Header, clicked Sign in, text:sign-in">Sign in</a>
+    </div>
+
+    <div class="site-search repo-scope js-site-search" role="search">
+      <form accept-charset="UTF-8" action="https://github.com/garora/TDD-Katas/search" class="js-site-search-form" data-global-search-url="/search" data-repo-search-url="/garora/TDD-Katas/search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"></div>
+  <input type="text" class="js-site-search-field is-clearable" data-hotkey="s" name="q" placeholder="Search" data-global-scope-placeholder="Search GitHub" data-repo-scope-placeholder="Search" tabindex="1" autocapitalize="off">
+  <div class="scope-badge">This repository</div>
+</form>
+    </div>
+
+      <ul class="header-nav left" role="navigation">
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="https://github.com/explore" data-ga-click="(Logged out) Header, go to explore, text:explore">Explore</a>
+          </li>
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="https://github.com/features" data-ga-click="(Logged out) Header, go to features, text:features">Features</a>
+          </li>
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="https://enterprise.github.com/" data-ga-click="(Logged out) Header, go to enterprise, text:enterprise">Enterprise</a>
+          </li>
+          <li class="header-nav-item">
+            <a class="header-nav-link" href="https://github.com/blog" data-ga-click="(Logged out) Header, go to blog, text:blog">Blog</a>
+          </li>
+      </ul>
+
+  </div>
+</div>
+
+
+
+      <div id="start-of-content" class="accessibility-aid"></div>
+          <div class="site" itemscope="" itemtype="http://schema.org/WebPage">
+    <div id="js-flash-container">
+      
+    </div>
+    <div class="pagehead repohead instapaper_ignore readability-menu">
+      <div class="container">
+        
+<ul class="pagehead-actions">
+
+  <li>
+      <a href="https://github.com/login?return_to=%2Fgarora%2FTDD-Katas" class="btn btn-sm btn-with-count tooltipped tooltipped-n" aria-label="You must be signed in to watch a repository" rel="nofollow">
+    <span class="octicon octicon-eye"></span>
+    Watch
+  </a>
+  <a class="social-count" href="https://github.com/garora/TDD-Katas/watchers">
+    32
+  </a>
+
+  </li>
+
+  <li>
+      <a href="https://github.com/login?return_to=%2Fgarora%2FTDD-Katas" class="btn btn-sm btn-with-count tooltipped tooltipped-n" aria-label="You must be signed in to star a repository" rel="nofollow">
+    <span class="octicon octicon-star"></span>
+    Star
+  </a>
+
+    <a class="social-count js-social-count" href="https://github.com/garora/TDD-Katas/stargazers">
+      222
+    </a>
+
+  </li>
+
+    <li>
+      <a href="https://github.com/login?return_to=%2Fgarora%2FTDD-Katas" class="btn btn-sm btn-with-count tooltipped tooltipped-n" aria-label="You must be signed in to fork a repository" rel="nofollow">
+        <span class="octicon octicon-repo-forked"></span>
+        Fork
+      </a>
+      <a href="https://github.com/garora/TDD-Katas/network" class="social-count">
+        61
+      </a>
+    </li>
+</ul>
+
+        <h1 itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" class="entry-title public">
+          <span class="mega-octicon octicon-repo"></span>
+          <span class="author"><a href="https://github.com/garora" class="url fn" itemprop="url" rel="author"><span itemprop="title">garora</span></a></span><!--
+       --><span class="path-divider">/</span><!--
+       --><strong><a href="./garora TDD-Katas · GitHub_files/garora TDD-Katas · GitHub.html" class="js-current-repository" data-pjax="#js-repo-pjax-container">TDD-Katas</a></strong>
+
+          <span class="page-context-loader">
+            <img alt="" height="16" src="./garora TDD-Katas · GitHub_files/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16">
+          </span>
+
+        </h1>
+      </div><!-- /.container -->
+    </div><!-- /.repohead -->
+
+    <div class="container">
+      <div class="repository-with-sidebar repo-container new-discussion-timeline with-full-navigation">
+        <div class="repository-sidebar clearfix">
+            
+<nav class="sunken-menu repo-nav js-repo-nav js-sidenav-container-pjax js-octicon-loaders" role="navigation" data-pjax="#js-repo-pjax-container" data-issue-count-url="/garora/TDD-Katas/issues/counts">
+  <ul class="sunken-menu-group">
+    <li class="tooltipped tooltipped-w" aria-label="Code">
+      <a href="./garora TDD-Katas · GitHub_files/garora TDD-Katas · GitHub.html" aria-label="Code" class="selected js-selected-navigation-item sunken-menu-item" data-hotkey="g c" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches /garora/TDD-Katas">
+        <span class="octicon octicon-code"></span> <span class="full-word">Code</span>
+        <img alt="" class="mini-loader" height="16" src="./garora TDD-Katas · GitHub_files/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16">
+</a>    </li>
+
+      <li class="tooltipped tooltipped-w" aria-label="Issues">
+        <a href="https://github.com/garora/TDD-Katas/issues" aria-label="Issues" class="js-selected-navigation-item sunken-menu-item" data-hotkey="g i" data-selected-links="repo_issues repo_labels repo_milestones /garora/TDD-Katas/issues">
+          <span class="octicon octicon-issue-opened"></span> <span class="full-word">Issues</span>
+          <span class="counter">1</span>
+
+          <img alt="" class="mini-loader" height="16" src="./garora TDD-Katas · GitHub_files/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16">
+</a>      </li>
+
+    <li class="tooltipped tooltipped-w" aria-label="Pull requests">
+      <a href="https://github.com/garora/TDD-Katas/pulls" aria-label="Pull requests" class="js-selected-navigation-item sunken-menu-item" data-hotkey="g p" data-selected-links="repo_pulls /garora/TDD-Katas/pulls">
+          <span class="octicon octicon-git-pull-request"></span> <span class="full-word">Pull requests</span>
+          <span class="counter">0</span>
+
+          <img alt="" class="mini-loader" height="16" src="./garora TDD-Katas · GitHub_files/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16">
+</a>    </li>
+
+      <li class="tooltipped tooltipped-w" aria-label="Wiki">
+        <a href="https://github.com/garora/TDD-Katas/wiki" aria-label="Wiki" class="js-selected-navigation-item sunken-menu-item" data-hotkey="g w" data-selected-links="repo_wiki /garora/TDD-Katas/wiki">
+          <span class="octicon octicon-book"></span> <span class="full-word">Wiki</span>
+          <img alt="" class="mini-loader" height="16" src="./garora TDD-Katas · GitHub_files/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16">
+</a>      </li>
+  </ul>
+  <div class="sunken-menu-separator"></div>
+  <ul class="sunken-menu-group">
+
+    <li class="tooltipped tooltipped-w" aria-label="Pulse">
+      <a href="https://github.com/garora/TDD-Katas/pulse" aria-label="Pulse" class="js-selected-navigation-item sunken-menu-item" data-selected-links="pulse /garora/TDD-Katas/pulse">
+        <span class="octicon octicon-pulse"></span> <span class="full-word">Pulse</span>
+        <img alt="" class="mini-loader" height="16" src="./garora TDD-Katas · GitHub_files/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16">
+</a>    </li>
+
+    <li class="tooltipped tooltipped-w" aria-label="Graphs">
+      <a href="https://github.com/garora/TDD-Katas/graphs" aria-label="Graphs" class="js-selected-navigation-item sunken-menu-item" data-selected-links="repo_graphs repo_contributors /garora/TDD-Katas/graphs">
+        <span class="octicon octicon-graph"></span> <span class="full-word">Graphs</span>
+        <img alt="" class="mini-loader" height="16" src="./garora TDD-Katas · GitHub_files/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16">
+</a>    </li>
+  </ul>
+
+
+</nav>
+
+              <div class="only-with-full-nav">
+                  
+<div class="clone-url open" data-protocol-type="http" data-url="/users/set_protocol?protocol_selector=http&amp;protocol_type=clone">
+  <h3><span class="text-emphasized">HTTPS</span> clone URL</h3>
+  <div class="input-group js-zeroclipboard-container">
+    <input type="text" class="input-mini input-monospace js-url-field js-zeroclipboard-target" value="https://github.com/garora/TDD-Katas.git" readonly="readonly">
+    <span class="input-group-button">
+      
+    </span>
+  </div>
+</div>
+
+  
+<div class="clone-url " data-protocol-type="subversion" data-url="/users/set_protocol?protocol_selector=subversion&amp;protocol_type=clone">
+  <h3><span class="text-emphasized">Subversion</span> checkout URL</h3>
+  <div class="input-group js-zeroclipboard-container">
+    <input type="text" class="input-mini input-monospace js-url-field js-zeroclipboard-target" value="https://github.com/garora/TDD-Katas" readonly="readonly">
+    <span class="input-group-button">
+      
+    </span>
+  </div>
+</div>
+
+
+
+<p class="clone-options">You can clone with
+  <a href="https://github.com/garora/TDD-Katas#" class="js-clone-selector" data-protocol="http">HTTPS</a> or <a href="https://github.com/garora/TDD-Katas#" class="js-clone-selector" data-protocol="subversion">Subversion</a>.
+  <a href="https://help.github.com/articles/which-remote-url-should-i-use" class="help tooltipped tooltipped-n" aria-label="Get help on which URL is right for you.">
+    <span class="octicon octicon-question"></span>
+  </a>
+</p>
+
+
+  <a href="https://windows.github.com/" class="btn btn-sm sidebar-button" title="Save garora/TDD-Katas to your computer and use it in GitHub Desktop." aria-label="Save garora/TDD-Katas to your computer and use it in GitHub Desktop.">
+    <span class="octicon octicon-device-desktop"></span>
+    Clone in Desktop
+  </a>
+
+                <a href="https://github.com/garora/TDD-Katas/archive/master.zip" class="btn btn-sm sidebar-button" aria-label="Download the contents of garora/TDD-Katas as a zip file" title="Download the contents of garora/TDD-Katas as a zip file" rel="nofollow">
+                  <span class="octicon octicon-cloud-download"></span>
+                  Download ZIP
+                </a>
+              </div>
+        </div><!-- /.repository-sidebar -->
+
+        <div id="js-repo-pjax-container" class="repository-content context-loader-container" data-pjax-container="">
+          
+<span id="js-show-full-navigation"></span>
+
+<div class="repository-meta js-details-container ">
+    <div class="repository-description">
+      This repository contains Hands on Test Driven Development Katas
+    </div>
+
+    <div class="repository-website">
+      <p><a href="http://garora.github.io/TDD-Katas/" rel="nofollow">http://garora.github.io/TDD-Katas/</a></p>
+    </div>
+
+
+</div>
+
+<div class="overall-summary overall-summary-bottomless">
+
+  <div class="stats-switcher-viewport js-stats-switcher-viewport">
+    <div class="stats-switcher-wrapper">
+    <ul class="numbers-summary">
+      <li class="commits">
+        <a data-pjax="" href="https://github.com/garora/TDD-Katas/commits/master">
+            <span class="octicon octicon-history"></span>
+            <span class="num text-emphasized">
+              285
+            </span>
+            commits
+        </a>
+      </li>
+      <li>
+        <a data-pjax="" href="https://github.com/garora/TDD-Katas/branches">
+          <span class="octicon octicon-git-branch"></span>
+          <span class="num text-emphasized">
+            4
+          </span>
+          branches
+        </a>
+      </li>
+
+      <li>
+        <a data-pjax="" href="https://github.com/garora/TDD-Katas/releases">
+          <span class="octicon octicon-tag"></span>
+          <span class="num text-emphasized">
+            6
+          </span>
+          releases
+        </a>
+      </li>
+
+      <li>
+        
+  <a href="https://github.com/garora/TDD-Katas/graphs/contributors">
+    <span class="octicon octicon-organization"></span>
+    <span class="num text-emphasized">
+      7
+    </span>
+    contributors
+  </a>
+      </li>
+    </ul>
+
+      <div class="repository-lang-stats">
+        <ol class="repository-lang-stats-numbers">
+          <li>
+              <a href="https://github.com/garora/TDD-Katas/search?l=csharp">
+                <span class="color-block language-color" style="background-color:#178600;"></span>
+                <span class="lang">C#</span>
+                <span class="percent">100%</span>
+              </a>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+  <div class="repository-lang-stats-graph js-toggle-lang-stats" title="Click for language details">
+    <span class="language-color" aria-label="C# 100%" style="width:100%; background-color:#178600;" itemprop="keywords">C#</span>
+  </div>
+
+
+
+<div class="file-navigation in-mid-page">
+  <a href="https://github.com/garora/TDD-Katas/find/master" class="js-show-file-finder btn btn-sm empty-icon tooltipped tooltipped-s right" data-pjax="" data-hotkey="t" aria-label="Quickly jump between files">
+    <span class="octicon octicon-list-unordered"></span>
+  </a>
+    <a href="https://github.com/garora/TDD-Katas/compare" aria-label="Compare, review, create a pull request" class="btn btn-sm btn-primary tooltipped tooltipped-s left compare-button" data-pjax="" data-ga-click="Repository, go to compare view, location:repo overview; icon:git-compare">
+      <span class="octicon octicon-git-compare"></span>
+    </a>
+
+  
+<div class="select-menu js-menu-container js-select-menu left">
+  <span class="btn btn-sm select-menu-button js-menu-target css-truncate" data-hotkey="w" data-master-branch="master" data-ref="master" title="master" role="button" aria-label="Switch branches or tags" tabindex="0" aria-haspopup="true">
+    <span class="octicon octicon-git-branch"></span>
+    <i>branch:</i>
+    <span class="js-select-button css-truncate-target">master</span>
+  </span>
+
+  <div class="select-menu-modal-holder js-menu-content js-navigation-container" data-pjax="" aria-hidden="true">
+
+    <div class="select-menu-modal">
+      <div class="select-menu-header">
+        <span class="select-menu-title">Switch branches/tags</span>
+        <span class="octicon octicon-x js-menu-close" role="button" aria-label="Close"></span>
+      </div>
+
+      <div class="select-menu-filters">
+        <div class="select-menu-text-filter">
+          <input type="text" aria-label="Filter branches/tags" id="context-commitish-filter-field" class="js-filterable-field js-navigation-enable" placeholder="Filter branches/tags">
+        </div>
+        <div class="select-menu-tabs">
+          <ul>
+            <li class="select-menu-tab">
+              <a href="https://github.com/garora/TDD-Katas#" data-tab-filter="branches" data-filter-placeholder="Filter branches/tags" class="js-select-menu-tab">Branches</a>
+            </li>
+            <li class="select-menu-tab">
+              <a href="https://github.com/garora/TDD-Katas#" data-tab-filter="tags" data-filter-placeholder="Find a tag…" class="js-select-menu-tab">Tags</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="branches">
+
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/garora/TDD-Katas/tree/develop" data-name="develop" data-skip-pjax="true" rel="nofollow">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <span class="select-menu-item-text css-truncate-target" title="develop">
+                develop
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/garora/TDD-Katas/tree/gaurav" data-name="gaurav" data-skip-pjax="true" rel="nofollow">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <span class="select-menu-item-text css-truncate-target" title="gaurav">
+                gaurav
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open " href="https://github.com/garora/TDD-Katas/tree/gh-pages" data-name="gh-pages" data-skip-pjax="true" rel="nofollow">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <span class="select-menu-item-text css-truncate-target" title="gh-pages">
+                gh-pages
+              </span>
+            </a>
+            <a class="select-menu-item js-navigation-item js-navigation-open selected" href="https://github.com/garora/TDD-Katas/tree/master" data-name="master" data-skip-pjax="true" rel="nofollow">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <span class="select-menu-item-text css-truncate-target" title="master">
+                master
+              </span>
+            </a>
+        </div>
+
+          <div class="select-menu-no-results">Nothing to show</div>
+      </div>
+
+      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="tags">
+        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
+
+
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="https://github.com/garora/TDD-Katas/tree/1.0.5" data-name="1.0.5" data-skip-pjax="true" rel="nofollow" class="js-navigation-open select-menu-item-text css-truncate-target" title="1.0.5">1.0.5</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="https://github.com/garora/TDD-Katas/tree/1.0.4" data-name="1.0.4" data-skip-pjax="true" rel="nofollow" class="js-navigation-open select-menu-item-text css-truncate-target" title="1.0.4">1.0.4</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="https://github.com/garora/TDD-Katas/tree/1.0.3" data-name="1.0.3" data-skip-pjax="true" rel="nofollow" class="js-navigation-open select-menu-item-text css-truncate-target" title="1.0.3">1.0.3</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="https://github.com/garora/TDD-Katas/tree/1.0.2" data-name="1.0.2" data-skip-pjax="true" rel="nofollow" class="js-navigation-open select-menu-item-text css-truncate-target" title="1.0.2">1.0.2</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="https://github.com/garora/TDD-Katas/tree/1.0.1" data-name="1.0.1" data-skip-pjax="true" rel="nofollow" class="js-navigation-open select-menu-item-text css-truncate-target" title="1.0.1">1.0.1</a>
+            </div>
+            <div class="select-menu-item js-navigation-item ">
+              <span class="select-menu-item-icon octicon octicon-check"></span>
+              <a href="https://github.com/garora/TDD-Katas/tree/1.0.0" data-name="1.0.0" data-skip-pjax="true" rel="nofollow" class="js-navigation-open select-menu-item-text css-truncate-target" title="1.0.0">1.0.0</a>
+            </div>
+        </div>
+
+        <div class="select-menu-no-results">Nothing to show</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+  <div class="breadcrumb"><span class="repo-root js-repo-root"><span itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="./garora TDD-Katas · GitHub_files/garora TDD-Katas · GitHub.html" class="" data-branch="master" data-direction="back" data-pjax="true" itemscope="url"><span itemprop="title">TDD-Katas</span></a></span></span><span class="separator">/</span>
+    <a class="btn-link disabled tooltipped tooltipped-e" href="https://github.com/garora/TDD-Katas#" aria-label="You must be signed in to make or propose changes">
+      <span class="octicon octicon-plus"></span>
+    </a>
+</div>
+</div>
+
+
+
+  
+  <div class="commit commit-tease js-details-container">
+    <p class="commit-title ">
+        <a href="https://github.com/garora/TDD-Katas/commit/fb8dfaebba8909b71cd18504cfd6397646a71c38" class="message" data-pjax="true" title="Update README.md">Update README.md</a>
+        
+    </p>
+    <div class="commit-meta">
+      
+      <a href="https://github.com/garora/TDD-Katas/commit/fb8dfaebba8909b71cd18504cfd6397646a71c38" class="sha-block" data-pjax="">latest commit <span class="sha">fb8dfaebba</span></a>
+
+      <div class="authorship">
+        <img alt="Gaurav Arora" class="avatar" data-user="966457" height="20" src="./garora TDD-Katas · GitHub_files/966457" width="20">
+        <span class="author-name"><a href="https://github.com/garora" rel="author">garora</a></span>
+        authored <time class="updated" datetime="2015-03-16T08:10:15Z" is="relative-time" title="Mar 16, 2015, 1:40 PM GMT+5:30">12 days ago</time>
+
+      </div>
+    </div>
+  </div>
+
+  
+<div class="file-wrap">
+
+  <table class="files" data-pjax="">
+
+
+    <tbody>
+      <tr class="warning include-fragment-error">
+        <td class="icon"><span class="octicon octicon-alert"></span></td>
+        <td class="content" colspan="3">Failed to load latest commit information.</td>
+      </tr>
+
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-directory"></span>
+            <img alt="" class="spinner" height="16" src="./garora TDD-Katas · GitHub_files/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/garora/TDD-Katas/tree/master/TDD-Katas-project" class="js-directory-link" id="9e00dd27cd2d2e8f41f543e22146c9a6-683d431a911481688b42780517568bb7e14a6c24" title="TDD-Katas-project">TDD-Katas-project</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="https://github.com/garora/TDD-Katas/commit/188e082a16f942e070027d2cee841a26ff08f38a" class="message" data-pjax="true" title="set current release number">set current release number</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-03-05T19:48:16Z" is="time-ago" title="Mar 6, 2015, 1:18 AM GMT+5:30">22 days ago</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="./garora TDD-Katas · GitHub_files/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/garora/TDD-Katas/blob/master/.gitignore" class="js-directory-link" id="a084b794bc0759e7a6b77810e01874f2-b555d697dc5d269658d2f4cfe17709e670e6dc0a" title=".gitignore">.gitignore</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="https://github.com/garora/TDD-Katas/commit/31e6e0354f5d4b35349cdba462a53a826ea7dede" class="message" data-pjax="true" title="Adding ignore file">Adding ignore file</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2011-10-29T16:31:38Z" is="time-ago" title="Oct 29, 2011, 10:01 PM GMT+5:30">4 years ago</time></span>
+          </td>
+        </tr>
+        <tr>
+          <td class="icon">
+            <span class="octicon octicon-file-text"></span>
+            <img alt="" class="spinner" height="16" src="./garora TDD-Katas · GitHub_files/octocat-spinner-32-e513294efa576953719e4e2de888dd9cf929b7d62ed8d05f25e731d02452ab6c.gif" width="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a href="https://github.com/garora/TDD-Katas/blob/master/README.md" class="js-directory-link" id="04c6e90faac2675aa89e2176d2eec7d8-1a34c97e2b0b6b148112cd1019cefd070164fa58" title="README.md">README.md</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+              <a href="https://github.com/garora/TDD-Katas/commit/fb8dfaebba8909b71cd18504cfd6397646a71c38" class="message" data-pjax="true" title="Update README.md">Update README.md</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time datetime="2015-03-16T08:10:15Z" is="time-ago" title="Mar 16, 2015, 1:40 PM GMT+5:30">12 days ago</time></span>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+  <div id="readme" class="boxed-group flush clearfix announce instapaper_body md">
+    <h3>
+      <span class="octicon octicon-book"></span>
+      README.md
+    </h3>
+
+    <article class="markdown-body entry-content" itemprop="mainContentOfPage"><p>Explained 'Learning Test Driven Development with TDD Katas' : <a href="http://goo.gl/5NYpVI">http://goo.gl/5NYpVI</a></p>
+
+<h1>
+<a id="user-content-for-more-info-visit-httpgaroragithubiotdd-katas" class="anchor" href="https://github.com/garora/TDD-Katas#for-more-info-visit-httpgaroragithubiotdd-katas" aria-hidden="true"><span class="octicon octicon-link"></span></a>For more info visit: <a href="http://garora.github.io/TDD-Katas/">http://garora.github.io/TDD-Katas/</a>
+</h1>
+
+<h1>
+<a id="user-content-tdd-katas--continued-from-tdd-kata-practices" class="anchor" href="https://github.com/garora/TDD-Katas#tdd-katas--continued-from-tdd-kata-practices" aria-hidden="true"><span class="octicon octicon-link"></span></a>TDD-Katas : Continued from <a href="http://tddkatas.codeplex.com/">TDD-Kata practices</a>
+</h1>
+
+<p>Note: This is a place to find and practice TDD Katas. Feel free to submit pull requests with additional tests, or issues if you find any.</p>
+
+<h2>
+<a id="user-content-string-calculator-kata-via-roy-osherove" class="anchor" href="https://github.com/garora/TDD-Katas#string-calculator-kata-via-roy-osherove" aria-hidden="true"><span class="octicon octicon-link"></span></a>String Calculator Kata (via <a href="http://osherove.com/tdd-kata-1/">Roy Osherove</a>)</h2>
+
+<ul class="task-list">
+<li>Create a simple String calculator with a method int Add(string numbers). The method can take 0, 1 or 2 numbers, and will return their sum (for an empty string it will return 0). For example "" or "1" or "1,2"
+
+<ul class="task-list">
+<li>Start with the simplest test case of an empty string and move to 1 and two numbers</li>
+<li>Remember to solve things as simply as possible so that you force yourself to write tests you did
+  not think about</li>
+<li>Remember to refactor after each passing test</li>
+</ul>
+</li>
+<li>Allow the Add method to handle an unknown amount of numbers</li>
+<li>Allow the Add method to handle new lines between numbers (instead of commas).
+
+<ul class="task-list">
+<li>the following input is ok:  "1\n2,3"  (will equal 6)</li>
+<li>the following input is NOT ok:  "1,\n" (not need to prove it - just clarifying)</li>
+</ul>
+</li>
+<li>Support different delimiters. To change a delimiter, the beginning of the string will contain a separate line that looks like this: <code>[delimiter]\n[numbers...]</code>, for example <code>;\n1;2</code> should return three where the default delimiter is <code>;</code> .
+
+<ul class="task-list">
+<li>he first line is optional. all existing scenarios should still be supported</li>
+</ul>
+</li>
+<li>Calling Add with a negative number will throw an exception "negatives not allowed" - and the negative that was passed.
+
+<ul class="task-list">
+<li>if there are multiple negatives, show all of them in the exception message</li>
+</ul>
+</li>
+</ul>
+
+<h3>
+<a id="user-content-the-bowling-game-kata-via-uncle-bob" class="anchor" href="https://github.com/garora/TDD-Katas#the-bowling-game-kata-via-uncle-bob" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Bowling Game Kata (<a href="http://butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata">via Uncle Bob</a>)</h3>
+
+<pre><code>- Create a new project or start in the existing project by adding Game.cs and TestGame.cs
+- Create two public methods methods [refer to the presentation file]
+- Create Test Methods for the above Methods
+- This is called a 'RED' Test as it is going to fail.
+- Rectified both test and class methods
+- Write new test
+- This is called a 'Green' Test as it is going to pass.
+- Rectified TestMethods to meet total 20 frames hit.
+- Rectified test to accept multiple frame and pins
+- Test 3 is a 'Red' test
+- Test 4 and 5 are 'Green'
+- All test passed
+- Still there is scope of refactoring
+</code></pre>
+
+<h3>
+<a id="user-content-the-fizzbuzz-kata" class="anchor" href="https://github.com/garora/TDD-Katas#the-fizzbuzz-kata" aria-hidden="true"><span class="octicon octicon-link"></span></a>The FizzBuzz Kata</h3>
+
+<pre><code>- Write a program that prints the numbers from 1 to 100. But for multiples of three print "Fizz"
+  instead of the number and for the multiples of five print "Buzz". For numbers which are multiples of both
+  three and five print "FizzBuzz".
+</code></pre>
+
+<h3>
+<a id="user-content-including-new-implementation-to-the-fizzbuzz-kata" class="anchor" href="https://github.com/garora/TDD-Katas#including-new-implementation-to-the-fizzbuzz-kata" aria-hidden="true"><span class="octicon octicon-link"></span></a>Including new implementation to The FizzBuzz Kata</h3>
+
+<pre><code>- Added a different implementation for FizzBuzz using Reactive extensions.
+- The changes are described at: http://blog.drorhelper.com/2015/02/fizzbuzz-tdd-kata-using-reactive.html
+- Pull Request by: https://github.com/dhelper (manually merged by @garora)
+</code></pre>
+
+<h4>
+<a id="user-content-steps" class="anchor" href="https://github.com/garora/TDD-Katas#steps" aria-hidden="true"><span class="octicon octicon-link"></span></a>Steps:</h4>
+
+<pre><code>Lets divide this into different steps so, we can easily write and test this.
+- Print numbers from 1 to 100
+- Print "Fizz" instead of number which is divisible by 3
+- Print "Buzz" instead of number which is divisible by 5
+- Print "FizzBuzz" instead of number which is divisible by both 3 and 5
+</code></pre>
+
+<h4>
+<a id="user-content-make-more-test-for-accept-numbers-and-provide-results" class="anchor" href="https://github.com/garora/TDD-Katas#make-more-test-for-accept-numbers-and-provide-results" aria-hidden="true"><span class="octicon octicon-link"></span></a>Make more test for accept numbers and provide results</h4>
+
+<pre><code>- Create a method to accept single number
+- Create test to verify supplied number within the range 1 to 100
+- Create test to verify number and return result Fizz or Buzz or FizzBuzz per above criteria
+</code></pre>
+
+<h3>
+<a id="user-content-the-oddeven-kata" class="anchor" href="https://github.com/garora/TDD-Katas#the-oddeven-kata" aria-hidden="true"><span class="octicon octicon-link"></span></a>The OddEven Kata</h3>
+
+<pre><code>- Write a program that prints numbers within specified range lets say 1 to 100. If number is odd print 'Odd'
+  instead of the number. If number is even print 'Even' instead of number. Else print number [hint - if number is Prime].
+</code></pre>
+
+<h4>
+<a id="user-content-steps-" class="anchor" href="https://github.com/garora/TDD-Katas#steps-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Steps :</h4>
+
+<pre><code>Lets divide into following steps:
+- Prints numbers from 1 to 100
+- Print "Even" instead of number, if the number is even, means divisible by 2
+- Print "Odd" instead of number, if the number is odd, means not divisible by 2 but not divisible by itself too [hint - it should not be Prime]
+- Print number, if it does not meet above two conditions, means if number is Prime
+- Make method to accept any number of range [currently  we have 1 to 100]
+- Create a new method to check Odd/Even/Prime of a single supplied method
+</code></pre>
+
+<h3>
+<a id="user-content-the-primefactor-kata-via-uncle-bob" class="anchor" href="https://github.com/garora/TDD-Katas#the-primefactor-kata-via-uncle-bob" aria-hidden="true"><span class="octicon octicon-link"></span></a>The PrimeFactor Kata (via <a href="http://butunclebob.com/ArticleS.UncleBob.ThePrimeFactorsKata">Uncle Bob</a>)</h3>
+
+<hr>
+
+<h3>
+<a id="user-content-kata---coming-next-httpwwwcyber-dojocom" class="anchor" href="https://github.com/garora/TDD-Katas#kata---coming-next-httpwwwcyber-dojocom" aria-hidden="true"><span class="octicon octicon-link"></span></a>Kata - coming next [<a href="http://www.cyber-dojo.com/">http://www.cyber-dojo.com/</a>]</h3>
+
+<h4>
+<a id="user-content-calc-stats" class="anchor" href="https://github.com/garora/TDD-Katas#calc-stats" aria-hidden="true"><span class="octicon octicon-link"></span></a>Calc Stats:</h4>
+
+<pre><code>Your task is to process a sequence of integer numbers
+to determine the following statistics:
+
+    o) minimum value
+    o) maximum value
+    o) number of elements in the sequence
+    o) average value
+
+For example: [6, 9, 15, -2, 92, 11]
+
+    o) minimum value = -2
+    o) maximum value = 92
+    o) number of elements in the sequence = 6
+    o) average value = 18.166666
+</code></pre>
+
+<h4>
+<a id="user-content-diversion-" class="anchor" href="https://github.com/garora/TDD-Katas#diversion-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Diversion :</h4>
+
+<pre><code>Think of binary numbers: sequences of 0's and 1's. How many
+n-digit binary numbers are there that don't have two adjacent
+1 bits?
+
+For example, for three-digit numbers, Five of the possible
+eight combinations meet the criteria:
+
+   000, 001, 010, 011, 100, 101, 110, 111.
+
+What is the number for sequences of length 4, 5, 10, n?
+
+Having worked out the pattern, there's a second part to the
+question: can you prove why that relationship exists?
+</code></pre>
+
+<h4>
+<a id="user-content-game-of-life-" class="anchor" href="https://github.com/garora/TDD-Katas#game-of-life-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Game of Life :</h4>
+
+<pre><code>Your task is to write a program to calculate the next
+generation of Conway's game of life, given any starting
+position. You start with a two dimensional grid of cells,
+where each cell is either alive or dead. The grid is finite,
+and no life can exist off the edges. When calculating the
+next generation of the grid, follow these four rules:
+
+1. Any live cell with fewer than two live neighbours dies,
+   as if caused by underpopulation.
+2. Any live cell with more than three live neighbours dies,
+   as if by overcrowding.
+3. Any live cell with two or three live neighbours lives
+   on to the next generation.
+4. Any dead cell with exactly three live neighbours becomes
+   a live cell.
+
+Examples: * indicates live cell, . indicates dead cell
+
+Example input: (4 x 8 grid)
+4 8
+........
+....*...
+...**...
+........
+
+Example output:
+4 8
+........
+...**...
+...**...
+........
+</code></pre>
+
+<h4>
+<a id="user-content-harry-potter-" class="anchor" href="https://github.com/garora/TDD-Katas#harry-potter-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Harry Potter :</h4>
+
+<pre><code>To try and encourage more sales of the 5 different Harry
+Potter books they sell, a bookshop has decided to offer
+discounts of multiple-book purchases.
+
+One copy of any of the five books costs 8 EUR.
+
+If, however, you buy two different books, you get a 5%
+discount on those two books.
+
+If you buy 3 different books, you get a 10% discount.
+
+If you buy 4 different books, you get a 20% discount.
+
+If you go the whole hog, and buy all 5, you get a huge 25%
+discount.
+
+Note that if you buy, say, four books, of which 3 are
+different titles, you get a 10% discount on the 3 that
+form part of a set, but the fourth book still costs 8 EUR.
+
+Your mission is to write a piece of code to calculate the
+price of any conceivable shopping basket (containing only
+Harry Potter books), giving as big a discount as possible.
+
+For example, how much does this basket of books cost?
+
+2 copies of the first book
+2 copies of the second book
+2 copies of the third book
+1 copy of the fourth book
+1 copy of the fifth book
+
+Answer: 51.60 EUR
+</code></pre>
+
+<h4>
+<a id="user-content-lcd-digits-" class="anchor" href="https://github.com/garora/TDD-Katas#lcd-digits-" aria-hidden="true"><span class="octicon octicon-link"></span></a>LCD Digits :</h4>
+
+<pre><code>Your task is to create an LCD string representation of an
+integer value using a 3x3 grid of space, underscore, and
+pipe characters for each digit. Each digit is shown below
+(using a dot instead of a space)
+
+._.   ...   ._.   ._.   ...   ._.   ._.   ._.   ._.   ._.
+|.|   ..|   ._|   ._|   |_|   |_.   |_.   ..|   |_|   |_|
+|_|   ..|   |_.   ._|   ..|   ._|   |_|   ..|   |_|   ..|
+
+
+Example: 910
+
+._. ... ._.
+|_| ..| |.|
+..| ..| |_|
+</code></pre>
+
+<h4>
+<a id="user-content-leap-year-" class="anchor" href="https://github.com/garora/TDD-Katas#leap-year-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Leap Year :</h4>
+
+<pre><code>Write a function that returns true or false depending on
+whether its input integer is a leap year or not.
+
+A leap year is defined as one that is divisible by 4,
+but is not otherwise divisible by 100 unless it is
+also divisble by 400.
+
+For example, 2001 is a typical common year and 1996
+is a typical leap year, whereas 1900 is an atypical
+common year and 2000 is an atypical leap year.
+</code></pre>
+
+<h4>
+<a id="user-content-mine-fields-" class="anchor" href="https://github.com/garora/TDD-Katas#mine-fields-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Mine Fields :</h4>
+
+<pre><code>A field of N x M squares is represented by N lines of
+exactly M characters each. The character '*' represents
+a mine and the character '.' represents no-mine.
+
+Example input (a 4 x 3 mine-field of 12 squares, 2 of
+which are mines)
+
+4 3
+*...
+..*.
+....
+
+Your task is to write a program to accept this input and
+produce as output a hint-field of identical dimensions
+where each square is a * for a mine or the number of
+adjacent mine-squares if the square does not contain a mine.
+
+Example output (for the above input)
+*211
+12*1
+0111
+</code></pre>
+
+<h4>
+<a id="user-content-poker-hands" class="anchor" href="https://github.com/garora/TDD-Katas#poker-hands" aria-hidden="true"><span class="octicon octicon-link"></span></a>Poker Hands</h4>
+
+<pre><code>A poker deck contains 52 cards - each card has a suit which
+is one of clubs, diamonds, hearts, or spades
+(denoted C, D, H, and S in the input data).
+
+Each card also has a value which is one of
+2, 3, 4, 5, 6, 7, 8, 9, 10, jack, queen, king, ace
+(denoted 2, 3, 4, 5, 6, 7, 8, 9, T, J, Q, K, A).
+
+For scoring purposes, the suits are unordered while the
+values are ordered as given above, with 2 being the lowest
+and ace the highest value.
+
+A poker hand consists of 5 cards dealt from the deck. Poker
+hands are ranked by the following partial order from lowest
+to highest.
+
+High Card: Hands which do not fit any higher category are
+ranked by the value of their highest card. If the highest
+cards have the same value, the hands are ranked by the next
+highest, and so on.
+
+Pair: 2 of the 5 cards in the hand have the same value.
+Hands which both contain a pair are ranked by the value of
+the cards forming the pair. If these values are the same,
+the hands are ranked by the values of the cards not
+forming the pair, in decreasing order.
+
+Two Pairs: The hand contains 2 different pairs. Hands
+which both contain 2 pairs are ranked by the value of
+their highest pair. Hands with the same highest pair
+are ranked by the value of their other pair. If these
+values are the same the hands are ranked by the value
+of the remaining card.
+
+Three of a Kind: Three of the cards in the hand have the
+same value. Hands which both contain three of a kind are
+ranked by the value of the 3 cards.
+
+Straight: Hand contains 5 cards with consecutive values.
+Hands which both contain a straight are ranked by their
+highest card.
+
+Flush: Hand contains 5 cards of the same suit. Hands which
+are both flushes are ranked using the rules for High Card.
+
+Full House: 3 cards of the same value, with the remaining 2
+cards forming a pair. Ranked by the value of the 3 cards.
+
+Four of a kind: 4 cards with the same value. Ranked by the
+value of the 4 cards.
+
+Straight flush: 5 cards of the same suit with consecutive
+values. Ranked by the highest card in the hand.
+
+Your job is to rank pairs of poker hands and to indicate
+which, if either, has a higher rank.
+
+Examples:
+Input: Black: 2H 3D 5S 9C KD White: 2C 3H 4S 8C AH
+Output: White wins - high card: Ace
+
+Input: Black: 2H 4S 4C 2D 4H White: 2S 8S AS QS 3S
+Output: White wins - flush
+
+Input: Black: 2H 3D 5S 9C KD White: 2C 3H 4S 8C KH
+Output: Black wins - high card: 9
+
+Input: Black: 2H 3D 5S 9C KD White: 2D 3H 5C 9S KH
+Output: Tie
+</code></pre>
+
+<h4>
+<a id="user-content-recently-used-list-" class="anchor" href="https://github.com/garora/TDD-Katas#recently-used-list-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Recently Used List :</h4>
+
+<pre><code>Develop a recently-used-list class to hold strings
+uniquely in Last-In-First-Out order.
+
+o) The most recently added item is first, the least
+   recently added item is last.
+
+o) Items can be looked up by index, which counts from zero.
+
+o) Items in the list are unique, so duplicate insertions
+   are moved rather than added.
+
+o) A recently-used-list is initially empty.
+
+Optional extras
+
+o) Null insertions (empty strings) are not allowed.
+
+o) A bounded capacity can be specified, so there is an upper
+   limit to the number of items contained, with the least
+   recently added items dropped on overflow.
+</code></pre>
+
+<h5>
+<a id="user-content-i-added-more-tests" class="anchor" href="https://github.com/garora/TDD-Katas#i-added-more-tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>I added more tests</h5>
+
+<pre><code>o) While getting items by index, supplied index-value should be within the bounds of List [eg.
+if maximum item counts of list is 5 then supplied index is less than 4 as index starts from 0 (zero)]
+o) Negative index value not allowed [&gt;0]
+o) Size limit is must if not supplied make 5 as default [0-4]
+o) List can be non-sizable means without upper limit list can be created [Hint-try property or constructor initializers]
+</code></pre>
+
+<h4>
+<a id="user-content-reversi-" class="anchor" href="https://github.com/garora/TDD-Katas#reversi-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reversi :</h4>
+
+<pre><code>Reversi is a board game for two players. The board contains
+8x8 squares. The players place Black or White counters onto
+the board, one counter per square. More information can be
+found on Wikipedia en.wikipedia.org/wiki/Reversi?. Your task
+is to write a program that takes a current board position
+together with information about whose turn it is, and returns
+a list of the legal moves for that player. A move is only legal
+if it results in at least one of the opponent's counters being
+flipped.
+
+Example input: (the final B indicates it is Black's turn)
+........
+........
+........
+...BW...
+...WB...
+........
+........
+........
+B
+
+Example output: (each zero indicates a legal move for Black)
+........
+........
+....0...
+...BW0..
+..0WB...
+...0....
+........
+........
+B
+</code></pre>
+
+<h4>
+<a id="user-content-yehtzee-" class="anchor" href="https://github.com/garora/TDD-Katas#yehtzee-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Yehtzee :</h4>
+
+<pre><code>The game of yahtzee is a simple dice game. Each player rolls five
+six-sided dice. They can re-roll some or all of the dice up to three
+times (including the original roll).
+
+For example, suppose a players rolls
+    3,4,5,5,2
+They hold the two fives and re-roll the other three dice (3,4,2)
+    5,1,5,5,3
+They hold the three fives and re-roll the other two dice (1,3)
+    5,6,5,5,2
+
+The player then places the roll in a category, such as ones, twos, fives,
+pair, two pairs etc (see below). If the roll is compatible with the category,
+the player gets a score for the roll according to the rules. If the roll is not
+compatible with the category, the player scores zero for the roll.
+
+For example, suppose a player scores 5,6,5,5,2 in the fives category they
+would score 15 (three fives). The score for that go is then added to their
+total and the category cannot be used again in the remaining goes for that game.
+A full game consists of one go for each category. Thus, for their last go in
+a game, a player must choose their only remaining category.
+
+Your task is to score a GIVEN roll in a GIVEN category.
+You do NOT have to program the random dice rolling.
+The game is NOT played by letting the computer choose the highest scoring
+category for a given roll.
+
+
+Yahzee Categories and Scoring Rules
+===================================
+
+Chance:
+  The player scores the sum of all dice, no matter what they read.
+  For example,
+   1,1,3,3,6 placed on "chance" scores 14 (1+1+3+3+6)
+   4,5,5,6,1 placed on "chance" scores 21 (4+5+5+6+1)
+
+Yahtzee:
+  If all dice have the same number, the player scores 50 points.
+  For example,
+   1,1,1,1,1 placed on "yahtzee" scores 50
+   1,1,1,2,1 placed on "yahtzee" scores 0
+
+Ones, Twos, Threes, Fours, Fives, Sixes:
+  The player scores the sum of the dice that reads one,
+  two, three, four, five or six, respectively.
+  For example,
+   1,1,2,4,4 placed on "fours" scores 8 (4+4)
+   2,3,2,5,1 placed on "twos" scores 4  (2+2)
+   3,3,3,4,5 placed on "ones" scores 0
+
+Pair:
+  The player scores the sum of the two highest matching dice.
+  For example, when placed on "pair"
+   3,3,3,4,4 scores 8 (4+4)
+   1,1,6,2,6 scores 12 (6+6)
+   3,3,3,4,1 scores 0
+   3,3,3,3,1 scores 0
+
+Two pairs:
+  If there are two pairs of dice with the same number, the
+  player scores the sum of these dice.
+  For example, when placed on "two pairs"
+   1,1,2,3,3 scores 8 (1+1+3+3)
+   1,1,2,3,4 scores 0
+   1,1,2,2,2 scores 0
+
+Three of a kind:
+  If there are three dice with the same number, the player
+  scores the sum of these dice.
+  For example, when placed on "three of a kind"
+    3,3,3,4,5 scores 9 (3+3+3)
+    3,3,4,5,6 scores 0
+    3,3,3,3,1 scores 0
+
+Four of a kind:
+  If there are four dice with the same number, the player
+  scores the sum of these dice.
+  For example, when placed on "four of a kind"
+    2,2,2,2,5 scores 8 (2+2+2+2)
+    2,2,2,5,5 scores 0
+    2,2,2,2,2 scores 0
+
+Small straight:
+  When placed on "small straight", if the dice read
+  1,2,3,4,5, the player scores 15 (the sum of all the dice.
+
+Large straight:
+  When placed on "large straight", if the dice read
+  2,3,4,5,6, the player scores 20 (the sum of all the dice).
+
+Full house:
+  If the dice are two of a kind and three of a kind, the
+  player scores the sum of all the dice.
+  For example, when placed on "full house"
+    1,1,2,2,2 scores 8 (1+1+2+2+2)
+    2,2,3,3,4 scores 0
+    4,4,4,4,4 scores 0
+</code></pre>
+
+<hr>
+
+<h3>
+<a id="user-content-many-more-from-pragprogcom" class="anchor" href="https://github.com/garora/TDD-Katas#many-more-from-pragprogcom" aria-hidden="true"><span class="octicon octicon-link"></span></a>Many more from <a href="http://codekata.pragprog.com/2007/01/code_kata_backg.html#more">PragProg.com</a>
+</h3>
+
+<hr>
+
+<h3>
+<a id="user-content-the-word-wrap-kata-via-codingdojo" class="anchor" href="https://github.com/garora/TDD-Katas#the-word-wrap-kata-via-codingdojo" aria-hidden="true"><span class="octicon octicon-link"></span></a>The Word Wrap Kata (via <a href="http://codingdojo.org/cgi-bin/wiki.pl?KataWordWrap">CodingDojo</a>)</h3>
+
+<pre><code>Create a function which breaks words on specified space with new line. Its nothing but merely similar to word-processor.
+</code></pre>
+
+<h4>
+<a id="user-content-steps-1" class="anchor" href="https://github.com/garora/TDD-Katas#steps-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Steps:</h4>
+
+<pre><code>    1. Create a public class named WordWrap
+    2. Create a method 'wrap' it can be a static method
+    3. Create a function which count the number of spliter words of non-space
+    4. check for if words already having newline ['\n'] characters - ignore in counts
+    5. Check for multiple lines
+    6. Remove blank spaces if any in new line eg. Actual - "this is a test" WrappedText = "this\n is a t\nest"
+</code></pre>
+
+<hr>
+
+<h3>
+<a id="user-content-natural-order-string-sorting" class="anchor" href="https://github.com/garora/TDD-Katas#natural-order-string-sorting" aria-hidden="true"><span class="octicon octicon-link"></span></a>Natural Order String Sorting</h3>
+
+<hr>
+
+<h3>
+<a id="user-content-there-is-no-built-in-feature-available-in-net-to-provide-us-natural-string-order-soring" class="anchor" href="https://github.com/garora/TDD-Katas#there-is-no-built-in-feature-available-in-net-to-provide-us-natural-string-order-soring" aria-hidden="true"><span class="octicon octicon-link"></span></a>There is no built-in feature available in .Net to provide us Natural String Order Soring.</h3>
+
+<h4>
+<a id="user-content-what-is-natural-order-string-sorting" class="anchor" href="https://github.com/garora/TDD-Katas#what-is-natural-order-string-sorting" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is Natural Order String Sorting?</h4>
+
+<pre><code>Almost all framework provided ASCII order Sorting so, in case of string list : 1,2,3...,1A,2S the result would be as per ASCII order
+But in Natural Order String this should be : 1,1A,2,2S,3... etc.
+</code></pre>
+
+<h1>
+<a id="user-content-references" class="anchor" href="https://github.com/garora/TDD-Katas#references" aria-hidden="true"><span class="octicon octicon-link"></span></a>References</h1>
+
+<ul class="task-list">
+<li>TDD-Kata Practices: <a href="http://tddkatas.codeplex.com/">http://tddkatas.codeplex.com/</a>
+</li>
+<li>The Prime Factor Kata: <a href="http://butunclebob.com/ArticleS.UncleBob.ThePrimeFactorsKata">http://butunclebob.com/ArticleS.UncleBob.ThePrimeFactorsKata</a>
+</li>
+<li>The Bowling Game Kata: <a href="http://butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata">http://butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata</a>
+</li>
+<li>More: <a href="http://codekata.pragprog.com/2007/01/code_kata_backg.html#more">http://codekata.pragprog.com/2007/01/code_kata_backg.html#more</a>
+</li>
+<li>Word Wrap Kata: <a href="http://codingdojo.org/cgi-bin/wiki.pl?KataWordWrap">http://codingdojo.org/cgi-bin/wiki.pl?KataWordWrap</a>
+</li>
+<li>String Calculator: <a href="http://osherove.com/tdd-kata-1/">http://osherove.com/tdd-kata-1/</a>
+</li>
+</ul>
+</article>
+  </div>
+
+
+        </div>
+
+      </div><!-- /.repo-container -->
+      <div class="modal-backdrop"></div>
+    </div><!-- /.container -->
+  </div><!-- /.site -->
+
+
+    </div><!-- /.wrapper -->
+
+      <div class="container">
+  <div class="site-footer" role="contentinfo">
+    <ul class="site-footer-links right">
+        <li><a href="https://status.github.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
+      <li><a href="https://developer.github.com/" data-ga-click="Footer, go to api, text:api">API</a></li>
+      <li><a href="https://training.github.com/" data-ga-click="Footer, go to training, text:training">Training</a></li>
+      <li><a href="https://shop.github.com/" data-ga-click="Footer, go to shop, text:shop">Shop</a></li>
+        <li><a href="https://github.com/blog" data-ga-click="Footer, go to blog, text:blog">Blog</a></li>
+        <li><a href="https://github.com/about" data-ga-click="Footer, go to about, text:about">About</a></li>
+
+    </ul>
+
+    <a href="https://github.com/" aria-label="Homepage">
+      <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+</a>
+    <ul class="site-footer-links">
+      <li>© 2015 <span title="0.04474s from github-fe143-cp1-prd.iad.github.net">GitHub</span>, Inc.</li>
+        <li><a href="https://github.com/site/terms" data-ga-click="Footer, go to terms, text:terms">Terms</a></li>
+        <li><a href="https://github.com/site/privacy" data-ga-click="Footer, go to privacy, text:privacy">Privacy</a></li>
+        <li><a href="https://github.com/security" data-ga-click="Footer, go to security, text:security">Security</a></li>
+        <li><a href="https://github.com/contact" data-ga-click="Footer, go to contact, text:contact">Contact</a></li>
+    </ul>
+  </div>
+</div>
+
+
+    <div class="fullscreen-overlay js-fullscreen-overlay" id="fullscreen_overlay">
+  <div class="fullscreen-container js-suggester-container">
+    <div class="textarea-wrap">
+      <textarea name="fullscreen-contents" id="fullscreen-contents" class="fullscreen-contents js-fullscreen-contents" placeholder=""></textarea>
+      <div class="suggester-container">
+        <div class="suggester fullscreen-suggester js-suggester js-navigation-container"></div>
+      </div>
+    </div>
+  </div>
+  <div class="fullscreen-sidebar">
+    <a href="https://github.com/garora/TDD-Katas#" class="exit-fullscreen js-exit-fullscreen tooltipped tooltipped-w" aria-label="Exit Zen Mode">
+      <span class="mega-octicon octicon-screen-normal"></span>
+    </a>
+    <a href="https://github.com/garora/TDD-Katas#" class="theme-switcher js-theme-switcher tooltipped tooltipped-w" aria-label="Switch themes">
+      <span class="octicon octicon-color-mode"></span>
+    </a>
+  </div>
+</div>
+
+
+
+    
+    
+
+    <div id="ajax-error-message" class="flash flash-error">
+      <span class="octicon octicon-alert"></span>
+      <a href="https://github.com/garora/TDD-Katas#" class="octicon octicon-x flash-close js-ajax-error-dismiss" aria-label="Dismiss error"></a>
+      Something went wrong with that request. Please try again.
+    </div>
+
+
+      <script crossorigin="anonymous" src="./garora TDD-Katas · GitHub_files/frameworks-d22b59d0085e83b7549ba4341ec9e68f80c2f29c8e49213ee182003dc8d568c6.js"></script>
+      <script async="async" crossorigin="anonymous" src="./garora TDD-Katas · GitHub_files/github-d869f6edeea2dbd9c7c3595e2f31cf8a1530bd36eaa84707461f65c5ee848853.js"></script>
+      
+      
+
+  
+
+
+</body></html>

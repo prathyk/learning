@@ -1,0 +1,72 @@
+package xTreme;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+public class TestFootBall {
+
+	private FootBall footBall;
+	@Before
+	public void before() {
+		footBall = new FootBall();
+	}
+
+	@Test
+	public void gameTakesInput() {
+		footBall.input("");
+	}
+	
+	@Test
+	public void gameTakesTeamsInput() {
+		assertThat(footBall.input("India Brazil"), is(equalTo("")));
+	}
+	
+	@Test
+	public void gameRejectAnyOtherInputFirst() {
+		rejectsInput("India Br azil", "Team1 Team2");
+	}
+
+	private void rejectsInput(String input, String error) {
+		assertThat(footBall.input(input), is(equalTo("Error Input. Valid Format:"+error)));
+	}
+
+	
+	@Test
+	public void gameTakesTeamsInputOnlyOnce(){
+		acceptsInput("India Brazil");
+		rejectsInput("India Brazil","NoOfSupporters NoOfReporters");
+	}
+	
+	@Test
+	public void gameTakesNextInputTwoNumbers(){
+		acceptsInput("India Brazil");
+		acceptsInput("2 1");
+	}
+	
+	@Test
+	public void testGameInputForZeroSupporters(){
+		acceptsInput("India Brazil");
+		acceptsInput("0 1");
+		rejectsInput("Ravi, India", "ReporterName, ChannelName");
+	}
+	
+	@Test
+	public void testGameInputForOneSupporter(){
+		acceptsInput("India Brazil");
+		acceptsInput("1 1");
+		acceptsInput("Ravi, India");
+		rejectsInput("Rahul, Brazil", "ReporterName, ChannelName");
+	}
+
+	private void acceptsInput(String input) {
+		assertThat(footBall.input(input), is(equalTo("")));
+	}
+	
+	
+
+}

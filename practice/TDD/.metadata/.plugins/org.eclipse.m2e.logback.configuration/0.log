@@ -1,0 +1,23 @@
+2015-03-22 16:17:05,868 [main] WARN  o.e.r.i.c.rcp.TypeBindingAnalyzer - Can't handle %s as parent of completion location.
+2015-03-22 16:17:08,598 [main] WARN  o.e.r.i.c.rcp.TypeBindingAnalyzer - Can't handle %s as parent of completion location.
+2015-03-22 17:46:20,797 [main] WARN  o.e.r.i.c.rcp.TypeBindingAnalyzer - Can't handle %s as parent of completion location.
+2015-03-22 18:42:51,967 [main] WARN  o.e.r.i.c.rcp.TypeBindingAnalyzer - Can't handle %s as parent of completion location.
+2015-04-09 16:44:51,892 [Recommenders-Timeout-Manager] ERROR o.e.r.i.rcp.JavaElementSelections - Failed to resolve selection in '=Calculator/src<{ASimpleCalculator.java' at offset 865
+org.eclipse.jdt.core.JavaModelException: Index out of bounds
+	at org.eclipse.jdt.internal.core.Openable.codeSelect(Openable.java:158) ~[org.eclipse.jdt.core_3.10.0.v20140604-1726.jar:na]
+	at org.eclipse.jdt.internal.core.CompilationUnit.codeSelect(CompilationUnit.java:377) ~[org.eclipse.jdt.core_3.10.0.v20140604-1726.jar:na]
+	at org.eclipse.jdt.internal.core.CompilationUnit.codeSelect(CompilationUnit.java:371) ~[org.eclipse.jdt.core_3.10.0.v20140604-1726.jar:na]
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelections.resolveJavaElementFromTypeRootInEditor(JavaElementSelections.java:146) [org.eclipse.recommenders.rcp_2.1.0.v20140610-1852.jar:na]
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelections.resolveJavaElementFromEditor(JavaElementSelections.java:128) [org.eclipse.recommenders.rcp_2.1.0.v20140610-1852.jar:na]
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelections.resolveJavaElementFromEditor(JavaElementSelections.java:111) [org.eclipse.recommenders.rcp_2.1.0.v20140610-1852.jar:na]
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelectionService.handleSelectionInEditor(JavaElementSelectionService.java:108) [org.eclipse.recommenders.rcp_2.1.0.v20140610-1852.jar:na]
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelectionService.access$1(JavaElementSelectionService.java:105) [org.eclipse.recommenders.rcp_2.1.0.v20140610-1852.jar:na]
+	at org.eclipse.recommenders.internal.rcp.JavaElementSelectionService$1.run(JavaElementSelectionService.java:82) [org.eclipse.recommenders.rcp_2.1.0.v20140610-1852.jar:na]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source) [na:1.7.0_71]
+	at java.util.concurrent.FutureTask.run(Unknown Source) [na:1.7.0_71]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(Unknown Source) [na:1.7.0_71]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source) [na:1.7.0_71]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) [na:1.7.0_71]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) [na:1.7.0_71]
+	at java.lang.Thread.run(Unknown Source) [na:1.7.0_71]
+2015-04-09 18:02:37,904 [main] WARN  o.e.r.i.c.rcp.TypeBindingAnalyzer - Can't handle %s as parent of completion location.

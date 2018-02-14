@@ -1,0 +1,2128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0031)http://osherove.com/tdd-kata-2/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" class="wf-matesc-n4-active wf-rokkitt-n7-active wf-rokkitt-n4-active wf-arvo-n4-active wf-ubuntu-n4-active wf-active"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+  
+   <meta name="Robots" content="index,follow">  
+  
+  
+  <!-- osherove -->
+
+  <link rel="shortcut icon" href="http://osherove.com/favicon.ico" type="image/x-icon">
+
+  <link id="primaryStylesheet" rel="stylesheet" type="text/css" href="./TDD Kata 2 - Interactions - Osherove_files/common.css">
+  
+  <link id="slideShowStylesheet" rel="stylesheet" type="text/css" href="./TDD Kata 2 - Interactions - Osherove_files/squarespace-gallery-slideshow.css">
+  
+  
+  
+  <!-- Google Web Fonts -->
+  <script type="text/javascript" id="www-widgetapi-script" src="./TDD Kata 2 - Interactions - Osherove_files/www-widgetapi.js" async=""></script><script src="./TDD Kata 2 - Interactions - Osherove_files/iframe_api"></script><script type="text/javascript" async="" src="./TDD Kata 2 - Interactions - Osherove_files/ga.js"></script><script src="./TDD Kata 2 - Interactions - Osherove_files/webfont.js" type="text/javascript" async=""></script><script type="text/javascript">
+    	WebFontConfig = {"google": {"families": [
+  "Mate SC:400",
+  "Rokkitt:700,400",
+  "Arvo:400",
+  "Ubuntu:400"
+]}};
+  
+   
+    (function() {
+      var wf = document.createElement('script');
+      wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+      wf.type = 'text/javascript';
+      wf.async = 'true';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(wf, s);
+    })();
+  </script><style>img[src="blocker"],img[src="blocker"]{display:none!important}</style><style type="text/css"></style>
+
+  <script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/yahoo-dom-event.js"></script>
+<script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/connection_core-min.js"></script>
+<script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/json-min.js"></script>
+<script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/animation-min.js"></script>
+<script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/selector.js"></script>
+<script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/element.js"></script>
+<script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/global.js"></script>
+<script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/lightbox.js"></script>
+<script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/api.js"></script>
+<script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/base64.js"></script>
+<script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/census.js"></script>
+<script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/yahoo-min.js"></script>
+<script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/event-min.js"></script>
+<script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/event-mouseenter-min.js"></script>
+<script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/element-min.js"></script>
+<script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/social.js"></script>
+<script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/datefmt.js"></script>
+<script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/yui2-yui3-bridge.js"></script>
+<script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/squarespace-gallery-slideshow.js"></script>
+
+
+  <script type="text/javascript">
+  // <![CDATA[
+
+    Squarespace.Constants.SS_AUTHKEY = encodeURIComponent("");
+    Squarespace.Constants.WEBSITE_TITLE =  "Roy Osherove"; 
+    
+     Squarespace.Constants.CURRENT_MODULE_ID = "10548665"; 
+    
+    
+    
+    Squarespace.Constants.ADMINISTRATION_UI =  false; 
+    
+    
+    
+    Squarespace.Constants.CORE_APPLICATION_DOMAIN = "squarespace.com";
+    Squarespace.Constants.CORE_V6_APPLICATION_DOMAIN = "squarespace.com";
+    Squarespace.Constants.V5_FRONTSITE = "http://five.squarespace.com";
+    Squarespace.Constants.WEBSITE_ID = "397930";
+
+    
+
+    
+
+    
+
+  // ]]>
+  </script>
+
+      <title>TDD Kata 2 - Interactions - Osherove</title>
+    <meta property="og:title" content="TDD Kata 2 - Interactions - Osherove"> 
+  
+
+  
+
+  
+
+  <!-- End Heading -->
+
+  <meta name="verify-v1" content="KBGL3wYtj8scve0O3HoEy8I2t//696MMgpo+YbDUgyU=">
+
+
+
+  <script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/cookie-min.js"></script>
+  <script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/eu-cookie-policy.js"></script><link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Mate+SC:400%7CRokkitt:700,400%7CArvo:400%7CUbuntu:400">
+
+<link href="http://cdn.lanyrd.net/badges/embed-v1.min.css" rel="stylesheet"><script src="./TDD Kata 2 - Interactions - Osherove_files/saved_resource"></script><script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/hellobar-21834-43260-43260.js"></script><script type="text/javascript" src="chrome-extension://bfbmjmiodbnnpllbbbfblcplfjjepjdn/js/injected.js"></script><script type="text/javascript" async="" src="./TDD Kata 2 - Interactions - Osherove_files/in.php"></script><style>img[src="blocker"],img[src="blocker"]{display:none!important}</style><style type="text/css">#hellobar-wrapper{height:30px;margin:0;overflow:visible;padding:0;position:relative;width:100%;z-index:2}#hellobar-pusher{height:30px;position:relative;overflow:hidden}#hellobar-wrapper.hellobar-button-default.hellobar-button #hellobar-container a.hellobar-cta-link,#hellobar-wrapper.hellobar-button-default.hellobar-button #hellobar-container a.hellobar-cta-link:link,#hellobar-wrapper.hellobar-button-default.hellobar-button #hellobar-container a.hellobar-cta-link:visited{position:relative;border-radius:4px;-moz-border-radius:4px;-webkit-border-radius:4px;padding:2px 8px 1px 8px;margin:0 0 0 7px;text-decoration:none;cursor:pointer;font-size:0.854em}#hellobar-wrapper.hellobar-button-default.hellobar-button.hellobar-dark-images #hellobar-container a.hellobar-cta-link,#hellobar-wrapper.hellobar-button-default.hellobar-button.hellobar-dark-images #hellobar-container a.hellobar-cta-link:link,#hellobar-wrapper.hellobar-button-default.hellobar-button.hellobar-dark-images #hellobar-container a.hellobar-cta-link:visited{background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzRhNDg0NCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMyZDJjMjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);background:#4a4844; /* Old browsers */background:-moz-linear-gradient(top,#4a4844 0%,#2d2c29 100%); /* FF3.6+ */background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#4a4844),color-stop(100%,#2d2c29)); /* Chrome,Safari4+ */background:-webkit-linear-gradient(top,#4a4844 0%,#2d2c29 100%); /* Chrome10+,Safari5.1+ */background:-o-linear-gradient(top,#4a4844 0%,#2d2c29 100%); /* Opera 11.10+ */background:-ms-linear-gradient(top,#4a4844 0%,#2d2c29 100%); /* IE10+ */background:linear-gradient(top,#4a4844 0%,#2d2c29 100%); /* W3C */box-shadow:1px 1px 3px rgba(0,0,0,0.28);-moz-box-shadow:1px 1px 3px rgba(0,0,0,0.28);-webkit-box-shadow:1px 1px 3px rgba(0,0,0,0.28);color:#fff}#hellobar-wrapper.hellobar-button-default.hellobar-button.hellobar-dark-images #hellobar-container a.hellobar-cta-link:hover{background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzY3NjQ1ZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM0ZjRkNDciIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);background:#67645f; /* Old browsers */background:-moz-linear-gradient(top,#67645f 0%,#4f4d47 100%); /* FF3.6+ */background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#67645f),color-stop(100%,#4f4d47)); /* Chrome,Safari4+ */background:-webkit-linear-gradient(top,#67645f 0%,#4f4d47 100%); /* Chrome10+,Safari5.1+ */background:-o-linear-gradient(top,#67645f 0%,#4f4d47 100%); /* Opera 11.10+ */background:-ms-linear-gradient(top,#67645f 0%,#4f4d47 100%); /* IE10+ */background:linear-gradient(top,#67645f 0%,#4f4d47 100%); /* W3C */border-color:#414141}#hellobar-wrapper.hellobar-dark-images #hellobar-container a.hellobar-cta-link:active{top:1px}#hellobar-wrapper.hellobar-button-default.hellobar-button.hellobar-light-images #hellobar-container a.hellobar-cta-link,#hellobar-wrapper.hellobar-button-default.hellobar-button.hellobar-light-images #hellobar-container a.hellobar-cta-link:link,#hellobar-wrapper.hellobar-button-default.hellobar-button.hellobar-light-images #hellobar-container a.hellobar-cta-link:visited{background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjYmNiY2IiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);background:#ffffff; /* Old browsers */background:-moz-linear-gradient(top,#ffffff 0%,#cbcbcb 100%); /* FF3.6+ */background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#ffffff),color-stop(100%,#cbcbcb)); /* Chrome,Safari4+ */background:-webkit-linear-gradient(top,#ffffff 0%,#cbcbcb 100%); /* Chrome10+,Safari5.1+ */background:-o-linear-gradient(top,#ffffff 0%,#cbcbcb 100%); /* Opera 11.10+ */background:-ms-linear-gradient(top,#ffffff 0%,#cbcbcb 100%); /* IE10+ */background:linear-gradient(top,#ffffff 0%,#cbcbcb 100%); /* W3C */box-shadow:1px 1px 3px rgba(0,0,0,0.28);-moz-box-shadow:1px 1px 3px rgba(0,0,0,0.28);-webkit-box-shadow:1px 1px 3px rgba(0,0,0,0.28);color:#333}#hellobar-wrapper.hellobar-button-default.hellobar-button.hellobar-light-images #hellobar-container a.hellobar-cta-link:hover{background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkYmRiZGIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);background:#ffffff; /* Old browsers */background:-moz-linear-gradient(top,#ffffff 0%,#dbdbdb 100%); /* FF3.6+ */background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#ffffff),color-stop(100%,#dbdbdb)); /* Chrome,Safari4+ */background:-webkit-linear-gradient(top,#ffffff 0%,#dbdbdb 100%); /* Chrome10+,Safari5.1+ */background:-o-linear-gradient(top,#ffffff 0%,#dbdbdb 100%); /* Opera 11.10+ */background:-ms-linear-gradient(top,#ffffff 0%,#dbdbdb 100%); /* IE10+ */background:linear-gradient(top,#ffffff 0%,#dbdbdb 100%); /* W3C */}#hellobar-wrapper.hellobar-button-default.hellobar-button.hellobar-light-images #hellobar-container a.hellobar-cta-link:active{top:1px}#hellobar-container{font-size:14px;font-weight:normal;height:30px;line-height:30px;margin:0;overflow:visible;padding:0;position:relative;text-align:center;width:100%;z-index:1000;border-bottom-width:3px;border-bottom-style:solid;border-bottom-color:#fff}#hellobar-container.texture{background-image:url(//hb-assets.s3.amazonaws.com/system/modules/hellobar/lib/textures.png);background-repeat:repeat-x}#hellobar-container.texture.noise{background-position:0 0}#hellobar-container.texture.hard-shine{background-position:0 -30px}#hellobar-container.texture.light-gradient{background-position:0 -60px}#hellobar-container.texture.dark-gradient{background-position:0 -90px}#hellobar-container.texture.carbon{background-position:0 -120px}#hellobar-container.texture.paper{background-position:0 -150px}#hellobar-container.texture.diagonal{background-position:0 -180px}#hellobar-container.texture.linen{background-position:0 -210px}#hellobar-container.texture.stitch{background-position:0 -240px}#hellobar-container.texture.diamond{background-position:0 -270px}#hellobar-container a,#hellobar-container a:link,#hellobar-container a:visited,#hellobar-container a:hover{font-size:14px;padding:0;border:none;text-decoration:underline}#hellobar-container a:hover{text-decoration:none}#hellobar-shadow{position:absolute;bottom:-8px;left:0;width:100%;height:8px;line-height:8px;overflow:hidden;background:url(//hb-assets.s3.amazonaws.com/system/modules/hellobar/lib/sprite-8bit.png)}a#hellobar-logo,a#hellobar-logo:link,a#hellobar-logo:visited{background:url(//hb-assets.s3.amazonaws.com/system/modules/hellobar/lib/sprite-8bit.png) 0 -172px;height:0;left:20px;overflow:hidden;padding:22px 0 0;position:absolute;top:3px;width:44px}.hellobar-light-images a#hellobar-logo,.hellobar-light-images a#hellobar-logo:link,.hellobar-light-images a#hellobar-logo:visited{background-position:0 -202px}#hellobar-wrapper.hellobar-left a#hellobar-logo,#hellobar-wrapper.hellobar-left a#hellobar-logo:link,#hellobar-wrapper.hellobar-left a#hellobar-logo:visited{left:auto;right:20px}a#hellobar-close,a#hellobar-close:link,a#hellobar-close:visited{background-image:url(//hb-assets.s3.amazonaws.com/system/modules/hellobar/lib/sprite-8bit.png);background-position:0 58px;display:block;height:0;overflow:hidden;padding:19px 0 0 0;position:absolute;right:20px;top:6px;width:18px;z-index:10;border:none}.hellobar-light-images a#hellobar-close,.hellobar-light-images a#hellobar-close:link,.hellobar-light-images a#hellobar-close:visited{background-position:0 19px}#hellobar-wrapper.hellobar-left a#hellobar-close,#hellobar-wrapper.hellobar-left a#hellobar-close:link,#hellobar-wrapper.hellobar-left a#hellobar-close:visited{right:auto;left:20px}a#hellobar-close:hover{background-position:0 77px;padding:20px 0 0;border:none}.hellobar-light-images a#hellobar-close:hover{background-position:0 38px}a#hellobar-open,a#hellobar-open:link,a#hellobar-open:visited{background-image:url(//hb-assets.s3.amazonaws.com/system/modules/hellobar/lib/sprite-8bit.png);background-repeat:no-repeat;background-position:0 -8px;display:block;height:0;overflow:hidden;padding:80px 0 0;position:absolute;right:10px;top:-96px;width:35px;z-index:100;box-shadow:0 0 5px rgba(0,0,0,0.35);-moz-box-shadow:0 0 5px rgba(0,0,0,0.35);-webkit-box-shadow:0 0 5px rgba(0,0,0,0.35);-ms-filter:"progid:DXImageTransform.Microsoft.Shadow(Color=#e5e5e5,direction=120,strength=3)";filter:progid:DXImageTransform.Microsoft.Shadow(Color=#e5e5e5,direction=120,strength=3);-webkit-border-bottom-right-radius:5px;-webkit-border-bottom-left-radius:5px;-moz-border-radius-bottomright:5px;-moz-border-radius-bottomleft:5px;border-bottom-right-radius:5px;border-bottom-left-radius:5px;border-width:3px;border-style:solid}.hellobar-light-images a#hellobar-open,.hellobar-light-images a#hellobar-open:link,.hellobar-light-images a#hellobar-open:visited{background-position:0 -88px}#hellobar-wrapper.hellobar-left a#hellobar-open,#hellobar-wrapper.hellobar-left a#hellobar-open:link,#hellobar-wrapper.hellobar-left a#hellobar-open:visited{right:auto;left:10px}a#hellobar-open:hover{padding:80px 0 0;border-width:3px;border-style:solid}#hellobar-container{font-family:Arial Black,Gadget,sans-serif;background:#eb583c;color:#fff;border-bottom-color:#fff;border-bottom:none}#hellobar-shadow{background-position:0 -3px}#hellobar-container a,#hellobar-container a:link,#hellobar-container a:visited{color:#80ccff}a#hellobar-open,a#hellobar-open:link,a#hellobar-open:visited{background-color:#eb583c;border-color: #fff}a#hellobar-open:hover{background-color:rgb(255,126,98)}</style><link href="http://cdn.lanyrd.net/badges/embed-v1.min.css" rel="stylesheet"><script src="./TDD Kata 2 - Interactions - Osherove_files/saved_resource"></script><script type="text/javascript" async="" src="./TDD Kata 2 - Interactions - Osherove_files/in(1).php"></script><script type="text/javascript" async="" src="./TDD Kata 2 - Interactions - Osherove_files/in(2).php"></script></head><style type="text/css">embed[type*="application/x-shockwave-flash"],embed[src*=".swf"],object[type*="application/x-shockwave-flash"],object[codetype*="application/x-shockwave-flash"],object[src*=".swf"],object[codebase*="swflash.cab"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"],object[classid*="d27cdb6e-ae6d-11cf-96b8-444553540000"],object[classid*="D27CDB6E-AE6D-11cf-96B8-444553540000"]{	display: none !important;}</style>
+
+<body id="modulePage10548665">
+
+  <div style="display: block; position: fixed; width: 100%; top: 0px; left: 0px; z-index: 5000;" id="hellobar-wrapper" class=" hellobar-right hellobar-dark-images hellobar-button-default hellobar-button"><div id="hellobar-container"><span>The Art of Unit Testing and TDD Master Class Videos with Roy Osherove</span> <a class="hellobar-cta-link" href="http://courses.osherove.com/" target="_blank">Download / Watch Online  - $25</a><a href="http://osherove.com/tdd-kata-2/#close" id="hellobar-close">Close</a><div id="hellobar-shadow"></div></div><a href="http://osherove.com/tdd-kata-2/#close" id="hellobar-open" style="top: -96px;">Open</a></div><script type="text/javascript">
+  YAHOO.util.Event.onDOMReady(function() {
+    if (document.location.href.indexOf("SSLogoutOk=true") != -1) {
+      new Squarespace.FixedPositionTip("Logout Successful", "You have been successfully logged out.", { xMargin: 15, yMargin: 15, icon: "/universal/images/helptip-info.png", orientation: "upper-right", viewportFixed: true, autoHide: 1800 }).show();
+    }
+  });
+</script>
+
+    
+
+  <script type="text/javascript">
+    YAHOO.util.Event.onDOMReady(function() { new Squarespace.Census.hit(); } );
+  </script>
+
+  <script type="text/javascript">
+    YAHOO.util.Event.addListener(document, "keyup", function (e) { if (!e) { e = event; } if (e.keyCode == 27) { document.location.href = "/login/?returnUrl=%2Ftdd-kata-2%2F"; } });
+  </script>
+
+
+
+
+  
+
+  <div id="canvasWrapper"><div id="canvas">
+  
+      
+    <script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/jquery.min.js">
+
+
+
+</script>
+  
+
+  <div id="pageHeaderWrapper"><div id="pageHeader">
+
+      <div id="navigationTop"><div id="navigationTop-sectionContent2052181" class="horizontalNavigationBar"><ul class="content-navigation">
+    
+  <li class="module   " id="navigationTop-moduleContentWrapper8455365">
+
+    <div id="navigationTop-moduleContent8455365">
+
+              <a id="navigationTop-moduleLink8455365" class=" " href="http://osherove.com/blog/"><span>Blog</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationTop-moduleContentWrapper4604726">
+
+    <div id="navigationTop-moduleContent4604726">
+
+              <a id="navigationTop-moduleLink4604726" class=" " href="http://osherove.com/videos/"><span>Videos</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   folder-closed" id="navigationTop-moduleContentWrapper4538234">
+
+    <div id="navigationTop-moduleContent4538234">
+
+              <a id="navigationTop-moduleLink4538234" class=" folder-link" href="javascript:noop();"><span>Training &amp; Speaking</span></a>
+      
+
+            
+        <div class="folder-wrapper">
+          <ul class="folder" id="navigationTop-folderContent4538234">
+            
+  <li class="module   " id="navigationTop-moduleContentWrapper19302398">
+
+    <div id="navigationTop-moduleContent19302398">
+
+              <a id="navigationTop-moduleLink19302398" class=" " href="http://osherove.com/trainingoptions/"><span>Training</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationTop-moduleContentWrapper5525381">
+
+    <div id="navigationTop-moduleContent5525381">
+
+              <a id="navigationTop-moduleLink5525381" class=" " href="http://osherove.com/online-training/"><span>Online Training</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationTop-moduleContentWrapper4694346">
+
+    <div id="navigationTop-moduleContent4694346">
+
+              <a id="navigationTop-moduleLink4694346" class=" " href="http://osherove.com/publicspeaking/"><span>Public Speaking</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationTop-moduleContentWrapper4822667">
+
+    <div id="navigationTop-moduleContent4822667">
+
+              <a id="navigationTop-moduleLink4822667" class=" " href="http://osherove.com/testimonials/"><span>Testimonials</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationTop-moduleContentWrapper4538247">
+
+    <div id="navigationTop-moduleContent4538247">
+
+              <a id="navigationTop-moduleLink4538247" class=" " href="http://osherove.com/tdd-training/"><span>TDD Training</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationTop-moduleContentWrapper19180521">
+
+    <div id="navigationTop-moduleContent19180521">
+
+              <a id="navigationTop-moduleLink19180521" class=" " href="http://osherove.com/train-the-trainer/"><span>Train The Trainer</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+          </ul>
+        </div>
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationTop-moduleContentWrapper4538955">
+
+    <div id="navigationTop-moduleContent4538955">
+
+              <a id="navigationTop-moduleLink4538955" class=" " href="http://osherove.com/"><span>Home</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   folder-closed" id="navigationTop-moduleContentWrapper4691621">
+
+    <div id="navigationTop-moduleContent4691621">
+
+              <a id="navigationTop-moduleLink4691621" class=" folder-link" href="javascript:noop();"><span>Kata</span></a>
+      
+
+            
+        <div class="folder-wrapper">
+          <ul class="folder" id="navigationTop-folderContent4691621">
+            
+  <li class="module   " id="navigationTop-moduleContentWrapper4875098">
+
+    <div id="navigationTop-moduleContent4875098">
+
+              <a id="navigationTop-moduleLink4875098" class=" " href="http://osherove.com/tdd-kata-1/"><span>TDD Kata 1</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module active-module  " id="navigationTop-moduleContentWrapper10548665">
+
+    <div id="navigationTop-moduleContent10548665">
+
+              <a id="navigationTop-moduleLink10548665" class=" " href="./TDD Kata 2 - Interactions - Osherove_files/TDD Kata 2 - Interactions - Osherove.html"><span>TDD Kata 2</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+          </ul>
+        </div>
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   folder-closed" id="navigationTop-moduleContentWrapper10861959">
+
+    <div id="navigationTop-moduleContent10861959">
+
+              <a id="navigationTop-moduleLink10861959" class=" folder-link" href="javascript:noop();"><span>Resources</span></a>
+      
+
+            
+        <div class="folder-wrapper">
+          <ul class="folder" id="navigationTop-folderContent10861959">
+            
+  <li class="module   " id="navigationTop-moduleContentWrapper5084727">
+
+    <div id="navigationTop-moduleContent5084727">
+
+              <a id="navigationTop-moduleLink5084727" class=" " href="http://osherove.com/books-i-like/"><span>Books I like</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationTop-moduleContentWrapper4537268">
+
+    <div id="navigationTop-moduleContent4537268">
+
+              <a id="navigationTop-moduleLink4537268" class=" " href="http://osherove.com/tools/"><span>Tools</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+          </ul>
+        </div>
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   folder-closed" id="navigationTop-moduleContentWrapper10861939">
+
+    <div id="navigationTop-moduleContent10861939">
+
+              <a id="navigationTop-moduleLink10861939" class=" folder-link" href="javascript:noop();"><span>Contact</span></a>
+      
+
+            
+        <div class="folder-wrapper">
+          <ul class="folder" id="navigationTop-folderContent10861939">
+            
+  <li class="module   " id="navigationTop-moduleContentWrapper4536312">
+
+    <div id="navigationTop-moduleContent4536312">
+
+              <a id="navigationTop-moduleLink4536312" class=" " href="http://osherove.com/about/"><span>About</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationTop-moduleContentWrapper4759706">
+
+    <div id="navigationTop-moduleContent4759706">
+
+              <a id="navigationTop-moduleLink4759706" class=" " href="http://osherove.com/request-more-info/"><span>Contact &amp; info</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+          </ul>
+        </div>
+
+      
+
+    </div>
+
+  </li>
+
+
+  </ul><br class="clearer"></div></div>
+
+    
+        
+      
+  
+      <div id="bannerAreaWrapper"><div id="bannerArea">
+
+              <div id="siteTitleWrapper">
+          <h1 id="siteTitle"><a href="http://osherove.com/">Roy Osherove</a></h1>
+           <div id="siteSubtitle" class="h1subtitle">Team Leadership, Agile &amp; Lean Development, Ruby .NET &amp; Java- Speaking, Consulting, Training and Tools</div> 
+        </div>
+      
+      
+      </div></div>
+    
+    
+    
+
+      <div id="navigationBottom"><div id="navigationBottom-sectionContent2052181" class="horizontalNavigationBar"><ul class="content-navigation">
+    
+  <li class="module   " id="navigationBottom-moduleContentWrapper8455365">
+
+    <div id="navigationBottom-moduleContent8455365">
+
+              <a id="navigationBottom-moduleLink8455365" class=" " href="http://osherove.com/blog/"><span>Blog</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationBottom-moduleContentWrapper4604726">
+
+    <div id="navigationBottom-moduleContent4604726">
+
+              <a id="navigationBottom-moduleLink4604726" class=" " href="http://osherove.com/videos/"><span>Videos</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   folder-closed" id="navigationBottom-moduleContentWrapper4538234">
+
+    <div id="navigationBottom-moduleContent4538234">
+
+              <a id="navigationBottom-moduleLink4538234" class=" folder-link" href="javascript:noop();"><span>Training &amp; Speaking</span></a>
+      
+
+            
+        <div class="folder-wrapper">
+          <ul class="folder" id="navigationBottom-folderContent4538234">
+            
+  <li class="module   " id="navigationBottom-moduleContentWrapper19302398">
+
+    <div id="navigationBottom-moduleContent19302398">
+
+              <a id="navigationBottom-moduleLink19302398" class=" " href="http://osherove.com/trainingoptions/"><span>Training</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationBottom-moduleContentWrapper5525381">
+
+    <div id="navigationBottom-moduleContent5525381">
+
+              <a id="navigationBottom-moduleLink5525381" class=" " href="http://osherove.com/online-training/"><span>Online Training</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationBottom-moduleContentWrapper4694346">
+
+    <div id="navigationBottom-moduleContent4694346">
+
+              <a id="navigationBottom-moduleLink4694346" class=" " href="http://osherove.com/publicspeaking/"><span>Public Speaking</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationBottom-moduleContentWrapper4822667">
+
+    <div id="navigationBottom-moduleContent4822667">
+
+              <a id="navigationBottom-moduleLink4822667" class=" " href="http://osherove.com/testimonials/"><span>Testimonials</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationBottom-moduleContentWrapper4538247">
+
+    <div id="navigationBottom-moduleContent4538247">
+
+              <a id="navigationBottom-moduleLink4538247" class=" " href="http://osherove.com/tdd-training/"><span>TDD Training</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationBottom-moduleContentWrapper19180521">
+
+    <div id="navigationBottom-moduleContent19180521">
+
+              <a id="navigationBottom-moduleLink19180521" class=" " href="http://osherove.com/train-the-trainer/"><span>Train The Trainer</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+          </ul>
+        </div>
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationBottom-moduleContentWrapper4538955">
+
+    <div id="navigationBottom-moduleContent4538955">
+
+              <a id="navigationBottom-moduleLink4538955" class=" " href="http://osherove.com/"><span>Home</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   folder-closed" id="navigationBottom-moduleContentWrapper4691621">
+
+    <div id="navigationBottom-moduleContent4691621">
+
+              <a id="navigationBottom-moduleLink4691621" class=" folder-link" href="javascript:noop();"><span>Kata</span></a>
+      
+
+            
+        <div class="folder-wrapper">
+          <ul class="folder" id="navigationBottom-folderContent4691621">
+            
+  <li class="module   " id="navigationBottom-moduleContentWrapper4875098">
+
+    <div id="navigationBottom-moduleContent4875098">
+
+              <a id="navigationBottom-moduleLink4875098" class=" " href="http://osherove.com/tdd-kata-1/"><span>TDD Kata 1</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module active-module  " id="navigationBottom-moduleContentWrapper10548665">
+
+    <div id="navigationBottom-moduleContent10548665">
+
+              <a id="navigationBottom-moduleLink10548665" class=" " href="./TDD Kata 2 - Interactions - Osherove_files/TDD Kata 2 - Interactions - Osherove.html"><span>TDD Kata 2</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+          </ul>
+        </div>
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   folder-closed" id="navigationBottom-moduleContentWrapper10861959">
+
+    <div id="navigationBottom-moduleContent10861959">
+
+              <a id="navigationBottom-moduleLink10861959" class=" folder-link" href="javascript:noop();"><span>Resources</span></a>
+      
+
+            
+        <div class="folder-wrapper">
+          <ul class="folder" id="navigationBottom-folderContent10861959">
+            
+  <li class="module   " id="navigationBottom-moduleContentWrapper5084727">
+
+    <div id="navigationBottom-moduleContent5084727">
+
+              <a id="navigationBottom-moduleLink5084727" class=" " href="http://osherove.com/books-i-like/"><span>Books I like</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationBottom-moduleContentWrapper4537268">
+
+    <div id="navigationBottom-moduleContent4537268">
+
+              <a id="navigationBottom-moduleLink4537268" class=" " href="http://osherove.com/tools/"><span>Tools</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+          </ul>
+        </div>
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   folder-closed" id="navigationBottom-moduleContentWrapper10861939">
+
+    <div id="navigationBottom-moduleContent10861939">
+
+              <a id="navigationBottom-moduleLink10861939" class=" folder-link" href="javascript:noop();"><span>Contact</span></a>
+      
+
+            
+        <div class="folder-wrapper">
+          <ul class="folder" id="navigationBottom-folderContent10861939">
+            
+  <li class="module   " id="navigationBottom-moduleContentWrapper4536312">
+
+    <div id="navigationBottom-moduleContent4536312">
+
+              <a id="navigationBottom-moduleLink4536312" class=" " href="http://osherove.com/about/"><span>About</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationBottom-moduleContentWrapper4759706">
+
+    <div id="navigationBottom-moduleContent4759706">
+
+              <a id="navigationBottom-moduleLink4759706" class=" " href="http://osherove.com/request-more-info/"><span>Contact &amp; info</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+          </ul>
+        </div>
+
+      
+
+    </div>
+
+  </li>
+
+
+  </ul><br class="clearer"></div></div>
+
+
+  </div></div>
+  
+      
+    <script src="./TDD Kata 2 - Interactions - Osherove_files/jwplayer.js"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-25605884-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+console.log('detecting videos..');
+ $('.video').each(function(index,element){
+        console.log('detecting ', element, filename);
+        $(element).attr('id',$(element).text());
+
+       var filename = 'http://video.osherove.com/' + $(element).text();
+       loadVideo(element,filename);
+ });
+
+console.log('done detecting videos..');
+
+});
+
+function loadVideo(element,url){
+
+ jwplayer(element).setup({
+    'flashplayer': '/storage/player/player.swf',
+    'file': url,
+    'backcolor': '000033',
+    'frontcolor': 'CCCCFF',
+    'lightcolor': '99FF99',
+    'screencolor': 'FFFFFF',
+    'controlbar': 'bottom',
+    'width': '470',
+    'height': '320',
+ 'plugins': {
+       'gapro-2': {}
+    }
+  });
+}
+</script>
+
+  
+
+      
+    <script type="text/javascript"> 
+//disables Esc key to login page
+YAHOO.util.Event.removeListener(document, "keyup");
+</script>
+  
+
+  
+  <div id="pageBodyWrapper"><div id="pageBody">
+  
+  <div id="sidebar1Wrapper" class="verticalNavigationBarWrapper"><div class="iw-vnb1"><div class="iw-vnb2"><div class="iw-vnb3"><div class="iw-vnb4"><div id="sidebar1" class="verticalNavigationBar">
+
+  
+
+    <div id="sectionContent2052181" class="sectionWrapper promotedContainer "><div class="iw-s1"><div class="iw-s2"><div class="iw-s3"><div class="iw-s4"><div class="section">
+
+       <div class="caption">Top</div> 
+
+      
+        
+          <ul class="content-navigation">
+  <li class="module   " id="moduleContentWrapper8455365">
+
+    <div id="moduleContent8455365">
+
+              <a id="moduleLink8455365" class=" " href="http://osherove.com/blog/"><span>Blog</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="moduleContentWrapper4604726">
+
+    <div id="moduleContent4604726">
+
+              <a id="moduleLink4604726" class=" " href="http://osherove.com/videos/"><span>Videos</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   folder-closed" id="moduleContentWrapper4538234">
+
+    <div id="moduleContent4538234">
+
+              <a id="moduleLink4538234" class=" folder-link" href="javascript:noop();"><span>Training &amp; Speaking</span></a>
+      
+
+            
+        <div class="folder-wrapper">
+          <ul class="folder" id="folderContent4538234">
+            
+  <li class="module   " id="moduleContentWrapper19302398">
+
+    <div id="moduleContent19302398">
+
+              <a id="moduleLink19302398" class=" " href="http://osherove.com/trainingoptions/"><span>Training</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="moduleContentWrapper5525381">
+
+    <div id="moduleContent5525381">
+
+              <a id="moduleLink5525381" class=" " href="http://osherove.com/online-training/"><span>Online Training</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="moduleContentWrapper4694346">
+
+    <div id="moduleContent4694346">
+
+              <a id="moduleLink4694346" class=" " href="http://osherove.com/publicspeaking/"><span>Public Speaking</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="moduleContentWrapper4822667">
+
+    <div id="moduleContent4822667">
+
+              <a id="moduleLink4822667" class=" " href="http://osherove.com/testimonials/"><span>Testimonials</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="moduleContentWrapper4538247">
+
+    <div id="moduleContent4538247">
+
+              <a id="moduleLink4538247" class=" " href="http://osherove.com/tdd-training/"><span>TDD Training</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="moduleContentWrapper19180521">
+
+    <div id="moduleContent19180521">
+
+              <a id="moduleLink19180521" class=" " href="http://osherove.com/train-the-trainer/"><span>Train The Trainer</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+          </ul>
+        </div>
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="moduleContentWrapper4538955">
+
+    <div id="moduleContent4538955">
+
+              <a id="moduleLink4538955" class=" " href="http://osherove.com/"><span>Home</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   folder-open" id="moduleContentWrapper4691621">
+
+    <div id="moduleContent4691621">
+
+              <a id="moduleLink4691621" class=" folder-link" href="javascript:noop();"><span>Kata</span></a>
+      
+
+            
+        <div class="folder-wrapper">
+          <ul class="folder" id="folderContent4691621">
+            
+  <li class="module   " id="moduleContentWrapper4875098">
+
+    <div id="moduleContent4875098">
+
+              <a id="moduleLink4875098" class=" " href="http://osherove.com/tdd-kata-1/"><span>TDD Kata 1</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module active-module  " id="moduleContentWrapper10548665">
+
+    <div id="moduleContent10548665">
+
+              <a id="moduleLink10548665" class=" " href="./TDD Kata 2 - Interactions - Osherove_files/TDD Kata 2 - Interactions - Osherove.html"><span>TDD Kata 2</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+          </ul>
+        </div>
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   folder-closed" id="moduleContentWrapper10861959">
+
+    <div id="moduleContent10861959">
+
+              <a id="moduleLink10861959" class=" folder-link" href="javascript:noop();"><span>Resources</span></a>
+      
+
+            
+        <div class="folder-wrapper">
+          <ul class="folder" id="folderContent10861959">
+            
+  <li class="module   " id="moduleContentWrapper5084727">
+
+    <div id="moduleContent5084727">
+
+              <a id="moduleLink5084727" class=" " href="http://osherove.com/books-i-like/"><span>Books I like</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="moduleContentWrapper4537268">
+
+    <div id="moduleContent4537268">
+
+              <a id="moduleLink4537268" class=" " href="http://osherove.com/tools/"><span>Tools</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+          </ul>
+        </div>
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   folder-closed" id="moduleContentWrapper10861939">
+
+    <div id="moduleContent10861939">
+
+              <a id="moduleLink10861939" class=" folder-link" href="javascript:noop();"><span>Contact</span></a>
+      
+
+            
+        <div class="folder-wrapper">
+          <ul class="folder" id="folderContent10861939">
+            
+  <li class="module   " id="moduleContentWrapper4536312">
+
+    <div id="moduleContent4536312">
+
+              <a id="moduleLink4536312" class=" " href="http://osherove.com/about/"><span>About</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="moduleContentWrapper4759706">
+
+    <div id="moduleContent4759706">
+
+              <a id="moduleLink4759706" class=" " href="http://osherove.com/request-more-info/"><span>Contact &amp; info</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+          </ul>
+        </div>
+
+      
+
+    </div>
+
+  </li>
+
+</ul>
+
+        
+
+      
+  
+    </div></div></div></div></div></div>
+
+  
+
+    <div id="sectionContent4169361" class="sectionWrapper  "><div class="iw-s1"><div class="iw-s2"><div class="iw-s3"><div class="iw-s4"><div class="section">
+
+       <div class="caption">Search The Blog</div> 
+
+      
+        
+          <div class="content-passthrough"><div id="moduleContentWrapper10002929" class="widget-wrapper  widget-type-search"><div id="moduleContent10002929">
+
+
+<!-- <form method="get" action="/display/Search">
+	<div class="search-form-pt-wrapper">
+	  <div class="search-form-pt">
+	    <span class="queryFieldWrapper"><input type="text" class="text queryField" name="searchQuery" value=""/></span>
+	    <span class="queryButtonWrapper"><input type="submit" class="button queryButton" value="&raquo;"/></span>
+	    <input type="hidden" name="moduleId" value="10002929"/>
+	    <br class="clearer"/>
+	  </div>
+	</div>
+</form> -->
+
+<form method="get" action="http://osherove.com/display/Search">
+	<input type="hidden" name="moduleId" value="10002929">
+	<table class="search-form-pt-wrapper search-form-table" border="0" cellpadding="0" cellspacing="0">
+		<tbody><tr class="search-form-pt search-form-row">
+			<td class="queryFieldCell search-form-cell">
+				<span class="queryFieldWrapper">
+					<input type="text" class="text queryField" name="searchQuery" value="">
+				</span>
+			</td>
+			<td class="queryButtonCell search-form-cell">
+				<span class="queryButtonWrapper">
+					<input type="submit" class="button queryButton" value="→">
+				</span>
+			</td>
+		</tr>
+	</tbody></table> 
+</form></div></div></div>
+
+        
+
+      
+  
+    </div></div></div></div></div></div>
+
+  
+
+    <div id="sectionContent3627975" class="sectionWrapper  "><div class="iw-s1"><div class="iw-s2"><div class="iw-s3"><div class="iw-s4"><div class="section">
+
+       <div class="caption">Latest Posts</div> 
+
+      
+        
+          <div class="content-passthrough"><div id="moduleContentWrapper19230925" class="widget-wrapper  widget-type-rss-consume"><div id="moduleContent19230925">
+
+<style type="text/css">
+    <!--
+      #rss-wrapper-19230925 {
+        display: block;
+        visibility: hidden;
+      }
+      
+    -->
+</style>
+
+<div id="rss-loading-wrapper-19230925" style="display:none; background:#353535; -moz-border-radius:8px; -webkit-border-radius:8px; height:300px; ">
+  <div id="rss-loading-img-19230925" style="height:100%; background:url(/universal/images/loading.png) no-repeat center center transparent;"></div>
+</div>
+
+<div id="rss-error-wrapper-19230925" style="display: none; border-radius: 8px; height: 300px; opacity: 0; background: rgb(53, 53, 53);">
+  <a id="rss-error-img-19230925" style="display:block; height:100%; background:url(/universal/images/loading-refresh.png) no-repeat center center transparent;" href="javascript:void(0);" onclick="javascript: rssWidget19230925.show();">&nbsp;</a>
+</div>
+
+
+<div id="rss-wrapper-19230925" class="rss-wrapper" style="display: block; opacity: 1; visibility: visible;">
+
+  <div class="rss-content">
+  
+    <div id="rss-item-19230925-1" class="rss-item highlight">
+            <div class="rss-title"><a id="rss-title-19230925-1" href="http://feedproxy.google.com/~r/Iserializable/~3/DzwKSQZmTj4/two-new-online-courses-effective-total-command-and-finalbuil.html">Two new Online Courses: Effective Total Command and FinalBuilder Training Videos</a></div>
+      
+      
+      <div class="rss-description">
+        
+        
+      </div>
+      
+      
+    </div>
+            
+    
+        <div id="rss-item-19230925-2" class="rss-item">
+                <div class="rss-title"><a id="rss-title-19230925-2" href="http://feedproxy.google.com/~r/Iserializable/~3/Xl3hKp8J6BA/whats-new-and-changed-in-the-art-of-unit-testing-2nd-edition.html">What's new and Changed in the Art of Unit Testing 2nd Edition</a></div>
+          
+          
+          <div class="rss-description">
+            
+            
+          </div>
+          
+          
+        </div>
+        
+        <div id="rss-item-19230925-3" class="rss-item">
+                <div class="rss-title"><a id="rss-title-19230925-3" href="http://feedproxy.google.com/~r/Iserializable/~3/W2F-sNeDDkw/why-the-hell-did-you-move-to-new-jersey-roy.html">Why The Hell did you move to New Jersey, Roy?</a></div>
+          
+          
+          <div class="rss-description">
+            
+            
+          </div>
+          
+          
+        </div>
+        
+        <div id="rss-item-19230925-4" class="rss-item">
+                <div class="rss-title"><a id="rss-title-19230925-4" href="http://feedproxy.google.com/~r/Iserializable/~3/DT0vmjyJsVc/new-online-course-beautiful-builds-and-continuous-delivery-p.html">New Online Course: Beautiful Builds and Continuous Delivery Patterns</a></div>
+          
+          
+          <div class="rss-description">
+            
+            
+          </div>
+          
+          
+        </div>
+        
+        <div id="rss-item-19230925-5" class="rss-item">
+                <div class="rss-title"><a id="rss-title-19230925-5" href="http://feedproxy.google.com/~r/Iserializable/~3/Gq2ft3JdDZI/should-you-write-unit-tests-or-integration-tests.html">Should you write unit tests or integration tests?</a></div>
+          
+          
+          <div class="rss-description">
+            
+            
+          </div>
+          
+          
+        </div>
+        
+        <div id="rss-item-19230925-6" class="rss-item">
+                <div class="rss-title"><a id="rss-title-19230925-6" href="http://feedproxy.google.com/~r/Iserializable/~3/gmAYTuFl2PI/why-i-stopped-selling-courses-on-udemy.html">Why I stopped selling courses on udemy</a></div>
+          
+          
+          <div class="rss-description">
+            
+            
+          </div>
+          
+          
+        </div>
+        
+        <div id="rss-item-19230925-7" class="rss-item">
+                <div class="rss-title"><a id="rss-title-19230925-7" href="http://feedproxy.google.com/~r/Iserializable/~3/2LaKG0WlXrY/photo-and-video-backup-strategy-why-i-am-not-likely-to-ever.html">Photo and Video Backup Strategy: Why I am not likely to ever lose my family photos and videos from the last 10 years in the next 10 years.</a></div>
+          
+          
+          <div class="rss-description">
+            
+            
+          </div>
+          
+          
+        </div>
+        
+        <div id="rss-item-19230925-8" class="rss-item">
+                <div class="rss-title"><a id="rss-title-19230925-8" href="http://feedproxy.google.com/~r/Iserializable/~3/4B8bwVn9Lq4/fifteen-things-i-look-for-in-an-isolation-framework.html">Fifteen things I look for in an Isolation framework</a></div>
+          
+          
+          <div class="rss-description">
+            
+            
+          </div>
+          
+          
+        </div>
+        
+        <div id="rss-item-19230925-9" class="rss-item">
+                <div class="rss-title"><a id="rss-title-19230925-9" href="http://feedproxy.google.com/~r/Iserializable/~3/ACjkaMJ8IAw/looking-for-a-new-adventure-and-challenging-work-in-2014.html">Looking for a new adventure and challenging work in 2014</a></div>
+          
+          
+          <div class="rss-description">
+            
+            
+          </div>
+          
+          
+        </div>
+        
+        <div id="rss-item-19230925-10" class="rss-item">
+                <div class="rss-title"><a id="rss-title-19230925-10" href="http://feedproxy.google.com/~r/Iserializable/~3/GJVl-eNx4ao/11000.html">$11,000</a></div>
+          
+          
+          <div class="rss-description">
+            
+            
+          </div>
+          
+          
+        </div>
+        
+        <div id="rss-item-19230925-11" class="rss-item" style="display: none;">
+                <div class="rss-title"><a id="rss-title-19230925-11" href=""></a></div>
+          
+          
+          <div class="rss-description">
+            
+            
+          </div>
+          
+          
+        </div>
+        
+        <div id="rss-item-19230925-12" class="rss-item" style="display: none;">
+                <div class="rss-title"><a id="rss-title-19230925-12" href=""></a></div>
+          
+          
+          <div class="rss-description">
+            
+            
+          </div>
+          
+          
+        </div>
+        
+        <div id="rss-item-19230925-13" class="rss-item" style="display: none;">
+                <div class="rss-title"><a id="rss-title-19230925-13" href=""></a></div>
+          
+          
+          <div class="rss-description">
+            
+            
+          </div>
+          
+          
+        </div>
+        
+        <div id="rss-item-19230925-14" class="rss-item" style="display: none;">
+                <div class="rss-title"><a id="rss-title-19230925-14" href=""></a></div>
+          
+          
+          <div class="rss-description">
+            
+            
+          </div>
+          
+          
+        </div>
+                      
+
+  </div>
+  
+</div>
+
+<script type="text/javascript">
+<!--
+
+  var rssWidget19230925;
+  
+  E.onDOMReady( function() {
+
+    rssWidget19230925 = new Squarespace.Social.RssWidget(19230925, { pageSize : 14, readMoreText : 'Read More →', sourceText : 'via' });
+    rssWidget19230925.show();      
+    
+  });
+  
+  
+//-->
+</script></div></div></div>
+
+        
+
+      
+  
+    </div></div></div></div></div></div>
+
+  
+
+    <div id="sectionContent2052182" class="sectionWrapper  "><div class="iw-s1"><div class="iw-s2"><div class="iw-s3"><div class="iw-s4"><div class="section">
+
+       <div class="caption">My "Projects"</div> 
+
+      
+        
+          <ul class="content-navigation">
+  <li class="module   " id="moduleContentWrapper19235032">
+
+    <div id="moduleContent19235032">
+
+              <a id="moduleLink19235032" class="offsite-link " href="http://beautifulbuilds.com/" onclick="this.target=&#39;new&#39;;"><span>Beautiful Builds</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="moduleContentWrapper15351025">
+
+    <div id="moduleContent15351025">
+
+              <a id="moduleLink15351025" class=" " href="http://leanpub.com/teamleader"><span>Notes to a software Team Leader</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="moduleContentWrapper19235027">
+
+    <div id="moduleContent19235027">
+
+              <a id="moduleLink19235027" class="offsite-link " href="http://speakernotes.org/" onclick="this.target=&#39;new&#39;;"><span>Speaker Notes</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="moduleContentWrapper4536291">
+
+    <div id="moduleContent4536291">
+
+              <a id="moduleLink4536291" class="offsite-link " href="http://www.artofunittesting.com/" onclick="this.target=&#39;new&#39;;"><span>The Art of Unit Testing</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="moduleContentWrapper4692379">
+
+    <div id="moduleContent4692379">
+
+              <a id="moduleLink4692379" class="offsite-link " href="http://5whys.com/" onclick="this.target=&#39;new&#39;;"><span>The Five Whys Blog</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="moduleContentWrapper18985851">
+
+    <div id="moduleContent18985851">
+
+              <a id="moduleLink18985851" class="offsite-link " href="http://whythefuckdidyoumovetonorway.com/" onclick="this.target=&#39;new&#39;;"><span>Why the fuck did you move to Norway?</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="moduleContentWrapper9403802">
+
+    <div id="moduleContent9403802">
+
+              <a id="moduleLink9403802" class=" " href="http://7enn.com/"><span>My Ruby Blog 7Enn</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="moduleContentWrapper4536288">
+
+    <div id="moduleContent4536288">
+
+              <a id="moduleLink4536288" class="offsite-link " href="http://twitter.com/RoyOsherove" onclick="this.target=&#39;new&#39;;"><span>@RoyOsherove on Twitter</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="moduleContentWrapper5475613">
+
+    <div id="moduleContent5475613">
+
+              <a id="moduleLink5475613" class=" " href="http://osherove.com/tools"><span>Tools I wrote</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+</ul>
+
+        
+
+      
+  
+    </div></div></div></div></div></div>
+
+  
+
+    <div id="sectionContent3001112" class="sectionWrapper  "><div class="iw-s1"><div class="iw-s2"><div class="iw-s3"><div class="iw-s4"><div class="section">
+
+       <div class="caption">from 5whys.com</div> 
+
+      
+        
+          <div class="content-passthrough"><div id="moduleContentWrapper19230922" class="widget-wrapper  widget-type-rss-consume"><div id="moduleContent19230922">
+
+<style type="text/css">
+    <!--
+      #rss-wrapper-19230922 {
+        display: block;
+        visibility: hidden;
+      }
+      
+    -->
+</style>
+
+<div id="rss-loading-wrapper-19230922" style="display:none; background:#353535; -moz-border-radius:8px; -webkit-border-radius:8px; height:300px; ">
+  <div id="rss-loading-img-19230922" style="height:100%; background:url(/universal/images/loading.png) no-repeat center center transparent;"></div>
+</div>
+
+<div id="rss-error-wrapper-19230922" style="display: none; border-radius: 8px; height: 300px; opacity: 0; background: rgb(53, 53, 53);">
+  <a id="rss-error-img-19230922" style="display:block; height:100%; background:url(/universal/images/loading-refresh.png) no-repeat center center transparent;" href="javascript:void(0);" onclick="javascript: rssWidget19230922.show();">&nbsp;</a>
+</div>
+
+
+<div id="rss-wrapper-19230922" class="rss-wrapper" style="display: block; opacity: 1; visibility: visible;">
+
+  <div class="rss-content">
+  
+    <div id="rss-item-19230922-1" class="rss-item highlight">
+            <div class="rss-title"><a id="rss-title-19230922-1" href="http://feedproxy.google.com/~r/5whys/~3/lIUvYQlBBqs/technical-disobedience.html" target="_blank">Technical Disobedience</a></div>
+      
+      
+      <div class="rss-description">
+        
+        
+      </div>
+      
+      
+    </div>
+            
+    
+        <div id="rss-item-19230922-2" class="rss-item">
+                <div class="rss-title"><a id="rss-title-19230922-2" href="http://feedproxy.google.com/~r/5whys/~3/tZWX2V4AKg4/definition-survival-mode.html" target="_blank">Definition: Survival Mode</a></div>
+          
+          
+          <div class="rss-description">
+            
+            
+          </div>
+          
+          
+        </div>
+        
+        <div id="rss-item-19230922-3" class="rss-item">
+                <div class="rss-title"><a id="rss-title-19230922-3" href="http://feedproxy.google.com/~r/5whys/~3/r1fXwvpOE7c/two-techniques-to-avoid-the-bus-factor-in-your-teams-push-an.html" target="_blank">Two Techniques to Avoid the Bus Factor In your Teams: Push and Pull</a></div>
+          
+          
+          <div class="rss-description">
+            
+            
+          </div>
+          
+          
+        </div>
+        
+        <div id="rss-item-19230922-4" class="rss-item">
+                <div class="rss-title"><a id="rss-title-19230922-4" href="http://feedproxy.google.com/~r/5whys/~3/bKv5gaZEVJE/whats-your-position-velocity-and-acceleration-by-neal-tibrew.html" target="_blank">What's your Position, Velocity, and Acceleration? by Neal Tibrewala</a></div>
+          
+          
+          <div class="rss-description">
+            
+            
+          </div>
+          
+          
+        </div>
+        
+        <div id="rss-item-19230922-5" class="rss-item">
+                <div class="rss-title"><a id="rss-title-19230922-5" href="http://feedproxy.google.com/~r/5whys/~3/ykatOM07hZc/audio-book-notes-to-a-software-team-leader-now-available.html" target="_blank">Audio Book - Notes to a Software Team Leader, Now Available</a></div>
+          
+          
+          <div class="rss-description">
+            
+            
+          </div>
+          
+          
+        </div>
+        
+        <div id="rss-item-19230922-6" class="rss-item">
+                <div class="rss-title"><a id="rss-title-19230922-6" href="http://feedproxy.google.com/~r/5whys/~3/awKubUA-XaU/be-a-book-reviewer-for-notes-to-a-software-team-leader.html" target="_blank">Be a Book Reviewer for 'Notes to a Software Team Leader'</a></div>
+          
+          
+          <div class="rss-description">
+            
+            
+          </div>
+          
+          
+        </div>
+        
+        <div id="rss-item-19230922-7" class="rss-item">
+                <div class="rss-title"><a id="rss-title-19230922-7" href="http://feedproxy.google.com/~r/5whys/~3/fFXCopjn3CE/audio-prefacendashnotes-to-a-software-team-leader.html" target="_blank">Audio: Preface–Notes to a Software Team Leader</a></div>
+          
+          
+          <div class="rss-description">
+            
+            
+          </div>
+          
+          
+        </div>
+        
+        <div id="rss-item-19230922-8" class="rss-item">
+                <div class="rss-title"><a id="rss-title-19230922-8" href="http://feedproxy.google.com/~r/5whys/~3/87d2r6eIeWQ/developing-critical-team-thinking.html" target="_blank">Developing Critical Team Thinking</a></div>
+          
+          
+          <div class="rss-description">
+            
+            
+          </div>
+          
+          
+        </div>
+                      
+
+  </div>
+  
+</div>
+
+<script type="text/javascript">
+<!--
+
+  var rssWidget19230922;
+  
+  E.onDOMReady( function() {
+
+    rssWidget19230922 = new Squarespace.Social.RssWidget(19230922, { pageSize : 8, readMoreText : 'Read More →', sourceText : 'via' });
+    rssWidget19230922.show();      
+    
+  });
+  
+  
+//-->
+</script></div></div></div>
+
+        
+
+      
+  
+    </div></div></div></div></div></div>
+
+  
+
+    <div id="sectionContent3001105" class="sectionWrapper  "><div class="iw-s1"><div class="iw-s2"><div class="iw-s3"><div class="iw-s4"><div class="section">
+
+       <div class="caption">Twitter: @RoyOsherove</div> 
+
+      
+        
+          <div class="content-passthrough"><div id="moduleContentWrapper19379840" class="widget-wrapper  widget-type-twitter"><div id="moduleContent19379840">
+
+<style type="text/css">
+    <!--
+      #twitter-wrapper-19379840 {
+        display: block;
+        visibility: hidden;
+      }
+            
+    -->
+</style>
+
+<div id="twitter-loading-wrapper-19379840" style="display:none; background:#353535; -moz-border-radius:8px; -webkit-border-radius:8px; height:300px; ">
+  <div id="twitter-loading-img-19379840" style="height:100%; background:url(/universal/images/loading.png) no-repeat center center transparent;"></div>
+</div>
+
+<div id="twitter-error-wrapper-19379840" style="display: none; border-radius: 8px; height: 300px; opacity: 0; background: rgb(53, 53, 53);">
+  <a id="twitter-error-img-19379840" style="display:block; height:100%; background:url(/universal/images/loading-refresh.png) no-repeat center center transparent;" href="javascript:void(0);" onclick="javascript: twitterWidget19379840.show();">&nbsp;</a>
+</div>
+
+
+
+  <div id="twitter-wrapper-19379840" class="twitter-wrapper basic" style="display: block; opacity: 1; visibility: visible;">
+    <div class="twitter-content">
+    
+      <div id="twitter-page-19379840">
+      
+        <div id="tweet-item-19379840-1" class="twitter-item-basic highlight RoyOsherove" style="display: block;">
+          <div class="twitter-item-content-basic">
+                        <div class="twitter-avatar"><a id="tweet-avatar-link-19379840-1" href="http://www.twitter.com/RoyOsherove" target="_blank"><img id="tweet-avatar-img-19379840-1" src="./TDD Kata 2 - Interactions - Osherove_files/Self_organizing_normal.jpg"></a></div>
+            
+                        <div class="twitter-username"><a id="tweet-username-link-19379840-1" href="http://www.twitter.com/RoyOsherove" target="_blank">@RoyOsherove</a></div>
+            
+            <span id="tweet-content-19379840-1">is there a common way to say "already on the way" or "someone is already going there" in a less cludgy way?</span>
+          </div>
+          <div class="twitter-item-slug">
+                        <div class="twitter-date"><a id="tweet-date-19379840-1" href="http://twitter.com/RoyOsherove/statuses/422729478666596353" target="_blank">about a year ago</a></div>
+            
+            <div class="clearer"></div>            
+          </div>
+        </div>
+
+        
+                <div id="tweet-item-19379840-2" class="twitter-item-basic RoyOsherove" style="display: block;">
+                  <div class="twitter-item-content-basic">
+                                <div class="twitter-avatar"><a id="tweet-avatar-link-19379840-2" href="http://www.twitter.com/RoyOsherove" target="_blank"><img id="tweet-avatar-img-19379840-2" src="./TDD Kata 2 - Interactions - Osherove_files/Self_organizing_normal.jpg"></a></div>
+                    
+                                <div class="twitter-username"><a id="tweet-username-link-19379840-2" href="http://www.twitter.com/RoyOsherove" target="_blank">@RoyOsherove</a></div>
+                    
+                    <span id="tweet-content-19379840-2">#DevWeek2014 will feature seven speakers from Israel (ok, I'm from Norway, but really...). Wow.</span>
+                  </div>
+                  <div class="twitter-item-slug">
+                                <div class="twitter-date"><a id="tweet-date-19379840-2" href="http://twitter.com/RoyOsherove/statuses/422701927911010304" target="_blank">about a year ago</a></div>
+                    
+                    <div class="clearer"></div>            
+                  </div>
+                </div>
+                
+                <div id="tweet-item-19379840-3" class="twitter-item-basic RoyOsherove" style="display: block;">
+                  <div class="twitter-item-content-basic">
+                                <div class="twitter-avatar"><a id="tweet-avatar-link-19379840-3" href="http://www.twitter.com/RoyOsherove" target="_blank"><img id="tweet-avatar-img-19379840-3" src="./TDD Kata 2 - Interactions - Osherove_files/Self_organizing_normal.jpg"></a></div>
+                    
+                                <div class="twitter-username"><a id="tweet-username-link-19379840-3" href="http://www.twitter.com/RoyOsherove" target="_blank">@RoyOsherove</a></div>
+                    
+                    <span id="tweet-content-19379840-3">A talk I did last Nov: team leader manifesto. find more info at <a target="new" href="http://t.co/X6zjMDUTeh">http://t.co/X6zjMDUTeh</a> &amp;... <a target="new" href="http://t.co/z3eybRhuEp">http://t.co/z3eybRhuEp</a></span>
+                  </div>
+                  <div class="twitter-item-slug">
+                                <div class="twitter-date"><a id="tweet-date-19379840-3" href="http://twitter.com/RoyOsherove/statuses/420936677897408512" target="_blank">about a year ago</a></div>
+                    
+                    <div class="clearer"></div>            
+                  </div>
+                </div>
+                
+                <div id="tweet-item-19379840-4" class="twitter-item-basic RoyOsherove" style="display: block;">
+                  <div class="twitter-item-content-basic">
+                                <div class="twitter-avatar"><a id="tweet-avatar-link-19379840-4" href="http://www.twitter.com/RoyOsherove" target="_blank"><img id="tweet-avatar-img-19379840-4" src="./TDD Kata 2 - Interactions - Osherove_files/Self_organizing_normal.jpg"></a></div>
+                    
+                                <div class="twitter-username"><a id="tweet-username-link-19379840-4" href="http://www.twitter.com/RoyOsherove" target="_blank">@RoyOsherove</a></div>
+                    
+                    <span id="tweet-content-19379840-4">two hours till half off deal ends.</span>
+                  </div>
+                  <div class="twitter-item-slug">
+                                <div class="twitter-date"><a id="tweet-date-19379840-4" href="http://twitter.com/RoyOsherove/statuses/419930380410830848" target="_blank">about a year ago</a></div>
+                    
+                    <div class="clearer"></div>            
+                  </div>
+                </div>
+                
+                <div id="tweet-item-19379840-5" class="twitter-item-basic RoyOsherove" style="display: block;">
+                  <div class="twitter-item-content-basic">
+                                <div class="twitter-avatar"><a id="tweet-avatar-link-19379840-5" href="http://www.twitter.com/RoyOsherove" target="_blank"><img id="tweet-avatar-img-19379840-5" src="./TDD Kata 2 - Interactions - Osherove_files/Self_organizing_normal.jpg"></a></div>
+                    
+                                <div class="twitter-username"><a id="tweet-username-link-19379840-5" href="http://www.twitter.com/RoyOsherove" target="_blank">@RoyOsherove</a></div>
+                    
+                    <span id="tweet-content-19379840-5">One day left. “@RoyOsherove: two days left: all my videos half off. <a target="new" href="http://t.co/42nIBZWTGy%E2%80%9D">http://t.co/42nIBZWTGy”</a></span>
+                  </div>
+                  <div class="twitter-item-slug">
+                                <div class="twitter-date"><a id="tweet-date-19379840-5" href="http://twitter.com/RoyOsherove/statuses/419751142542024704" target="_blank">about a year ago</a></div>
+                    
+                    <div class="clearer"></div>            
+                  </div>
+                </div>
+                              
+      </div>
+
+            <div class="twitter-nav-buttons secondary">
+        <a id="twitter-newer-link-19379840" href="javascript:void(0);" onclick="javascript: twitterWidget19379840.prevPage();" class="twitter-button-newer" style="visibility: hidden;">Newer</a>
+        <a id="twitter-older-link-19379840" href="javascript:void(0);" onclick="javascript: twitterWidget19379840.nextPage();" class="twitter-button-older" style="visibility: visible;">Older</a>
+        <div class="clearer"></div>
+      </div>
+      
+    
+    </div>
+
+        <div class="twitter-slug">
+      <div class="twitter-link">
+        
+                <a id="followme-link-19379840-1" href="http://www.twitter.com/RoyOsherove" target="_blank"><img id="followme-avatar-img-19379840-1" class="avatar" src="./TDD Kata 2 - Interactions - Osherove_files/Self_organizing_normal.jpg"><span id="followme-text-19379840-1">Follow @RoyOsherove</span></a>
+                
+      </div>
+    </div>
+    
+          
+  </div>
+
+
+
+
+
+
+<script type="text/javascript">
+<!--
+
+  var twitterWidget19379840;
+
+  E.onDOMReady( function() {
+
+    twitterWidget19379840 = new Squarespace.Social.TwitterWidget(19379840, { preset : 'basic-preset', pageSize : 5, followMeText : 'Follow @username', filter : '', filterType : 'any', filterAtReplies: true, filterRetweets : true, userIds : '14186105,' });
+    twitterWidget19379840.show();      
+    
+  });
+  
+  
+//-->
+</script></div></div></div>
+
+        
+
+      
+  
+    </div></div></div></div></div></div>
+
+  
+
+  
+
+</div></div></div></div></div></div>
+  <div id="sidebar2Wrapper" class="verticalNavigationBarWrapper"><div class="iw-vnb1"><div class="iw-vnb2"><div class="iw-vnb3"><div class="iw-vnb4"><div id="sidebar2" class="verticalNavigationBar">
+
+  
+
+    <div id="sectionContent2153908" class="sectionWrapper  "><div class="iw-s1"><div class="iw-s2"><div class="iw-s3"><div class="iw-s4"><div class="section">
+
+      
+
+      
+        
+          <div class="content-passthrough"><div id="moduleContentWrapper5454955" class="widget-wrapper  widget-type-links"><div id="moduleContent5454955">
+
+
+
+
+
+
+  <ul class="link-group-list-pt">
+
+    
+
+          <li id="linkGroup423757">
+
+            
+             <div class="title">My&nbsp;Services</div> 
+            
+
+            <ul>
+
+            
+
+                      <li id="link3436785">
+                        <div class="title"><a onclick="this.target=&#39;new&#39;;" href="http://osherove.com/terms">Terms &amp;&nbsp;Conditions</a></div>
+                        <div class="description"></div>
+                        
+                      </li>
+
+                    
+
+                      <li id="link1316116">
+                        <div class="title"><a onclick="this.target=&#39;new&#39;;" href="http://osherove.com/publicspeaking/">Public&nbsp;Speaking</a></div>
+                        <div class="description"></div>
+                        
+                      </li>
+
+                    
+
+                      <li id="link1316117">
+                        <div class="title"><a onclick="this.target=&#39;new&#39;;" href="http://osherove.com/tdd-training/">TDD&nbsp;Training</a></div>
+                        <div class="description"></div>
+                        
+                      </li>
+
+                    
+
+                      <li id="link1316118">
+                        <div class="title"><a onclick="this.target=&#39;new&#39;;" href="http://osherove.com/leadership-course/">Team Leader&nbsp;Training</a></div>
+                        <div class="description"></div>
+                        
+                      </li>
+
+                    
+
+            </ul>
+
+          </li>
+
+        
+
+  </ul>
+
+</div></div></div>
+
+        
+
+      
+  
+    </div></div></div></div></div></div>
+
+  
+
+  
+
+</div></div></div></div></div></div>
+  
+  
+
+  <div id="contentWrapper"><div id="content">
+    
+          
+    
+
+
+  
+
+ 
+  
+    <h2>TDD Kata 2 - Interactions</h2>
+<h3>Videos of people doing the kata</h3>
+<p>&nbsp;</p>
+<ul>
+<li><a href="http://vimeo.com/26177491">The kata in C++ and Igloo</a></li>
+<li><a href="http://rickardnilsson.net/post/2011/07/19/tdd-kata-2.aspx">The kata in C# and Moq</a></li>
+</ul>
+<p>&nbsp;</p>
+<div></div>
+<h3>Before you start</h3>
+<blockquote>
+<p>If you have an online video of you performing this kata or parts of it, <a href="http://osherove.com/request-more-info/">please ping me</a> and I’ll link to it here so other people can learn from you.</p>
+</blockquote>
+<p>This kata is based on the previous <a href="http://osherove.com/tdd-kata-1/">String Calculator Kata</a>. It is meant to be a continuation of the teaching process about unit testing and TDD. In this part of the teaching process, the kata forces you to think about interacting with the user, and subsequently to perform interation testing using mocks, and possible some stubs (<a href="http://osherove.com/blog/2007/9/16/mocks-and-stubs-the-difference-is-in-the-flow-of-information.html">what’s the difference?</a>)</p>
+<h3>It’s not going to be a piece of cake</h3>
+<p>Becuase this kata requires interaction testing, many students find this kata much harder to accomplish than the first string calculator kata. That’s ok. Getting interaction testing takes longer. Don’t worry if you find yourself struggling with this for a day or even two or three. even in class, with me there, students can take a couple of hours and sometimes up to five hours to accomplish the steps in the kata in this page, with me coaching them.</p>
+<p>The biggest problem that people face is that they get so mired in the details of how to fake this and that,they end up faking too much, and not really testing anything. Sometimes students will lose track of what it is they are trying to test in the first place. now, more than ever, <a href="http://osherove.com/blog/2005/4/3/naming-standards-for-unit-tests.html">good test names can save you</a>. by writing down in the test name the three main parts of the test (what’s being tested, under what conditions, and what should the expected behavior be under those condistions).</p>
+<blockquote>
+<p>When you are lost, the test name becomes your map and guide, to make sure your test follows what you wrote down in the test name, in each of its parts. The end behavior is what the mock should be asserting. the conditions are the setup code. the “what” is the “act” part of the test. that’s the thing you invoke. people get those mixed up a lot when getting through this, be careful!</p>
+</blockquote>
+<p>I would recommend NOT to write any code in the test method body until you get the name good enough to explain as an english sentence. this can even take 30 minutes at first, and that’s perfectly OK. it’s part of you getting to grips with the actual problem and how to solve it.</p>
+<h3>How to work with this Kata</h3>
+<p>Add the following features to String Calculator (either in the same class, or using any other structure or design you’d like). Make sure to go through them <em>one at a time</em>&nbsp;and try not to look ahead. Imagine this is a real project where each feature is requested the day <em>after</em>&nbsp;you’ve finished implementing the feature before it.</p>
+<h2><span style="font-size: medium;"><strong>The Kata</strong></span></h2>
+<!--StartFragment-->
+<p>&nbsp;</p>
+<ol>
+<li>Add Logging Abilities to your new String Calculator (to an ILogger.Write()) interface (you will need a mock). Every time you call Add(), the sum result will be logged to the logger.</li>
+<li>When calling Add() and the logger throws an exception, the string calculator should notify an IWebservice of some kind that logging has failed with the message from the logger’s exception (you will need a mock and a stub).</li>
+</ol>
+<h2>A More Difficult Variation of the Kata:</h2>
+<ol>
+<li>Everytime you call <strong>Add(string)</strong> it also <em>outputs</em>&nbsp;the number result of the calculation in a new line to the terminal or console. (remember to try and do this <em>test first!)</em></li>
+</ol>
+<p>&nbsp;</p>
+<ol>
+<li>Create a program (test first)that uses string calculator, which the user can invoke through the terminal/console by calling “<strong>scalc ‘1,2,3’</strong>” and will output the following line before exiting: <em><strong>“The result is 6”</strong></em></li>
+<li>Instead of exiting after the first result, the program will ask the user for <strong>“another input please</strong>” and print the result of the new user input out as well, until the user gives no input and just preses enter. in that case it will exit.</li>
+</ol>
+<p>&nbsp;</p>
+<h3>Hints:</h3>
+<p>&nbsp;</p>
+<p><em> </em></p>
+<ul>
+<em>
+<li><span style="font-style: normal;"><em>how can you check if something was output to the console? in ruby you can just override the ‘puts’ method or use one of the isolation frameworks to fake it and check that it was called. in .NET, the Console class has a static method called “<strong>SetOut</strong>” that takes a text writer. combine that with a StringBuilder, and you have a built in way to create a mock that can check what was sent to the console. another option is to abstract the output medium completly into its own class or interface such as IOutput, that can be used to ‘mediate’ between the real console and the inputs and outputs.&nbsp;</em></span></li>
+</em> 
+</ul>
+<p><em> </em></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><em> </em></p>
+<ul>
+<em>
+<li><span style="font-style: normal;"><em>&nbsp;</em><em>for test driving a console application, if you’re using .NET, you can test-first a&nbsp;<span>public static Main(params string args[])</span>&nbsp;function which is the root of the console application. no need to create a new process in your tests</em>&nbsp;</span></li>
+</em> 
+</ul>
+<p><em> </em></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><em> </em></p>
+<ul>
+<em>
+<li><span style="font-style: normal;">for number 3, you will need to devise a way to “wait” for user input without really waiting for a real user. your test will need to give two seperate inputs to the program, and it shoudl run fast, and not wait for any manual interaciton from you. Think about how to do that.</span></li>
+</em> 
+</ul>
+<p><em> </em></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><em> </em></p>
+<ul>
+<em>
+<li><span style="font-style: normal;">Can’t think of a way? What if you were to extract a special method called GetNextUserInput() that returns the string the user has provided? then you can overide that method in your tests (using<a href="http://www.opensourcetutorials.com/tutorials/Server-Side-Coding/Java/java-unit-testing-with-mock-objects/page3.html"> extract and override</a> if you need to) and return “fake” user inputs to test the system.&nbsp;</span></li>
+</em> 
+</ul>
+<p><em> </em></p>
+<p>&nbsp;</p>
+<ol> </ol>
+<p><script type="text/javascript" charset="utf-8">
+var disqus_forum_url = 'osherovecom';
+</script> <script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/squarespace.js"></script> <script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/embed.js"></script> &nbsp;</p>
+
+
+  
+
+
+</div></div> <!-- Content -->
+  
+    
+  
+    </div></div> <!-- Page Body -->
+
+          
+      <script src="./TDD Kata 2 - Interactions - Osherove_files/embed-v1.min.js"></script>
+
+<a title="Web Analytics" href="http://clicky.com/147971"><img alt="Web Analytics" src="./TDD Kata 2 - Interactions - Osherove_files/badge.gif" border="0"></a>
+<script src="./TDD Kata 2 - Interactions - Osherove_files/js" type="text/javascript"></script>
+<script type="text/javascript">try{ clicky.init(147971); }catch(e){}</script>
+<noscript>&lt;p&gt;&lt;img alt="Clicky" width="1" height="1" src="//in.getclicky.com/147971ns.gif" /&gt;&lt;/p&gt;</noscript>
+
+<script src="./TDD Kata 2 - Interactions - Osherove_files/youtube.js"></script>
+
+<script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/hellobar.js"></script>
+<script type="text/javascript">
+    new HelloBar(21834,43260);
+</script>
+
+
+<script type="text/javascript" charset="utf-8">
+var disqus_forum_url = 'osherovecom';
+</script>
+<script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/squarespace.js"></script>
+<script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/embed.js"></script>
+
+
+<script src="./TDD Kata 2 - Interactions - Osherove_files/saved_resource(1)" type="text/javascript"></script>
+<script type="text/javascript">
+    new JotformFeedback({
+        formId      : "13355222718",
+        buttonText  : "Send Feedback",
+        base        : "http://www.jotform.com/",
+        background  : "#F59202",
+        fontColor   : "#FFFFFF",
+        buttonSide  : "bottom",
+        buttonAlign : "right",
+        type        : false,
+        width       : 440,
+        height      : 420,
+        instant     : true
+    });
+</script>
+
+<script type="text/javascript" src="./TDD Kata 2 - Interactions - Osherove_files/embed(1).js"></script>
+    
+    
+    <div id="pageFooterWrapper"><div id="pageFooter">
+  
+              Copyright © 2000-2014, Roy Osherove.  All rights reserved. | <a href="http://osherove.com/login/?returnUrl=%2F">login</a>
+      
+  
+      
+  
+    </div></div>
+  
+  </div></div><iframe id="dsq-1" data-disqus-uid="1" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" style="width: 100% !important; border: none !important; overflow: hidden !important; display: none !important; height: 0px !important; min-height: 0px !important; max-height: 0px !important;"></iframe><iframe id="dsq-1" data-disqus-uid="1" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" style="width: 100% !important; border: none !important; overflow: hidden !important; display: none !important; height: 0px !important; min-height: 0px !important; max-height: 0px !important;"></iframe> <!-- Canvas -->
+  
+   
+
+
+  <div class="clearer" id="bodyClearer"></div>
+
+  
+
+
+
+
+<a class="jotform-feedback-link" id="jotform-feedback-13355222718" style="padding: 7px 15px; position: fixed; bottom: 0px; font-family: verdana; font-size: 15px; color: rgb(255, 255, 255); z-index: 999; cursor: pointer; text-align: center; text-decoration: none; border-radius: 5px 5px 0px 0px; -webkit-box-shadow: rgba(0, 0, 0, 0.298039) 0px 0px 5px; box-shadow: rgba(0, 0, 0, 0.298039) 0px 0px 5px; right: 35px; background: rgb(245, 146, 2);">Send Feedback</a><div id="sslightbox_title" class="squarespace-lightbox-description" style="color: rgb(233, 233, 233); font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 28px; line-height: normal; font-family: Arial; position: absolute; top: 0px; left: 0px; z-index: 950; display: none; cursor: pointer; opacity: 0;"></div><div id="sslightbox_description" style="color: rgb(233, 233, 233); position: absolute; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 14px; line-height: 20px; font-family: Arial; top: 0px; left: 0px; z-index: 950; display: none; cursor: pointer; opacity: 0;"></div><div id="sslightbox_overlay" title="Click to Close" style="width: 100%; height: 100%; position: absolute; top: 0px; left: 0px; z-index: 900; display: none; cursor: pointer; opacity: 0; background: rgb(0, 0, 0);"></div><a id="sslightbox_previmg" href="javascript:SSLightbox.switchImage(-1);" style="position: absolute; display: none; width: 35px; height: 50px; left: 8px; z-index: 950; cursor: pointer; opacity: 0; background-image: url(http://osherove.com/universal/images/overlay-arrow-left.png); background-color: transparent;"></a><a id="sslightbox_nextimg" href="javascript:SSLightbox.switchImage(1);" style="position: absolute; display: none; width: 35px; height: 50px; right: 8px; z-index: 950; cursor: pointer; opacity: 0; background-image: url(http://osherove.com/universal/images/overlay-arrow-right.png); background-color: transparent;"></a><div id="sslightbox_imgholder" style="position: absolute; top: 175.5px; left: 531.5px; opacity: 0; z-index: 950; width: 200px; height: 200px; display: none; background-color: rgb(255, 255, 255);"><span id="sslightbox_imgwrapper" classname="thumbnail-wrapper" style="position: absolute; top: 14px; left: 14px;"><img id="sslightbox_img" style="position: absolute; top: 0px; left: 0px; opacity: 0; display: none; z-index: 995; padding: 0px; margin: 0px; border: 0px; cursor: pointer;"></span></div><img id="sslightbox_loadimg" src="./TDD Kata 2 - Interactions - Osherove_files/loading.gif" style="position: absolute; opacity: 0; width: 48px; height: 54px; z-index: 990; padding: 0px; margin: 0px; border: 0px; cursor: pointer; left: 607.5px; top: 248.5px; display: none;"><a id="sslightbox_scrollrightimg" href="javascript:SSLightbox.scrollThumbnails(1);" class="picture-gallery-thumbnail-scroll-right" style="position: absolute; display: block; z-index: 800; top: -5000px; left: -10000px;"></a><a id="sslightbox_scrollleftimg" href="javascript:SSLightbox.scrollThumbnails(-1);" class="picture-gallery-thumbnail-scroll-left" style="position: absolute; display: block; z-index: 800; top: -5000px; left: -10000px;"></a></body></html>

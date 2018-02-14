@@ -1,0 +1,14 @@
+package xTreme;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class StateData {
+
+	String team1, team2;
+	List<String> team1Supporters = new ArrayList<>(), team2Supporters = new ArrayList<>();
+	List<String> reporters;
+	int noOfSupporters, noOfReporters;
+	
+	
+}
