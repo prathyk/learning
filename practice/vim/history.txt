@@ -1,0 +1,100 @@
+clear
+('cheese', 'bread', 'mayo') at (1) print
+exit
+clear
+exit
+clear
+('cheese', 'bread', 'mayo') at (1) print
+exit
+(lang='potion', pointless=true) at (key='lang') print
+minus = (x,y): x - y.
+exit
+clear
+exit
+clear
+('cheese', 'bread', 'mayo') at (1) print
+exit
+clear
+exit
+clear
+('cheese', 'bread', 'mayo') at (1) print
+exit
+(lang='potion', pointless=true) at (key='lang') print
+exit
+clear
+exit
+clear
+('cheese', 'bread', 'mayo') at (1) print
+exit
+clear
+exit
+clear
+('cheese', 'bread', 'mayo') at (1) print
+exit
+(lang='potion', pointless=true) at (key='lang') print
+minus = (x,y): x - y.
+minus(5,6)
+minus(x=5, y=6)
+minus (x=5, y=6)
+minus (x=5, y=6) print
+minus
+minus print
+minus = (x,y): x - y print.
+minus (x=5, y=6) 
+foods = ('cheese', 'bread', 'mayo')
+foods(2)
+foods(2) print
+foods(index=2)
+foods(ind=2)
+print foods(2)
+print foods
+"hello" (2)
+(dog="pet", cat="put", fox="vul") each (key, value):
+exit
+(dog="hello")(dog)
+(dog="hello")(dog) print
+(dog="hello")(key=dog) print
+(dog="hello") print
+(dog="hello") (1) print
+(dog="hello") (1) 
+(dog="can", cat="bat") each (key, val):
+(dog="dog", cat="cat") each (key, val): (key,val) join print.
+Person = class: /name, /age, /sex.
+Person print = (): ('My name is ', /name, '.') join print.
+p = Person ()
+p /name string print
+p (/name='pratik')
+p /name string print
+p print
+p = Person(/name='pratik')
+p print
+p string print
+p /name string print
+Policeman = Person class (rank): /rank = rank.
+Policeman print = (): ('My name is ', /name, /rank) join print.
+Policeman('Constable') print
+Person(/name='hello') print
+exit
+app = [window (width=200, height=400) [para 'Welcome.', button 'OK']]
+app first name
+app first name print
+app
+app print
+app.window
+1 to 5 (a): a string print.
+1 to 5 (a): a 
+1 to 5 (a):.
+t = true
+t print
+t string print
+$$ = [dollars 100]
+$$
+$$ print
+$$ string print
+$$ = [dollars 100] print
+x print
+sedi print
+Number 4 print
+Number $ = (): [dollars (amount=self)].
+100 $
+3 ? gener()
