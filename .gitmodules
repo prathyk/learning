@@ -1,0 +1,3 @@
+[submodule "practice/vim/potionplug"]
+	path = practice/vim/potionplug
+	url = git@github.com:prathyk/potion.git
