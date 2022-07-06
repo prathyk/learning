@@ -1,11 +1,15 @@
 factorial = (n):
 	total = 1
 	n to 1 (i):
+		# Multiply the running total
 		total *= i.
 	total.
 
+
+# Print 10 numbers along with their factorials
+
 10 times (i):
 	i string print
-	'! is: ' print
+,,	'! is: ' print
 	factorial (i) string print
 	"\n" print.

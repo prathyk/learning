@@ -1,0 +1,324 @@
+class RuleCoverage {
+
+    private static final int maxEventsToRetrieve = 500;
+    private static final int maxTimeToWaitForBGTracer = 60; //Max wait time is 60* 0.5secs = 30 secs -- 0.5 is iteration wait time in loop below
+    private String uniqueID = tools.getParamValue("StartTimeOfCoverage");
+    Database db = tools.getDatabase();
+    String nodeID = tools.getRequestor().getNode().getNodeUniqueID();
+
+    ParameterPage paramPg = tools.getParameterPage();
+    boolean isBuiltOnAppsConsidered = paramPg.getAsBoolean("isBuiltOnAppsConsidered");
+    boolean isAPegaDeveloper = paramPg.getAsBoolean("IsAPegaDeveloper"); //false;//IsAPegaDeveloper;
+
+
+
+    com.pega.pegarules.priv.monitor.tracer.ITracerSettings defaultTraceSettings = (com.pega.pegarules.priv.monitor.tracer.ITracerSettings) paramPg.getObject("DefaultTracerSettings");
+
+    ClipboardPage pgoverageResults = tools.findPage("RulesExecuted");
+    //List < ClipboardPage > allRules = getTotalRulesList("AllRules");
+    //List < ClipboardPage > allCheckedOutRules = getTotalRulesList("AllCheckedOutRules");
+
+    Set < String > coveredRulesInsKeysSet = new java.util.HashSet < String > ();
+	Set < String > searchedRulesInsKeysSet = new java.util.HashSet < String > ();
+
+    ClipboardProperty cpAllRules = tools.findPage("AllRules").getProperty("pxResults");
+    ClipboardProperty cpAllCheckedOutRules = tools.findPage("AllCheckedOutRules").getProperty("pxResults");
+
+    long TotalTimeTakenForSearch = 0;
+
+    boolean isCoverageSessionCancelledByUser = false;
+
+    private List < ClipboardPage > getTotalRulesList(String strPageName) {
+        Iterator rulesIterator = tools.findPage(strPageName).getProperty("pxResults").iterator();
+
+        List < ClipboardPage > listRules = new ArrayList < ClipboardPage > ();
+
+        while (rulesIterator.hasNext()) {
+            ClipboardProperty cpCurrent = (ClipboardProperty) rulesIterator.next();
+
+            listRules.add(cpCurrent.getPageValue());
+            oLog.debug("Adding to collection:'" + strPageName + "' a rule with key '" + cpCurrent.getPageValue().getString("pzInsKey") + "'");
+        }
+        oLog.debug("Size of all page list :" + strPageName + " is " + listRules.size());
+        return listRules;
+    }
+
+    private int normalSearch(ClipboardProperty cpList, String pzInsKeyToBeSearchedFor) {
+        int index = -1;
+        long startTime = System.currentTimeMillis();
+        index = pega_rules_utilities.IndexInPageList(pzInsKeyToBeSearchedFor, "pzInsKey", cpList);
+        long endTime = System.currentTimeMillis();
+        TotalTimeTakenForSearch = TotalTimeTakenForSearch + (endTime - startTime);
+
+        return index;
+    }
+	/*
+    private int binarySearch(List < ClipboardPage > list, String pzInsKeyToBeSearchedFor) {
+        java.util.Comparator < ClipboardPage > pageComparator = new java.util.Comparator < ClipboardPage > () {
+            public int compare(ClipboardPage u1, ClipboardPage u2) {
+
+                return u1.getString("pzInsKey").compareTo(u2.getString("pzInsKey"));
+            }
+        };
+
+
+
+
+        ClipboardPage dummyPage = tools.createPage("Data-Rule-Summary", "");
+        dummyPage.putString("pzInsKey", pzInsKeyToBeSearchedFor);
+        long startTime = System.currentTimeMillis();
+        int index = -1;
+
+        index = java.util.Collections.binarySearch(list, dummyPage, pageComparator);
+
+        long endTime = System.currentTimeMillis();
+        TotalTimeTakenForSearch = TotalTimeTakenForSearch + (endTime - startTime);
+
+        return index + 1;
+    }
+	*/
+    private void getCoveredRulesList(String tracerSessionID, int maxTimeToWaitFor, boolean isBackGroundTracer) {
+        int countOfZeroEventsHit = 0;
+        boolean isBackGroundTracerStoppedBeacuseOfTimeOut = false;
+        boolean isBackGroundTracerStoppedBeacuseParentStoppedByUser = false;
+        long startTime = System.currentTimeMillis();
+        List < com.pega.pegarules.priv.monitor.tracer.ITracerEvent > eventsList;
+        String tracerStatus;
+        com.pega.pegarules.priv.monitor.tracer.ITracerEvent currEvent = null;
+        ClipboardProperty cp = pgoverageResults.getProperty("pxCoveredRuleDetails");
+
+        try {
+
+            do {
+                tracerStatus = "";
+                tracerStatus = getCoverageStatus(tracerSessionID);
+
+                oLog.debug("The tracerStatus is:" + tracerStatus);
+                if (tracerStatus.equals("CANCELLED")) {
+                    isCoverageSessionCancelledByUser = true;
+                    oLog.debug("****Coverage session cancelled by user");
+                    break;
+                }  else {
+                    eventsList = pega.getTracerAPI().getEvents(nodeID, tracerSessionID, maxEventsToRetrieve);
+                }
+                
+                if (eventsList.size() == 0) {
+                    countOfZeroEventsHit = countOfZeroEventsHit + 1;
+					
+                } else {
+                    countOfZeroEventsHit = 0; //Reset in case atleast one event is detected
+                }
+                for (com.pega.pegarules.priv.monitor.tracer.ITracerEvent tracerEventCurrent: eventsList) {
+					
+                    currEvent = tracerEventCurrent; //For use in logs outside this loop
+
+                    
+                    
+                    
+					String currInskey = "";
+                    try {
+                        currInskey = tracerEventCurrent.getInsKey();
+                    } catch (Exception ex) {} {
+                        oLog.debug("**Exception occured");
+                    }
+
+
+                    String optionalProperties = "";
+                    ClipboardPage eventPage = tools.createPage("Data-Rule-Summary", "eventPage");
+                  
+                  	oLog.debug("Trying to process event:" + currInskey + " of typgetTracerSessionStatuse " + tracerEventCurrent.getEventType());
+                  
+                    if (tracerEventCurrent.getEventType().equals("Asynchronous Activity") || tracerEventCurrent.getEventType().equals("ADP Load")) {
+                        oLog.debug("$$$$$$$$$$$$ Asynchronous Activity detected");
+                        optionalProperties = tracerEventCurrent.getOptionalPropertiesContent();
+                        if (optionalProperties != null && optionalProperties.contains("BGTracerRackKey")) {
+                            String key = optionalProperties.substring(optionalProperties.indexOf("<BGTracerRackKey>") + 17, (optionalProperties.indexOf("</BGTracerRackKey>")));
+                            oLog.debug("BGTracerRackKey is : " + key);
+
+                            String bgTracerSessionID = StartTracer(nodeID, key, defaultTraceSettings);
+                            oLog.debug("%%%%%%%%%%Starting execution of background tracer");
+                            getCoveredRulesList(bgTracerSessionID, maxTimeToWaitForBGTracer, true); //Can we make it async??
+                            oLog.debug("%%%%%%%%%%Comepleted execution of background tracer");
+                        }
+                    } else {
+
+
+                       
+
+                        //if (tracerEventCurrent.getRulesetName()!= null && (tracerEventCurrent.getRulesetName().startsWith("Pega-") && isBuiltOnAppsConsidered && !isAPegaDeveloper )) { //Filter out any rules from Pega- rulesets . In settings we had enabled Pega-Autotest
+                        //	continue; 
+                        //}
+                        
+                        if (!searchedRulesInsKeysSet.contains(currInskey)) { //Skip if already processed
+							
+							((java.util.HashSet) searchedRulesInsKeysSet).add(currInskey);
+							
+                            eventPage.getProperty("pzInsKey").setValue(currInskey);
+                            //eventPage.getProperty("pyRuleSet").setValue(tracerEventCurrent.getRulesetName());
+                            //eventPage.getProperty("pyRuleSetVersion").setValue(tracerEventCurrent.getRulesetVersion());
+
+                            if (isBackGroundTracer) {
+                                oLog.debug("$$$$$$From Bg Tracer" + currInskey);
+                            } else {
+                                oLog.debug("######From Parent tracer" + currInskey);
+                            }
+
+                            String checkedInKey = "";
+                            int requiredIndexByBS = -1;
+                            int requiredDuplicateIndex = -1;
+                            ClipboardPage cpRequiredRulePage = null;
+
+                            oLog.debug("Event key is: " + currInskey);
+                            //requiredIndexByBS = binarySearch(allCheckedOutRules,currInskey);
+                            requiredIndexByBS = normalSearch(cpAllCheckedOutRules, currInskey);
+                            oLog.debug("After first binary search in checkedout rules: " + requiredIndexByBS);
+
+                            if (requiredIndexByBS <= 0) { //First search in checked out rule list
+                                oLog.debug(currInskey + " not found in checked out rules list");
+                                //requiredIndexByBS = binarySearch(allRules,currInskey);
+                                requiredIndexByBS = normalSearch(cpAllRules, currInskey);
+                                oLog.debug("After serach in checked in list : " + requiredIndexByBS);
+                                //oLog.error("After serach in checked in list(normal) : " + requiredIndexByNS);
+                                if (requiredIndexByBS > 0) {
+                                    cpRequiredRulePage = cpAllRules.getPageValue(requiredIndexByBS);
+                                } else {
+                                    oLog.debug(currInskey + " not found in checked in rules list");
+                                }
+
+                            } else { //If found in checked out rules list, then search for entry in all rules list with checked in key and mark for deletion
+
+                                oLog.debug(currInskey + " is found in checked out rules list");
+                                checkedInKey = cpAllCheckedOutRules.getPageValue(requiredIndexByBS).getString("pxInstanceLockedKey");
+                                oLog.debug("Checked in key is : " + checkedInKey);
+                                //requiredDuplicateIndex = binarySearch(allRules,checkedInKey);
+                                requiredDuplicateIndex = normalSearch(cpAllRules, checkedInKey);
+                                oLog.debug("Duplicate index(index of checked in key ) is :" + requiredDuplicateIndex);
+                                if (requiredDuplicateIndex > 0) {
+                                    cpAllRules.getPageValue(requiredDuplicateIndex).putString("pySelected", "true");
+                                    cpRequiredRulePage = cpAllCheckedOutRules.getPageValue(requiredIndexByBS);
+                                }
+
+                            }
+
+                            oLog.debug("Search result : " + requiredIndexByBS + " for inskey : '" + currInskey + "'");
+
+                            ((java.util.HashSet) coveredRulesInsKeysSet).add(tracerEventCurrent.getInsKey());
+                            if (cpRequiredRulePage != null) {
+                                oLog.debug("Inside if of getting values from required page");
+                                cpRequiredRulePage.putString("pySelected", "true");
+
+                                eventPage.putString("pyClassName", cpRequiredRulePage.getString("pyClassName"));
+                                eventPage.putString("pyClass", cpRequiredRulePage.getString("pyClass"));
+                                eventPage.putString("pyRuleName", cpRequiredRulePage.getString("pyRuleName"));
+                                eventPage.putString("pyLabel", cpRequiredRulePage.getString("pyLabel"));
+                                eventPage.putString("pyRuleSet", cpRequiredRulePage.getString("pyRuleSet"));
+                                eventPage.putString("pyRuleSetVersion", cpRequiredRulePage.getString("pyRuleSetVersion"));
+
+                            }
+                            if (!eventPage.getString("pyRuleName").equals("")) {
+                                oLog.debug("Inside if of adding event page for key " + currInskey);
+                                cp.add(eventPage);
+                            }
+							
+
+                        }
+                        //} //end of if
+                    } //end of else
+                    //} //end of if
+                } //end of for
+
+                
+                if (isBackGroundTracer) {
+					oLog.debug("***************inside if");
+                    //FinalTracerStatus = "STOPPED";
+                    if (countOfZeroEventsHit > maxTimeToWaitForBGTracer) {
+                        isBackGroundTracerStoppedBeacuseOfTimeOut = true;
+                        oLog.debug("***************BG requestor stop detected due to max time out");
+                    }
+                    if ("STOPPED".equals(tracerStatus) && countOfZeroEventsHit > 1) {
+                        isBackGroundTracerStoppedBeacuseParentStoppedByUser = true;
+                        oLog.debug("***************BG requestor stop detected due to parent stopped by user");
+                    }
+					if(isBackGroundTracerStoppedBeacuseParentStoppedByUser || isBackGroundTracerStoppedBeacuseOfTimeOut ){
+						countOfZeroEventsHit = 0;
+						oLog.debug("***************Going to break out of BGTracer here");
+						break;
+					}
+                }
+				
+				
+				if (isBackGroundTracer) {
+                    oLog.debug("$$$$$$Waiting for 0.5 secs From Bg Tracer " + tracerStatus + "---countOfZeroEventsHit:" + countOfZeroEventsHit);
+                } else {
+                    oLog.debug("######Waiting for 0.5 secs From Parent tracer : " + tracerStatus);
+                }
+				
+				
+				if ( eventsList.size() < maxEventsToRetrieve){
+						Thread.sleep(500); //Wait for additional 0.5 sec if no of events received is less than 500 for current request.
+				}
+				
+               
+            } while ((!isBackGroundTracer && (!"CANCELLED".equals(tracerStatus) &&  !("STOPPED".equals(tracerStatus) && countOfZeroEventsHit > 0) ) ) || isBackGroundTracer);
+        } catch (Exception ex) {
+            oLog.error("Exception from getCoveredRulesList:");
+            ex.printStackTrace();
+            if (currEvent != null) {
+                oLog.error("Trace event in context:" + currEvent.getOptionalPropertiesContent());
+                oLog.error("Trace event in context:" + currEvent.getEventName());
+            }
+
+
+        }
+
+    }
+
+    private String getCoverageStatus(String tracerSessionID) { //returns status of coverage as progress/cancel/stopped
+       
+        com.pega.pegarules.priv.monitor.tracer.TracerSessionStatus status=com.pega.pegarules.priv.monitor.tracer.TracerSessionStatus.TRACING;
+		String strStatus = "";
+        
+        try {
+            status = pega.getTracerAPI().getTracerSessionStatus(nodeID, tracerSessionID);
+          
+        } catch (Exception ex) {
+            oLog.error(ex);
+        }
+		
+		if(status.equals(com.pega.pegarules.priv.monitor.tracer.TracerSessionStatus.PAUSED)){
+			strStatus = "STOPPED";
+		}else if(status.equals(com.pega.pegarules.priv.monitor.tracer.TracerSessionStatus.TRACING)){
+			strStatus = "ACTIVE";
+		}else{
+			strStatus = "CANCELLED";
+		}
+		
+        FinalTracerStatus = strStatus;
+        return strStatus;
+    }
+
+    private String StartTracer(String targetNodeID, String tracerTargetRequestorID, com.pega.pegarules.priv.monitor.tracer.ITracerSettings tracerSettings) {
+        String tracerSessionID = "";
+        try {
+            tracerSessionID = pega.getTracerAPI().startRequestorTrace(nodeID, tracerTargetRequestorID, tracerSettings);
+            oLog.debug("Returned tracer id is :'" + tracerSessionID + "'");
+        } catch (Exception ex) {
+            oLog.error("Following exception occurred in start tracer:");
+            ex.printStackTrace();
+        }
+        return tracerSessionID;
+    }
+
+
+}
+RuleCoverage myCoverage = new RuleCoverage();
+
+String tracerSession = tools.getParamValue("ActiveTracerSessionID");
+
+FinalTracerStatus = "ACTIVE";
+oLog.debug("isAPegaDeveloper is : " + myCoverage.isAPegaDeveloper);
+oLog.debug("isBuiltOnAppsConsidered is : " + myCoverage.isBuiltOnAppsConsidered);
+oLog.debug("Coverage type is : " + tools.getParamValue("CoverageType"));
+myCoverage.getCoveredRulesList(tracerSession, 0, false);
+oLog.debug("***************************Total time taken for search in rule coverage session is (milli secs) : " + myCoverage.TotalTimeTakenForSearch);
+oLog.debug("FinalTracerStatus at end of batch activity java step 3 is : " + FinalTracerStatus);

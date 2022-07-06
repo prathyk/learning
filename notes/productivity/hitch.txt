@@ -1,0 +1,4 @@
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout  tecmint.lan.key -out tecmint.lan.crt
+cat tecmint.lan.crt tecmint.lan.key >tecmint.pem
+hitch --frontend="[*]:8443"  -b "[127.0.0.1]:9999" tecmint.pem
+hitch --frontend="[*]:8443"  -b "[127.0.0.1]:9999" tecmint.pem -L 3

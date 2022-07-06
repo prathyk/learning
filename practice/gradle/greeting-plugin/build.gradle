@@ -1,0 +1,8 @@
+plugins {
+	id 'org.example.greeting'
+}
+
+hello{
+	message = "hi!"
+	recipient = "Gradle"
+}
