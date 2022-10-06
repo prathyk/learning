@@ -1,0 +1,306 @@
+armstrongNumbers.isArmstrongNumber : Nat -> Boolean
+armstrongNumbers.isArmstrongNumber number =
+  exp = Text.size (toText number)
+  toDigits = cases
+    n | n < 10 -> [n]
+    n -> toDigits (n / 10) :+ (Nat.mod n 10)
+  toDigits number |> map (flip Nat.pow exp) 
+                  |> List.foldLeft (Nat.+) 0
+                  |> Nat.eq number
+
+-- foldl + 0 |> Nat.neq 0
+
+> isArmstrongNumber 153
+> Nat.fromText "2"
+
+---
+allergies.menu : Map Text Nat
+allergies.menu = List.toMap[ ("eggs", 1), ("peanuts", 2), ("shellfish", 4), ("strawberries", 8), ("tomatoes", 16), ("chocolate", 32), ("pollen", 64), ("cats", 128)] 
+allergies.scoreMatches : Nat -> Nat -> Boolean
+allergies.scoreMatches score n =
+  and score n != 0
+allergies.allergicTo : Text -> Nat -> Boolean
+allergies.allergicTo allergen score =
+  scoreMatches score (Map.getOrElse 0 allergen menu) 
+allergies.list : Nat -> [Text]
+allergies.list score =
+  List.filter ((flip allergicTo) score) (keys menu) 
+
+> allergies.allergicTo "peanuts" 2
+> allergies.allergicTo "peanuts" 6
+> allergies.allergicTo "peanuts" 5
+---
+acronym.abbreviate : Text -> Text
+acronym.abbreviate test = 
+  isAllowd c = isLetter c || (c === ?')
+  segmentBy isAllowd  test |> map ((toCharList >> (base.data.List.at 0)) >> (getOrElse ? )) |> fromCharList |> toUppercase
+
+---
+abbreviate
+isAllowd : Char -> Boolean
+isAllowd c = 
+  isLetter c || (c === ?')
+> segmentBy isAllowd  "Liquid-crystal display" |> map ((toCharList >> (unsafeAt 0)) >> toUpper) |> fromCharList
+> segmentBy isAllowd "Thank George It's Friday!"
+---
+I : a -> a
+I a = a
+
+> I I
+---
+unique ability KVStore a b where
+  get : a -> {KVStore a b} Optional b
+  put : a -> b -> {KVStore a b} ()
+
+myProgram : '{KVStore Nat Nat } Text
+myProgram _ =
+  put 3 4
+  put 5 6
+  maybeFour = KVStore.get 3
+  Optional.map Nat.toText maybeFour
+    |> Optional.getOrElse "nothing here"
+
+inMemory : '{g, KVStore a b} r -> {g} r
+inMemory keyValueInteractions = 
+  impl : Map a b -> abilities.Request {KVStore a b} r -> r
+  impl map = cases
+    { pure } -> pure
+    {KVStore.get key -> resume} ->
+      handle resume (Map.get key map) with impl map
+    {KVStore.put key value -> resume} -> 
+      updatedMap = Map.insert key value map
+      handle !resume with impl updatedMap
+  handle !keyValueInteractions with impl Map.empty
+
+> inMemory myProgram
+---
+divByThrow : Nat -> Nat -> {Throw Text} Nat
+divByThrow a b =
+  match b with
+    0 -> throw "Oh my God!"
+    _ -> a / b
+
+> toEither '(divByThrow 1 0)
+---
+echoName : '{IO, Exception}()
+echoName _ = 
+  printLine "Enter your name"
+  name = !console.getLine
+  printLine ("Hello " ++ name)
+
+---
+divByThrow : Nat -> Nat -> {Exception } Nat
+divByThrow a b =
+  match b with
+    0 -> Exception.raise (Generic.failure "Cannot divide by zero" b)
+    n -> a / b
+> catch '(divByThrow 1 0)
+> unsafeRun! '(divByThrow 1 1)
+---
+n : Optional Nat
+n = Some 4
+> n |> toAbort
+---
+nameGreet : '{IO, Exception} ()
+nameGreet _ =
+  printLine "Enter your name"
+  name = !console.getLine
+  printLine("Hello " ++ name)
+
+---
+store.stopIfTrue : (a -> Boolean) -> a -> {Abort, Store a} a
+store.stopIfTrue predicate a =
+  Store.put a
+  if predicate a then abort else a
+
+store.nonEmptyName : Text -> Text
+store.nonEmptyName name =
+  storeIsHandled : '{Abort} Text
+  storeIsHandled =
+    '(withInitialValue "Store Default Value" '(store.stopIfTrue (text -> text === "") name))
+  abortIsHandled : Optional Text
+  abortIsHandled = toOptional! storeIsHandled
+  Optional.getOrElse "Optional default" abortIsHandled
+---
+stopIfTrue : (a -> Boolean) -> a -> {Abort} a
+stopIfTrue pred v = if pred v then abort else v
+
+nonEmptyName : Text -> {} Text
+nonEmptyName name = 
+  Abort.toBug '(stopIfTrue (text -> text === "") name)
+---
+structural type DaysOfWeek = Sun | Mon | Tue | Wed | Thu | Fri | Sat
+unique type Volunteer
+  = {preferredName: Text,
+  age : Nat,
+  desiredStartDate : Text,
+  endDate : Optional Text,
+  daysAvailable : Set DaysOfWeek }
+
+> Volunteer.example = Volunteer "Carl Sagan" 40 "July 24th, 1988" None (List.toSet [ DaysOfWeek.Mon ])
+> Volunteer.age.set 500 Volunteer.example
+---
+ex4.myText : Text -> Text
+ex4.myText = cases
+  "Testing123" -> "I'm a test"
+  w | size w > 8 -> Text.repeat (size w) "!"
+    | (size w > 5) && (Text.take 1 w === "a") -> "Starts with A"
+    | size w > 5 -> "Long word"
+    | w === Text.reverse w -> "Mirror"
+  _ -> "Other"
+
+> ex4.myText "aaaaahh"
+use base.test.Result
+> check (ex4.myText "aaaaahh!" === "Starts with A")
+  
+> test6 = check (ex4.myText "Nope" === "Other")
+---
+matchTwo : Nat -> Nat -> Text
+matchTwo = cases
+  a, b | a < 3 -> "small"
+  c, d | d < 3 -> "second"
+  _, _ -> "big"
+
+> matchTwo 5 2
+---
+authorMatcher: Text -> Optional Text
+authorMatcher = cases
+  "Of Mice and Men" -> Some "John Steinbeck"
+  "To Kill a Mockingbird" -> Some "Harper Lee"
+  "The Tempest" -> Some "William Shakespeare"
+  _ -> None
+
+> authorMatcher "The Tempest"
+---
+use Universal
+itDependsUpon : Optional Text -> Text
+itDependsUpon = cases
+  optionalValue | Optional.contains "all" optionalValue -> "water"
+  Some x | size x === 3 -> "glazed with rain"
+  Some textValue -> "upon"
+  None -> "a red wheel barrow"
+  _ -> "So much depends"
+
+> (itDependsUpon None === "a red wheel barrow") && (itDependsUpon (Some "spring") === "upon") && (itDependsUpon (Some "and") === "glazed with rain") && (itDependsUpon (Some "all") === "water")
+---
+ifLeft c = Char.toText c
+ifRight n = Nat.toText n
+myEither : Either Char Nat
+myEither = Right 23
+> Either.fold ifLeft ifRight myEither
+---
+fold.myTotal: [Nat] -> Nat
+fold.myTotal list = 
+  List.foldl (+) 0 list
+
+> fold.myTotal [1,2,3,4,5,6,7]
+---
+tail.myTotal : [Nat] -> Nat
+tail.myTotal list =
+  loop: [Nat] -> Nat -> Nat
+  loop ilist acc = match ilist with
+    [] -> acc
+    h +: t -> loop t (h + acc)
+  loop list 0
+    
+> tail.myTotal [1,2,3,4,5,6]
+---
+recursive.myTotal : [Nat] -> Nat
+recursive.myTotal = cases
+  [] -> 0
+  h +:t -> h + recursive.myTotal (t)
+
+> recursive.myTotal [1,2,3,4,5,6]
+---
+> match ["a", "b", "c"] with 
+  [f, s] ++ r -> [f,s]
+  h +: t -> t
+  _ -> ["empty"]
+---
+unique type Hydra = Heads Nat Nat Nat Nat Nat 
+slayHydra: Nat -> Hydra -> Optional Hydra
+slayHydra attack = cases
+  hydra@(Heads h1 h2 immortal h4 h5)
+    | attack Nat.!= immortal -> Some hydra
+    | attack Nat.== immortal -> None
+
+> slayHydra 4 (Heads 1 1 5 1 1)
+---
+myMatch : Either Text Text -> Either Text Text
+myMatch = cases
+  Right _ -> Right "I found right"
+  Left b | b === "oh no" -> Left b
+  Left _ -> Left "I found left"
+
+> myMatch (Right "oh yes")
+---
+unique type Lunch = Soup Text | Salad Text | Mystery Text Boolean
+unique type Utensil = Fork | Knife | Spoon
+
+placeSetting : Lunch -> [Utensil]
+placeSetting = cases
+  Soup "bread soup" -> [Fork, Spoon]
+  Soup _            -> [Spoon]
+  Salad _           -> [Fork, Knife]
+  Mystery meal isAlive -> 
+    if( meal == "Gaint") && isAlive then [Knife]
+    else [Spoon, Fork, Knife]
+  _                  -> [Spoon, Fork, Knife] 
+
+> placeSetting (Salad "bread syup")
+---
+use Universal
+use Text
+matchNum : Nat -> Text
+matchNum num = match num with
+  oneTwo | (oneTwo === 1) || (oneTwo === 2) -> "one or two"
+  threefour | (threefour === 3) || (threefour === 4) -> "three or four"
+  _ -> "no match"
+
+> matchNum 2
+---
+> match "Pie" with
+  "Pie" -> "slice"
+  "Coffee" -> "cup"
+  "Soup" -> "bowl"
+  "Pancake" -> "stack"
+  _ -> "???"
+----
+removeEveryOther : [a] -> [a]
+removeEveryOther as = as |> indexed |> (List.filter (tup -> (Nat.isEven (at2 tup)))) |> map (tup -> (at1 tup))
+
+> removeEveryOther ["a","b","c","d","e"] 
+
+----
+brokenFactorial : Nat -> Nat
+brokenFactorial n =
+  use Universal Nat
+  if n === 0 then 1 else n * brokenFactorial (n - 1)
+
+----
+ntob: Nat -> Boolean
+ntob = not << Nat.isEven
+
+
+> ((>>) Nat.isEven not 4)
+> ((<<) not Nat.isEven 4)
+> ((Nat.isEven >> not) 4)
+
+
+> Some 5 |> Optional.filter (not << Nat.isEven) |> Optional.map(n -> n + 1)
+
+longText : 'Text
+longText = '"🐵 Imagine infinite monkeys on infinite typewriters 🙊…"
+
+coinflip : Boolean -> Text
+coinflip bool = if bool then !longText else "Hii"
+
+delayedText : 'Text
+delayedText = '(coinflip true)
+
+> !delayedText
+
+prod2 : () -> Text
+prod2 _ = "Hello"
+
+> !prod2

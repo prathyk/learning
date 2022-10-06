@@ -1,0 +1,100 @@
+ls base.Nat
+docs base.data.List.foldLeft
+docs base.data.List.foldLeft
+docs base.data.List.foldRight
+find foldr
+view 4
+ls base.Nat
+docs base.data.List.foldl
+docs foldl
+help
+run Nat.fromText "2"
+docs base.Nat.pow
+docs base.Nat.pow
+find pow
+ls base.math.Natural
+ls base.math
+ls base.Nat
+ls base.Text
+ls base.Nat
+ls base.Nat
+Char.toNat ?1
+toNat ?1
+docs base.Char.toNat
+view base.Char.toNat
+ls base.Char.toNat
+docs base.Char.toNat
+view 19
+ls base.Char
+view 2
+view 1
+ls base.data.List
+docs base.data.List.+:
+docs 1
+view 1
+find +:
+view 1
+ls base.data.Map.keys.tests
+view 2
+view 1
+ls base.data.Map.keys
+find flip
+docs base.data.Map.keys
+docs base.data.Map.getOrElse
+docs base.data.Map.map
+ls base.data.Map
+ls base.Nat
+docs base.data.Map.get
+ls base.Nat
+ls base.data.Map
+docs base.data.Map
+ls base.data.Map
+ls base.data
+ls base
+ls base.Text
+ls base.Text
+ls base.Char
+ls base.Char
+ls base.Optional
+ls base.Optional
+find somes
+find : Optional a -> a
+ls base.data.List
+find : [Char] -> Text
+view 1
+ls base.Text.join
+docs Join
+docs join
+docs 3
+view 3
+ls base.Function
+ls base.Functions
+docs base.Functions
+docs List.at
+docs segmentBy
+ls base.data.List
+base.data.List
+ls base.List
+find : [a] -> a
+find : Text -> Char
+cd ..
+find : Text -> Char
+find.global : Text -> Char
+find : Text -> Char
+ls lib.base.Text
+ls lib.base.Char
+ls base.Char
+view 1
+ls lib.base.Function
+ls lib.base.Function.<<
+ls lib.base.Function.>>
+ls lib.base.Function
+ls lib.base
+ls base
+docs <<
+docs ||
+docs &&
+docs and
+docs nor
+docs or
+docs not
