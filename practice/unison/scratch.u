@@ -1,3 +1,291 @@
+clock.getText : Int -> Text
+clock.getText n =
+  Text.alignRightWith 2 ?0 (Int.toText n)
+
+clock.create : Int -> Int -> Text
+clock.create hour minute =
+  total = (hour Int.* +60) Int.+ minute
+  h = (Int.mod (total / +60) +24)
+  m = (Int.mod total +60)
+  (getText h) ++ ":" ++ (getText m)
+
+clock.add : Int -> Int -> Int -> Text
+clock.add hour min additionalMinutes =
+  create hour (min Int.+ additionalMinutes)
+
+clock.subtract : Int -> Int -> Int -> Text
+clock.subtract hour min minutesSubtract =
+  create hour (min Int.- minutesSubtract)
+
+clock.equal : (Int, Int) -> (Int, Int) -> Boolean
+clock.equal clock1 clock2 =
+  clock.create (at1 clock1) (at2 clock1) === clock.create (at1 clock2) (at2 clock2)
+
+
+clock.test.ex1 = let
+	Test.label "Create a new clock with an initial time, on the hour" <| Test.expect (create +8 +0 === "08:00")
+clock.test.ex2 = let
+	Test.label "Create a new clock with an initial time, past the hour" <| Test.expect (create +11 +9 === "11:09")
+clock.test.ex3 = let
+	Test.label "Create a new clock with an initial time, midnight is zero hours" <| Test.expect (create +24 +0 === "00:00")
+clock.test.ex4 = let
+	Test.label "Create a new clock with an initial time, hour rolls over" <| Test.expect (create +25 +0 === "01:00")
+clock.test.ex5 = let
+	Test.label "Create a new clock with an initial time, hour rolls over continuously" <| Test.expect (create +100 +0 === "04:00")
+clock.test.ex6 = let
+	Test.label "Create a new clock with an initial time, sixty minutes is next hour" <| Test.expect (create +1 +60 === "02:00")
+clock.test.ex7 = let
+	Test.label "Create a new clock with an initial time, minutes roll over" <| Test.expect (create +0 +160 === "02:40")
+clock.test.ex8 = let
+	Test.label "Create a new clock with an initial time, minutes roll over continuously" <| Test.expect (create +0 +1723 === "04:43")
+clock.test.ex9 = let
+	Test.label "Create a new clock with an initial time, hour and minutes roll over" <| Test.expect (create +25 +160 === "03:40")
+clock.test.ex10 = let
+	Test.label "Create a new clock with an initial time, hour and minutes roll over continuously" <| Test.expect (create +201 +3001 === "11:01")
+clock.test.ex11 = let
+	Test.label "Create a new clock with an initial time, hour and minutes roll over to exactly midnight" <| Test.expect (create +72 +8640 === "00:00")
+clock.test.ex12 = let
+	Test.label "Create a new clock with an initial time, negative hour" <| Test.expect (create -1 +15 === "23:15")
+clock.test.ex13 = let
+	Test.label "Create a new clock with an initial time, negative hour rolls over" <| Test.expect (create -25 +0 === "23:00")
+clock.test.ex14 = let
+	Test.label "Create a new clock with an initial time, negative hour rolls over continuously" <| Test.expect (create -91 +0 === "05:00")
+clock.test.ex15 = let
+	Test.label "Create a new clock with an initial time, negative minutes" <| Test.expect (create +1 -40 === "00:20")
+clock.test.ex16 = let
+	Test.label "Create a new clock with an initial time, negative minutes roll over" <| Test.expect (create +1 -160 === "22:20")
+clock.test.ex17 = let
+	Test.label "Create a new clock with an initial time, negative minutes roll over continuously" <| Test.expect (create +1 -4820 === "16:40")
+clock.test.ex18 = let
+	Test.label "Create a new clock with an initial time, negative sixty minutes is previous hour" <| Test.expect (create +2 -60 === "01:00")
+clock.test.ex19 = let
+	Test.label "Create a new clock with an initial time, negative hour and minutes both roll over" <| Test.expect (create -25 -160 === "20:20")
+clock.test.ex20 = let
+	Test.label "Create a new clock with an initial time, negative hour and minutes both roll over continuously" <| Test.expect (create -121 -5810 === "22:10")
+clock.test.ex21 = let
+	Test.label "Add minutes, add minutes" <| Test.expect (add +10 +0 +3 === "10:03")
+clock.test.ex22 = let
+	Test.label "Add minutes, add no minutes" <| Test.expect (add +6 +41 +0 === "06:41")
+clock.test.ex23 = let
+	Test.label "Add minutes, add to next hour" <| Test.expect (add +0 +45 +40 === "01:25")
+clock.test.ex24 = let
+	Test.label "Add minutes, add more than one hour" <| Test.expect (add +10 +0 +61 === "11:01")
+clock.test.ex25 = let
+	Test.label "Add minutes, add more than two hours with carry" <| Test.expect (add +0 +45 +160 === "03:25")
+clock.test.ex26 = let
+	Test.label "Add minutes, add across midnight" <| Test.expect (add +23 +59 +2 === "00:01")
+clock.test.ex27 = let
+	Test.label "Add minutes, add more than one day (1500 min = 25 hrs)" <| Test.expect (add +5 +32 +1500 === "06:32")
+clock.test.ex28 = let
+	Test.label "Add minutes, add more than two days" <| Test.expect (add +1 +1 +3500 === "11:21")
+clock.test.ex29 = let
+	Test.label "Subtract minutes, subtract minutes" <| Test.expect (subtract +10 +3 +3 === "10:00")
+clock.test.ex30 = let
+	Test.label "Subtract minutes, subtract to previous hour" <| Test.expect (subtract +10 +3 +30 === "09:33")
+clock.test.ex31 = let
+	Test.label "Subtract minutes, subtract more than an hour" <| Test.expect (subtract +10 +3 +70 === "08:53")
+clock.test.ex32 = let
+	Test.label "Subtract minutes, subtract across midnight" <| Test.expect (subtract +0 +3 +4 === "23:59")
+clock.test.ex33 = let
+	Test.label "Subtract minutes, subtract more than two hours" <| Test.expect (subtract +0 +0 +160 === "21:20")
+clock.test.ex34 = let
+	Test.label "Subtract minutes, subtract more than two hours with borrow" <| Test.expect (subtract +6 +15 +160 === "03:35")
+clock.test.ex35 = let
+	Test.label "Subtract minutes, subtract more than one day (1500 min = 25 hrs)" <| Test.expect (subtract +5 +32 +1500 === "04:32")
+clock.test.ex36 = let
+	Test.label "Subtract minutes, subtract more than two days" <| Test.expect (subtract +2 +20 +3000 === "00:20")
+clock.test.ex37 = let
+	Test.label "Compare two clocks for equality, clocks with same time" <| Test.expect (equal (+15, +37) (+15, +37) === true)
+clock.test.ex38 = let
+	Test.label "Compare two clocks for equality, clocks a minute apart" <| Test.expect (equal (+15, +36) (+15, +37) === false)
+clock.test.ex39 = let
+	Test.label "Compare two clocks for equality, clocks an hour apart" <| Test.expect (equal (+14, +37) (+15, +37) === false)
+clock.test.ex40 = let
+	Test.label "Compare two clocks for equality, clocks with hour overflow" <| Test.expect (equal (+10, +37) (+34, +37) === true)
+clock.test.ex41 = let
+	Test.label "Compare two clocks for equality, clocks with hour overflow by several days" <| Test.expect (equal (+3, +11) (+99, +11) === true)
+clock.test.ex42 = let
+	Test.label "Compare two clocks for equality, clocks with negative hour" <| Test.expect (equal (+22, +40) (-2, +40) === true)
+clock.test.ex43 = let
+	Test.label "Compare two clocks for equality, clocks with negative hour that wraps" <| Test.expect (equal (+17, +3) (-31, +3) === true)
+clock.test.ex44 = let
+	Test.label "Compare two clocks for equality, clocks with negative hour that wraps multiple times" <| Test.expect (equal (+13, +49) (-83, +49) === true)
+clock.test.ex45 = let
+	Test.label "Compare two clocks for equality, clocks with minute overflow" <| Test.expect (equal (+0, +1) (+0, +1441) === true)
+clock.test.ex46 = let
+	Test.label "Compare two clocks for equality, clocks with minute overflow by several days" <| Test.expect (equal (+2, +2) (+2, +4322) === true)
+clock.test.ex47 = let
+	Test.label "Compare two clocks for equality, clocks with negative minute" <| Test.expect (equal (+2, +40) (+3, -20) === true)
+clock.test.ex48 = let
+	Test.label "Compare two clocks for equality, clocks with negative minute that wraps" <| Test.expect (equal (+4, +10) (+5, -1490) === true)
+clock.test.ex49 = let
+	Test.label "Compare two clocks for equality, clocks with negative minute that wraps multiple times" <| Test.expect (equal (+6, +15) (+6, -4305) === true)
+clock.test.ex50 = let
+	Test.label "Compare two clocks for equality, clocks with negative hours and minutes" <| Test.expect (equal (+7, +32) (-12, -268) === true)
+clock.test.ex51 = let
+	Test.label "Compare two clocks for equality, clocks with negative hours and minutes that wrap" <| Test.expect (equal (+18, +7) (-54, -11513) === true)
+clock.test.ex52 = let
+	Test.label "Compare two clocks for equality, full clock and zeroed clock" <| Test.expect (equal (+24, +0) (+0, +0) === true)
+test> clock.tests = runAll [
+	clock.test.ex1,
+	clock.test.ex2,
+	clock.test.ex3,
+	clock.test.ex4,
+	clock.test.ex5,
+	clock.test.ex6,
+	clock.test.ex7,
+	clock.test.ex8,
+	clock.test.ex9,
+	clock.test.ex10,
+	clock.test.ex11,
+	clock.test.ex12,
+	clock.test.ex13,
+	clock.test.ex14,
+	clock.test.ex15,
+	clock.test.ex16,
+	clock.test.ex17,
+	clock.test.ex18,
+	clock.test.ex19,
+	clock.test.ex20,
+	clock.test.ex21,
+	clock.test.ex22,
+	clock.test.ex23,
+	clock.test.ex24,
+	clock.test.ex25,
+	clock.test.ex26,
+	clock.test.ex27,
+	clock.test.ex28,
+	clock.test.ex29,
+	clock.test.ex30,
+	clock.test.ex31,
+	clock.test.ex32,
+	clock.test.ex33,
+	clock.test.ex34,
+	clock.test.ex35,
+	clock.test.ex36,
+	clock.test.ex37,
+	clock.test.ex38,
+	clock.test.ex39,
+	clock.test.ex40,
+	clock.test.ex41,
+	clock.test.ex42,
+	clock.test.ex43,
+	clock.test.ex44,
+	clock.test.ex45,
+	clock.test.ex46,
+	clock.test.ex47,
+	clock.test.ex48,
+	clock.test.ex49,
+	clock.test.ex50,
+	clock.test.ex51,
+	clock.test.ex52
+]
+
+---
+use Either Right Left
+
+{{ This type is used to capture the expected error message }}
+unique type bowling.Error = Error Text
+msg = "Score cannot be taken until the end of the game"
+unique type Frame = Strike Nat Nat | Spare Nat | Open Nat Nat
+
+Frame.score = cases
+  Strike f s -> 10 + f + s
+  Spare n -> 10 + n
+  Open a b -> a + b
+
+frames : [Nat] -> {Throw Error} Optional (Frame, [Nat])
+frames = cases
+  [10] ++ rest@([f, s]) -> Some (Strike f s, [])
+  [10] ++ rest@([f, s] ++ _) -> Some (Strike f s, rest)
+  [10] ++ rest@([f] ++ _) -> throw (Error msg)
+  [f,s] ++ rest@([t]) | f + s == 10 -> Some (Spare t, [])
+  [f,s] ++ rest@(t +: _) | f + s == 10 -> Some (Spare t, rest)
+  [f,s] ++ rest -> if f + s == 10 then throw (Error  msg) else Some (Open f s, rest)
+  [f,s] -> Some (Open f s, [])
+  [f] -> if f == 10 then throw (Error msg) else None
+  [] -> None
+
+{{
+  {bowling.score} takes in a list of numbers representing the pins knocked down for each roll of the bowling game, and should return either the total score or an error.
+}}
+bowling.score : [Nat] -> Either Error Nat
+bowling.score rolls = 
+  toEither '(List.unfold rolls frames) 
+    |> mapRight (take 10 << map Frame.score) 
+    |> flatMapRight (a -> if ((size a) == 10) then (Right a) else Left (Error "Score cannot be taken until the end of the game"))
+    |> mapRight (foldl (+) 0)
+
+> rolls = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,10]
+> toEither '(List.unfold rolls frames) 
+bowling.test.ex1 = let
+	Test.label "should be able to score a game with all zeros" <| Test.expect (score [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] === Right (0))
+bowling.test.ex2 = let
+	Test.label "should be able to score a game with no strikes or spares" <| Test.expect (score [3,6,3,6,3,6,3,6,3,6,3,6,3,6,3,6,3,6,3,6] === Right (90))
+bowling.test.ex3 = let
+	Test.label "a spare followed by zeros is worth ten points" <| Test.expect (score [6,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] === Right (10))
+bowling.test.ex4 = let
+	Test.label "points scored in the roll after a spare are counted twice" <| Test.expect (score [6,4,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] === Right (16))
+bowling.test.ex5 = let
+	Test.label "consecutive spares each get a one roll bonus" <| Test.expect (score [5,5,3,7,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] === Right (31))
+bowling.test.ex6 = let
+	Test.label "a spare in the last frame gets a one roll bonus that is counted once" <| Test.expect (score [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,3,7] === Right (17))
+bowling.test.ex7 = let
+	Test.label "a strike earns ten points in a frame with a single roll" <| Test.expect (score [10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] === Right (10))
+bowling.test.ex8 = let
+	Test.label "points scored in the two rolls after a strike are counted twice as a bonus" <| Test.expect (score [10,5,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] === Right (26))
+bowling.test.ex9 = let
+	Test.label "consecutive strikes each get the two roll bonus" <| Test.expect (score [10,10,10,5,3,0,0,0,0,0,0,0,0,0,0,0,0] === Right (81))
+bowling.test.ex10 = let
+	Test.label "a strike in the last frame gets a two roll bonus that is counted once" <| Test.expect (score [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,7,1] === Right (18))
+bowling.test.ex11 = let
+	Test.label "rolling a spare with the two roll bonus does not get a bonus roll" <| Test.expect (score [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,7,3] === Right (20))
+bowling.test.ex12 = let
+	Test.label "strikes with the two roll bonus do not get bonus rolls" <| Test.expect (score [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,10,10] === Right (30))
+bowling.test.ex13 = let
+	Test.label "last two strikes followed by only last bonus with non strike points" <| Test.expect (score [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,10,0,1] === Right (31))
+bowling.test.ex14 = let
+	Test.label "a strike with the one roll bonus after a spare in the last frame does not get a bonus" <| Test.expect (score [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,3,10] === Right (20))
+bowling.test.ex15 = let
+	Test.label "all strikes is a perfect game" <| Test.expect (score [10,10,10,10,10,10,10,10,10,10,10,10] === Right (300))
+bowling.test.ex16 =
+  Test.label "two bonus rolls after a strike in the last frame can score more than 10 points if one is a strike" <| Test.expect (score [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,10,6] === Right (26))
+bowling.test.ex17 = let
+	Test.label "an unstarted game cannot be scored" <| Test.expect (score [] === Left ( Error "Score cannot be taken until the end of the game"))
+bowling.test.ex18 = let
+	Test.label "an incomplete game cannot be scored" <| Test.expect (score [0,0] === Left ( Error "Score cannot be taken until the end of the game"))
+bowling.test.ex19 = let
+	Test.label "bonus rolls for a strike in the last frame must be rolled before score can be calculated" <| Test.expect ( score [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10] === Left ( Error "Score cannot be taken until the end of the game"))
+bowling.test.ex20 = let
+	Test.label "both bonus rolls for a strike in the last frame must be rolled before score can be calculated" <| Test.expect ( score [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,10] === Left ( Error "Score cannot be taken until the end of the game"))
+bowling.test.ex21 = let
+	Test.label "bonus roll for a spare in the last frame must be rolled before score can be calculated" <| Test.expect (score [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,3] === Left ( Error "Score cannot be taken until the end of the game"))
+test> bowling.tests = runAll [
+	bowling.test.ex1,
+	bowling.test.ex2,
+	bowling.test.ex3,
+	bowling.test.ex4,
+	bowling.test.ex5,
+	bowling.test.ex6,
+	bowling.test.ex7,
+	bowling.test.ex8,
+	bowling.test.ex9,
+	bowling.test.ex10,
+	bowling.test.ex11,
+	bowling.test.ex12,
+	bowling.test.ex13,
+	bowling.test.ex14,
+	bowling.test.ex15,
+  bowling.test.ex16,
+	bowling.test.ex17,
+	bowling.test.ex18,
+	bowling.test.ex19,
+	bowling.test.ex20,
+  bowling.test.ex21
+]
+
+---
+
 armstrongNumbers.isArmstrongNumber : Nat -> Boolean
 armstrongNumbers.isArmstrongNumber number =
   exp = Text.size (toText number)

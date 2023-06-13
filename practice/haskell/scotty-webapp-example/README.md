@@ -1,0 +1,1 @@
+# scotty-webapp-example

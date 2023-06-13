@@ -1,3 +1,80 @@
+view base.data.List.foldl
+view base.Either.mapRight
+view base.Optional.map
+docs base.Optional.map
+docs base.Optional.mapRight
+docs mapRight
+view base.Optional
+view base.data.List.unfold
+view base.data.List.unfold
+docs base.data.List.unfold
+docs List.unfold
+view 165
+docs 165
+docs 162
+ls base.data.List
+docs base.data.List.take
+docs take
+ls base.data.List
+ls base.Either
+ls base.Either
+find Either
+base.Either
+ls base.data.Either
+ls base.abilities.Throw
+ls base.abilities.Abort
+find  Eq
+ls base.data.List
+ls base.data.List
+ls base.data.List
+docs tail
+docs at
+docs Nat
+docs 118
+ls base.data.List
+ls 161
+ls base.data.List
+ls 161
+ls 147
+ls base.data.List
+docs 182
+docs 160
+docs 148
+docs 146
+docs 138
+docs 126
+ls base.data.List
+docs 123
+docs 91
+docs 89
+ls base.data.List
+cd ..
+ls lib
+lib.base.data.List.mapIndexed (fun a b -> b) ["a", "b", "c"]
+base.data.List.mapIndexed (fun a b -> b) ["a", "b", "c"]
+cd learn
+base.data.List.mapIndexed (fun a b -> b) ["a", "b", "c"]
+base.data.List.mapIndexed (fun a b -> b) ["a", "b", "c"]
+mapIndexed (fun a b -> b) ["a", "b", "c"]
+mapIndexed ["a", "b", "c"]
+view 108
+docs 109
+docs 108
+ls base.data.List
+docs 74
+docs 73
+docs 72
+docs 71
+docs 70
+docs 69
+docs 68
+ls base.data.List
+docs base.data.List.groupBy
+docs base.data.List.dropWhile
+docs base.data.List.chunk
+view 15
+ls base.data.List
+find partition
 ls base.Nat
 docs base.data.List.foldLeft
 docs base.data.List.foldLeft
@@ -21,80 +98,3 @@ ls base.Nat
 Char.toNat ?1
 toNat ?1
 docs base.Char.toNat
-view base.Char.toNat
-ls base.Char.toNat
-docs base.Char.toNat
-view 19
-ls base.Char
-view 2
-view 1
-ls base.data.List
-docs base.data.List.+:
-docs 1
-view 1
-find +:
-view 1
-ls base.data.Map.keys.tests
-view 2
-view 1
-ls base.data.Map.keys
-find flip
-docs base.data.Map.keys
-docs base.data.Map.getOrElse
-docs base.data.Map.map
-ls base.data.Map
-ls base.Nat
-docs base.data.Map.get
-ls base.Nat
-ls base.data.Map
-docs base.data.Map
-ls base.data.Map
-ls base.data
-ls base
-ls base.Text
-ls base.Text
-ls base.Char
-ls base.Char
-ls base.Optional
-ls base.Optional
-find somes
-find : Optional a -> a
-ls base.data.List
-find : [Char] -> Text
-view 1
-ls base.Text.join
-docs Join
-docs join
-docs 3
-view 3
-ls base.Function
-ls base.Functions
-docs base.Functions
-docs List.at
-docs segmentBy
-ls base.data.List
-base.data.List
-ls base.List
-find : [a] -> a
-find : Text -> Char
-cd ..
-find : Text -> Char
-find.global : Text -> Char
-find : Text -> Char
-ls lib.base.Text
-ls lib.base.Char
-ls base.Char
-view 1
-ls lib.base.Function
-ls lib.base.Function.<<
-ls lib.base.Function.>>
-ls lib.base.Function
-ls lib.base
-ls base
-docs <<
-docs ||
-docs &&
-docs and
-docs nor
-docs or
-docs not
